@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>David — Game Designer</title>
+  <meta name="description" content="Portfolio of game designer David: playable projects, post‑mortems, and writing samples." />
+
+  <!-- Social previews (Open Graph) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="David — Game Designer" />
+  <meta property="og:description" content="Playable projects, post‑mortems, and writing." />
+  <meta property="og:image" content="/og-card.jpg" />
+  <meta property="og:url" content="https://example.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f1115;  /* near-black */
+      --text: #e6e7eb; /* off‑white */
+      --muted: #9aa1ad;
+      --card: #171a21;
+      --accent: #7dd6ff;
+      --radius: 18px;
+      --maxw: 1200px;
+    }
+    html, body {height: 100%;}
+    body {font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; 
+      background: radial-gradient(1200px 600px at 50% -20%, #162033 0%, #0f1115 60%); color: var(--text); margin: 0; line-height: 1.5;}
+    a { color: var(--text); text-underline-offset: 2px; }
+    img { max-width: 100%; height: auto; border-radius: calc(var(--radius) - 6px); display: block; }
+    .wrap { width: min(96vw, var(--maxw)); margin: 0 auto; }
+
+    /* Skip link */
+    .skip { position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden; }
+    .skip:focus { left: 1rem; top: 1rem; width:auto; height:auto; background:#000; color:#fff; padding:.5rem .75rem; border-radius:.5rem; }
+
+    header { position: sticky; top: 0; backdrop-filter: blur(8px); background: color-mix(in srgb, var(--bg) 80%, transparent); z-index: 40; border-bottom: 1px solid #1f2533; }
+    .nav { display:flex; align-items:center; justify-content:space-between; padding: .9rem 0; }
+    .nav a.brand { font-weight: 800; letter-spacing: .2px; text-decoration: none; }
+    .nav .links { display:flex; gap: 1rem; }
+    .nav .links a { opacity: .8; text-decoration:none; }
+    .nav .links a:hover { opacity:1; }
+
+    .hero { display:grid; grid-template-columns: 1.2fr .8fr; gap: 2rem; padding: 3rem 0 2rem; align-items:center; }
+    .hero h1 { font-size: clamp(2rem, 4vw + .5rem, 3.5rem); line-height: 1.08; margin: 0 0 .6rem; }
+    .hero p { color: var(--muted); max-width: 60ch; }
+    .hero .card { background: linear-gradient(180deg, #161a22, #11141a); border: 1px solid #202535; border-radius: var(--radius); padding: 1rem; }
+
+    section { padding: 2rem 0; }
+    section h2 { font-size: clamp(1.25rem, 2.2vw + .4rem, 2rem); margin: 0 0 1rem; }
+
+    /* Magazine‑style asymmetric grid */
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1rem; }
+    .card { background: var(--card); border: 1px solid #21283a; border-radius: var(--radius); overflow: clip; position: relative; }
+    .card .content { padding: 1rem; }
+    .badge { position:absolute; top:.8rem; right:.8rem; background: rgba(125,214,255,.15); color: var(--accent); border:1px solid color-mix(in srgb, var(--accent), #000 70%); padding:.25rem .5rem; border-radius: 999px; font-size:.75rem; }
+
+    .game { grid-column: span 6; display:flex; flex-direction:column; gap: .75rem; }
+    .game.featured { grid-column: span 8; }
+    .game .media { aspect-ratio: 16 / 9; background: #0b0d11; }
+
+    .chips { display:flex; flex-wrap: wrap; gap:.4rem; }
+    .chip { font-size:.75rem; padding:.2rem .5rem; border-radius:999px; border:1px solid #293146; color: var(--muted); }
+
+    details { background: #12161f; border: 1px solid #1f2636; border-radius: calc(var(--radius) - 8px); padding:.6rem .8rem; }
+    details > summary { cursor:pointer; list-style: none; font-weight: 600; }
+    details > summary::-webkit-details-marker { display:none; }
+    details[open] { border-color: #2a3750; }
+
+    .prose { color: var(--muted); }
+    .prose p { margin: .6rem 0; }
+
+    .iframe { aspect-ratio: 16 / 9; width: 100%; border: 0; border-radius: calc(var(--radius) - 8px); background:#0b0d11; }
+
+    /* Writing cards */
+    .writing { grid-column: span 4; display:flex; flex-direction:column; }
+    .writing .meta { color: var(--muted); font-size: .9rem; }
+
+    footer { padding: 3rem 0 4rem; color: var(--muted); }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .game, .game.featured { grid-column: 1 / -1; }
+      .writing { grid-column: span 6; }
+    }
+
+    /* Container queries to adapt card internals */
+    .game { container-type: inline-size; }
+    @container (max-width: 420px) {
+      .game .content { padding: .8rem; }
+      .chips { display:none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header>
+    <div class="wrap nav" role="navigation" aria-label="Primary">
+      <a class="brand" href="#">David — Game Designer</a>
+      <nav class="links" aria-label="Sections">
+        <a href="#games">Games</a>
+        <a href="#writing">Writing</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap" role="main">
+    <section class="hero">
+      <div>
+        <h1>Playable experiments + post‑mortems</h1>
+        <p>Hi, I’m David. I design and build games. Below you’ll find a curated set of projects with short post‑mortems and links to playable builds and videos, plus a selection of writing (theses, GDDs, narrative pitches).</p>
+        <div class="chips" aria-label="Tools"><span class="chip">Unity</span><span class="chip">Unreal</span><span class="chip">C#</span><span class="chip">Narrative</span><span class="chip">Level Design</span></div>
+      </div>
+      <div class="card hero-media" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=1200&auto=format&fit=crop" alt="Abstract neon game grid" loading="lazy" width="1200" height="800" />
+      </div>
+    </section>
+
+    <section id="games" aria-labelledby="games-h">
+      <h2 id="games-h">Games</h2>
+      <div class="grid" id="games-grid" role="list"></div>
+    </section>
+
+    <section id="writing" aria-labelledby="writing-h">
+      <h2 id="writing-h">Writing</h2>
+      <div class="grid" id="writing-grid" role="list"></div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-h">
+      <h2 id="contact-h">Contact</h2>
+      <p class="prose">For collaborations, talk slots, or London meetups, reach me at <a href="mailto:you@example.com">you@example.com</a> or on <a href="#">Twitter</a>.</p>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p>© <span id="year"></span> David. Built with semantic HTML, CSS Grid, and a dash of JS. Images lazy‑loaded; embeds are responsive.</p>
+  </footer>
+
+  <!-- JSON data you can edit without touching HTML structure -->
+  <script id="portfolio-data" type="application/json">
+  {
+    "games": [
+      {
+        "title": "Echo Circuit",
+        "featured": true,
+        "cover": "https://images.unsplash.com/photo-1520975682039-ae8e3a00f686?q=80&w=1200&auto=format&fit=crop",
+        "images": [
+          "https://images.unsplash.com/photo-1606166325683-d7d4f3655d82?q=80&w=1200&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1606943896329-cd9da5b750d4?q=80&w=1200&auto=format&fit=crop"
+        ],
+        "roles": ["Design", "Programming"],
+        "tools": ["Unity", "C#"],
+        "itch": "https://itch.io/",
+        "video": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        "blurb": "A rhythm‑puzzle prototype where routes are composed like music.",
+        "postmortem": "What worked: tight core loop; input buffering. What didn’t: late scope creep on custom level editor; under‑tested difficulty spikes. Next time: lock rules early, test with new players weekly."
+      },
+      {
+        "title": "Glimmerfall",
+        "cover": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
+        "images": [],
+        "roles": ["Level Design"],
+        "tools": ["Unreal", "Blueprints"],
+        "itch": "https://itch.io/",
+        "video": null,
+        "blurb": "Traversal challenge built around momentum and readable landmarks.",
+        "postmortem": "What worked: traversal feel; navigational affordances. What didn’t: too many parallel mechanics introduced at once. Next: stagger mechanics, add foreshadowing setpieces."
+      }
+    ],
+    "writing": [
+      {
+        "title": "Emergent Narrative in Systems‑First Games",
+        "type": "Thesis",
+        "year": 2024,
+        "summary": "Case studies on storytelling through verbs and state change.",
+        "link": "#",
+        "download": "#"
+      },
+      {
+        "title": "GLIMMERFALL GDD (v1.2)",
+        "type": "GDD",
+        "year": 2025,
+        "summary": "Goals, pillars, mechanics, and production notes.",
+        "link": "#",
+        "download": "#"
+      },
+      {
+        "title": "Pitch: The Last Lighthouse",
+        "type": "Narrative Pitch",
+        "year": 2023,
+        "summary": "A character‑driven mystery on a fog‑bound archipelago.",
+        "link": "#",
+        "download": "#"
+      }
+    ]
+  }
+  </script>
+
+  <script>
+    const $ = (s, r=document) => r.querySelector(s);
+    const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+
+    const data = JSON.parse(document.getElementById('portfolio-data').textContent);
+    const gamesGrid = document.getElementById('games-grid');
+
+    const gameCard = (g) => {
+      const imgAttrs = `src="${g.cover}" alt="${g.title} cover" loading="lazy" width="1200" height="675"`;
+      return `
+        <article class="card game ${g.featured ? 'featured' : ''}" role="listitem" aria-labelledby="${cssid(g.title)}-h">
+          <span class="badge">${g.tools.join(' · ')}</span>
+          <div class="media">
+            <img ${imgAttrs} />
+          </div>
+          <div class="content">
+            <h3 id="${cssid(g.title)}-h" style="margin:.2rem 0 .2rem;">${g.title}</h3>
+            <p class="prose">${g.blurb}</p>
+            ${g.images?.length ? gallery(g.images) : ''}
+            ${g.video ? `<iframe class="iframe" src="${g.video}" title="${g.title} video" loading="lazy" allowfullscreen></iframe>` : ''}
+            ${g.itch ? itchWidget(g.itch) : ''}
+            <details>
+              <summary>Post‑mortem</summary>
+              <div class="prose"><p>${g.postmortem}</p></div>
+            </details>
+          </div>
+        </article>`;
+    }
+
+    const cssid = (t) => t.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    const gallery = (imgs) => `
+      <div class="grid" style="grid-template-columns: repeat(6, 1fr); gap:.6rem;">
+        ${imgs.map(u => `<div class="card" style="grid-column: span 3; padding:.4rem; background:#10131a;"><img src="${u}" alt="Screenshot" loading="lazy" width="1200" height="675"></div>`).join('')}
+      </div>`;
+
+    // Very simple Itch widget frame (replace URL with your game page). Many creators prefer the small card widget.
+    const itchWidget = (url) => `
+      <iframe class="iframe" src="${url.replace(/\/$/, '')}/embed" title="Itch.io widget" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
+
+    gamesGrid.innerHTML = data.games.map(gameCard).join('');
+
+    const writingGrid = document.getElementById('writing-grid');
+    const writingCard = (w) => `
+      <article class="card writing" role="listitem">
+        <div class="content">
+          <h3 style="margin:.2rem 0;">${w.title}</h3>
+          <div class="meta">${w.type} · ${w.year}</div>
+          <p class="prose">${w.summary}</p>
+          <p style="display:flex; gap:.8rem; flex-wrap:wrap;">
+            ${w.link ? `<a class="chip" href="${w.link}">Read</a>` : ''}
+            ${w.download ? `<a class="chip" href="${w.download}">Download PDF</a>` : ''}
+          </p>
+        </div>
+      </article>`;
+    writingGrid.innerHTML = data.writing.map(writingCard).join('');
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Example JSON‑LD for one game (adjust values) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "Echo Circuit",
+    "author": {"@type": "Person", "name": "David"},
+    "image": ["https://example.com/echo-circuit-cover.jpg"],
+    "url": "https://example.com#echo-circuit",
+    "genre": ["Puzzle", "Rhythm"],
+    "gamePlatform": ["Windows"],
+    "description": "A rhythm‑puzzle prototype where routes are composed like music.",
+    "trailer": {"@type": "VideoObject", "name": "Echo Circuit Trailer", "embedUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"}
+  }
+  </script>
+</body>
+</html>
