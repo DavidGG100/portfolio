@@ -4,12 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>David Gadelkarim — Game Designer</title>
-  <meta name="description" content="Portfolio of game designer David: playable projects, post‑mortems, and writing samples." />
+  <meta name="description" content="Portfolio of game designer David: playable projects, post-mortems, and writing samples." />
 
   <!-- Social previews (Open Graph) -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="David Gadelkarim — Game Designer" />
-  <meta property="og:description" content="Playable projects, post‑mortems, and writing." />
+  <meta property="og:description" content="Playable projects, post-mortems, and writing." />
   <meta property="og:image" content="/og-card.jpg" />
   <meta property="og:url" content="https://example.com" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -19,8 +19,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0f1115;  /* near-black */
-      --text: #e6e7eb; /* off‑white */
+      --bg: #0f1115;
+      --text: #e6e7eb;
       --muted: #9aa1ad;
       --card: #171a21;
       --accent: #7dd6ff;
@@ -28,13 +28,15 @@
       --maxw: 1200px;
     }
     html, body {height: 100%;}
-    body {font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji"; 
-      background: radial-gradient(1200px 600px at 50% -20%, #162033 0%, #0f1115 60%); color: var(--text); margin: 0; line-height: 1.5;}
+    body {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 50% -20%, #162033 0%, #0f1115 60%);
+      color: var(--text); margin: 0; line-height: 1.5;
+    }
     a { color: var(--text); text-underline-offset: 2px; }
     img { max-width: 100%; height: auto; border-radius: calc(var(--radius) - 6px); display: block; }
     .wrap { width: min(96vw, var(--maxw)); margin: 0 auto; }
 
-    /* Skip link */
     .skip { position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden; }
     .skip:focus { left: 1rem; top: 1rem; width:auto; height:auto; background:#000; color:#fff; padding:.5rem .75rem; border-radius:.5rem; }
 
@@ -53,7 +55,6 @@
     section { padding: 2rem 0; }
     section h2 { font-size: clamp(1.25rem, 2.2vw + .4rem, 2rem); margin: 0 0 1rem; }
 
-    /* Magazine‑style asymmetric grid */
     .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1rem; }
     .card { background: var(--card); border: 1px solid #21283a; border-radius: var(--radius); overflow: clip; position: relative; }
     .card .content { padding: 1rem; }
@@ -64,7 +65,8 @@
     .game .media { aspect-ratio: 16 / 9; background: #0b0d11; }
 
     .chips { display:flex; flex-wrap: wrap; gap:.4rem; }
-    .chip { font-size:.75rem; padding:.2rem .5rem; border-radius:999px; border:1px solid #293146; color: var(--muted); }
+    .chip { font-size:.75rem; padding:.2rem .5rem; border-radius:999px; border:1px solid #293146; color: var(--muted); text-decoration:none; }
+    .chip:hover { border-color:#3a4664; }
 
     details { background: #12161f; border: 1px solid #1f2636; border-radius: calc(var(--radius) - 8px); padding:.6rem .8rem; }
     details > summary { cursor:pointer; list-style: none; font-weight: 600; }
@@ -74,9 +76,13 @@
     .prose { color: var(--muted); }
     .prose p { margin: .6rem 0; }
 
+    .btn {
+      display:inline-block; padding:.5rem .8rem; border:1px solid #2a3650; border-radius:999px;
+      text-decoration:none; font-weight:600; font-size:.9rem;
+    }
+
     .iframe { aspect-ratio: 16 / 9; width: 100%; border: 0; border-radius: calc(var(--radius) - 8px); background:#0b0d11; }
 
-    /* Writing cards */
     .writing { grid-column: span 4; display:flex; flex-direction:column; }
     .writing .meta { color: var(--muted); font-size: .9rem; }
 
@@ -88,7 +94,6 @@
       .writing { grid-column: span 6; }
     }
 
-    /* Container queries to adapt card internals */
     .game { container-type: inline-size; }
     @container (max-width: 420px) {
       .game .content { padding: .8rem; }
@@ -113,7 +118,7 @@
     <section class="hero">
       <div>
         <h1>David Gadelkarim's Game Design Portfolio</h1>
-        <p>Hello, I'm David Gadelkarim. I design and build games. Below you’ll find a curated set of projects with short post‑mortems and links to playable builds and videos, plus a selection of writing (theses, GDDs, narrative pitches).</p>
+        <p>Hello, I'm David Gadelkarim. I design and build games. Below you’ll find a curated set of projects with short post-mortems and links to playable builds and videos, plus a selection of writing (theses, GDDs, narrative pitches).</p>
         <div class="chips" aria-label="Tools"><span class="chip">Unity</span><span class="chip">Unreal</span><span class="chip">C#</span><span class="chip">Narrative</span><span class="chip">Level Design</span></div>
       </div>
       <div class="card hero-media" aria-hidden="true">
@@ -138,7 +143,7 @@
   </main>
 
   <footer class="wrap">
-    <p>© <span id="year"></span> David. Built with semantic HTML, CSS Grid, and a dash of JS. Images lazy‑loaded; embeds are responsive.</p>
+    <p>© <span id="year"></span> David. Built with semantic HTML, CSS Grid, and a dash of JS. Images lazy-loaded; embeds are responsive.</p>
   </footer>
 
   <!-- JSON data you can edit without touching HTML structure -->
@@ -146,20 +151,20 @@
   {
     "games": [
       {
-        "title": "The Red Rain Case (In Development)",
+        "title": "The Red Rain Case (Releasing November 27, 2025)",
         "featured": true,
-        "cover": "https://images.unsplash.com/photo-1520975682039-ae8e3a00f686?q=80&w=1200&auto=format&fit=crop",
+        "cover": "images/image18.png",
         "images": [],
         "roles": ["Design", "Programming"],
         "tools": ["Unity", "C#"],
         "itch": "https://megamelone.itch.io/project-time-detective",
         "video": null,
         "blurb": "Play as a time manipulating detective, solving a disappearance case in a city drenched in eternal night and rain.",
-        "postmortem": "What worked: tight core loop; input buffering. What didn’t: late scope creep on custom level editor; under‑tested difficulty spikes. Next time: lock rules early, test with new players weekly."
+        "postmortem": "What worked: tight core loop; input buffering. What didn’t: late scope creep on custom level editor; under-tested difficulty spikes. Next time: lock rules early, test with new players weekly."
       },
       {
         "title": "Soup for The Consumer",
-        "cover": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
+        "cover": "images/image2.png",
         "images": [],
         "roles": ["Level Design"],
         "tools": ["Unreal", "Blueprints"],
@@ -170,7 +175,7 @@
       },
       {
         "title": "Cloud Posting",
-        "cover": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
+        "cover": "images/image17.png",
         "images": [],
         "roles": ["Level Design"],
         "tools": ["Unreal", "Blueprints"],
@@ -181,7 +186,7 @@
       },
       {
         "title": "An Ordinary Business Lunch",
-        "cover": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
+        "cover": "images/image20.png",
         "images": [],
         "roles": ["Level Design"],
         "tools": ["Unreal", "Blueprints"],
@@ -192,7 +197,29 @@
       },
       {
         "title": "Back and Forth",
-        "cover": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
+        "cover": "images/image22.jpg",
+        "images": [],
+        "roles": ["Level Design"],
+        "tools": ["Unreal", "Blueprints"],
+        "itch": "https://itch.io/",
+        "video": null,
+        "blurb": "Traversal challenge built around momentum and readable landmarks.",
+        "postmortem": "What worked: traversal feel; navigational affordances. What didn’t: too many parallel mechanics introduced at once. Next: stagger mechanics, add foreshadowing setpieces."
+      },
+      {
+        "title": "Back and Forth: Cube Pong",
+        "cover": "images/image11.jpg",
+        "images": [],
+        "roles": ["Level Design"],
+        "tools": ["Unreal", "Blueprints"],
+        "itch": "https://itch.io/",
+        "video": null,
+        "blurb": "Traversal challenge built around momentum and readable landmarks.",
+        "postmortem": "What worked: traversal feel; navigational affordances. What didn’t: too many parallel mechanics introduced at once. Next: stagger mechanics, add foreshadowing setpieces."
+      },
+      {
+        "title": "Back and Forth: Beat Pong",
+        "cover": "images/image3.png",
         "images": [],
         "roles": ["Level Design"],
         "tools": ["Unreal", "Blueprints"],
@@ -203,7 +230,7 @@
       },
       {
         "title": "RPS Ultra Adventure",
-        "cover": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
+        "cover": "images/image14.png",
         "images": [],
         "roles": ["Level Design"],
         "tools": ["Unreal", "Blueprints"],
@@ -214,7 +241,7 @@
       },
       {
         "title": "You Are Here.",
-        "cover": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
+        "cover": "images/image4.png",
         "images": [],
         "roles": ["Level Design"],
         "tools": ["Unreal", "Blueprints"],
@@ -225,7 +252,7 @@
       },
       {
         "title": "Letter Wars",
-        "cover": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
+        "cover": "images/image13.png",
         "images": [],
         "roles": ["Level Design"],
         "tools": ["Unreal", "Blueprints"],
@@ -236,7 +263,18 @@
       },
       {
         "title": "Don't Touch THE THNIG",
-        "cover": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
+        "cover": "images/image15.jpg",
+        "images": [],
+        "roles": ["Level Design"],
+        "tools": ["Unreal", "Blueprints"],
+        "itch": "https://itch.io/",
+        "video": null,
+        "blurb": "Traversal challenge built around momentum and readable landmarks.",
+        "postmortem": "What worked: traversal feel; navigational affordances. What didn’t: too many parallel mechanics introduced at once. Next: stagger mechanics, add foreshadowing setpieces."
+      },
+      {
+        "title": "Marble Labyrinth",
+        "cover": "images/image16.jpg",
         "images": [],
         "roles": ["Level Design"],
         "tools": ["Unreal", "Blueprints"],
@@ -247,7 +285,7 @@
       },
       {
         "title": "SLUG HOUSE",
-        "cover": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
+        "cover": "images/image5.png",
         "images": [],
         "roles": ["Level Design"],
         "tools": ["Unreal", "Blueprints"],
@@ -258,7 +296,7 @@
       },
       {
         "title": "I Wanna Grow Taller!",
-        "cover": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
+        "cover": "images/image19.jpg",
         "images": [],
         "roles": ["Level Design"],
         "tools": ["Unreal", "Blueprints"],
@@ -269,8 +307,8 @@
       },
       {
         "title": "ROCKBOTTOM HERO",
-        "cover": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
-        "images": [],
+        "cover": "images/image6.png",
+        "images": [],   
         "roles": ["Level Design"],
         "tools": ["Unreal", "Blueprints"],
         "itch": "https://itch.io/",
@@ -280,7 +318,7 @@
       },
       {
         "title": "Memories of Closure",
-        "cover": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
+        "cover": "images/image7.png",
         "images": [],
         "roles": ["Level Design"],
         "tools": ["Unreal", "Blueprints"],
@@ -291,7 +329,7 @@
       },
       {
         "title": "GRAVITY: NULL",
-        "cover": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
+        "cover": "images/image10.png",
         "images": [],
         "roles": ["Level Design"],
         "tools": ["Unreal", "Blueprints"],
@@ -302,18 +340,7 @@
       },
       {
         "title": "Eternal Game Night",
-        "cover": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
-        "images": [],
-        "roles": ["Level Design"],
-        "tools": ["Unreal", "Blueprints"],
-        "itch": "https://itch.io/",
-        "video": null,
-        "blurb": "Traversal challenge built around momentum and readable landmarks.",
-        "postmortem": "What worked: traversal feel; navigational affordances. What didn’t: too many parallel mechanics introduced at once. Next: stagger mechanics, add foreshadowing setpieces."
-      },
-      {
-        "title": "Renaissance Accademia",
-        "cover": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
+        "cover": "images/image9.png",
         "images": [],
         "roles": ["Level Design"],
         "tools": ["Unreal", "Blueprints"],
@@ -324,7 +351,18 @@
       },
       {
         "title": "Return to Your Roots",
-        "cover": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
+        "cover": "images/image8.png",
+        "images": [],
+        "roles": ["Level Design"],
+        "tools": ["Unreal", "Blueprints"],
+        "itch": "https://itch.io/",
+        "video": null,
+        "blurb": "Traversal challenge built around momentum and readable landmarks.",
+        "postmortem": "What worked: traversal feel; navigational affordances. What didn’t: too many parallel mechanics introduced at once. Next: stagger mechanics, add foreshadowing setpieces."
+      },
+      {
+        "title": "Renaissance Accademia",
+        "cover": "images/image12.jpg",
         "images": [],
         "roles": ["Level Design"],
         "tools": ["Unreal", "Blueprints"],
@@ -335,19 +373,19 @@
       },
       {
         "title": "Castle Protector",
-        "cover": "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1200&auto=format&fit=crop",
+        "cover": ["images/image21.png"],
         "images": [],
-        "roles": ["Level Design"],
-        "tools": ["Unreal", "Blueprints"],
+        "roles": ["Sole Designer and Developer"],
+        "tools": ["Unity 2D", "Aseprite", "C#"],
         "itch": "https://itch.io/",
         "video": null,
-        "blurb": "Traversal challenge built around momentum and readable landmarks.",
-        "postmortem": "What worked: traversal feel; navigational affordances. What didn’t: too many parallel mechanics introduced at once. Next: stagger mechanics, add foreshadowing setpieces."
+        "blurb": "<p>Protect your castle from the Shape Army in this mentally strenuating Endless Runner! The only thing that can defeat them are custom made bullets designed to destroy enemies of their same shape. If you shoot an enemy with the wrong shape, the enemy will get stronger and you will lose a life.</p><p> Made for the University of the Art London’s BA Games Design course in my first year, this is the first game I ever made from scratch all on my own, and as a result, it’s certainly rough in several areas.</p>",
+        "postmortem": "<p>What worked: My aim was to make an endless runner that antithesizes the genre’s tendency to promote more relaxed, flow-state oriented play, by making an endless runner that was consistently mentally strenuating. By having the player constantly analyze the shapes coming towards them, as well as their size, and responding with the appropriate inputs. I believe the game was successful in that regard.</p><p>What didn’t work: The game feel is exceptionally poor, it’s very difficult for the player to know when they’ve been hit, when they’ve made a successful hit, and how well they’re actually doing. Things like the death screen are too sudden, and there’s no satisfaction to any of the player’s actions and the game’s subsequent reactions.</p><p>Changes and Additions: As stated above, the game required a lot of enhancement. Simply focusing on changes rather than additions, the following should have been applied to make for an engaging play experience for players: there should be particle effects and a subtle screenshake when the player successfully damages an enemy, when a player hits an enemy with the wrong shape instead of inexplicably taking damage their projectile should visibly be shot back at them to contextualize the damage received, the player cannot tell how many lives an enemy has and how much health they have left which can be solved with a simple number in the middle of the enemy’s body, the castle the player is protecting should show visible damage the more the player loses health, the button inputs for shooting bullets is too overstimulating and makes it easy to fire an incorrect shot, this should be replaced with the player cycling through the different projectile shapes, the arrival of the 2 and 3 health enemies should be gradual as the player gains more points rather than immediate, a little animation could play when the player is defeated to make loss feel impactful, and of course the lack of audio is quite noticeable.</p>"
       }
     ],
     "writing": [
       {
-        "title": "Emergent Narrative in Systems‑First Games",
+        "title": "Emergent Narrative in Systems-First Games",
         "type": "Thesis",
         "year": 2024,
         "summary": "Case studies on storytelling through verbs and state change.",
@@ -366,7 +404,7 @@
         "title": "Pitch: The Last Lighthouse",
         "type": "Narrative Pitch",
         "year": 2023,
-        "summary": "A character‑driven mystery on a fog‑bound archipelago.",
+        "summary": "A character-driven mystery on a fog-bound archipelago.",
         "link": "#",
         "download": "#"
       }
@@ -382,26 +420,34 @@
     const gamesGrid = document.getElementById('games-grid');
 
     const gameCard = (g) => {
-      const imgAttrs = `src="${g.cover}" alt="${g.title} cover" loading="lazy" width="1200" height="675"`;
+      const img = `
+        <a href="${g.itch || '#'}" ${g.itch ? 'target="_blank" rel="noopener noreferrer"' : ''} aria-label="Open ${g.title} on itch.io">
+          <img src="${g.cover}" alt="${g.title} cover" loading="lazy" width="1200" height="675" />
+        </a>`;
+
       return `
         <article class="card game ${g.featured ? 'featured' : ''}" role="listitem" aria-labelledby="${cssid(g.title)}-h">
-          <span class="badge">${g.tools.join(' · ')}</span>
+          ${g.tools?.length ? `<span class="badge">${g.tools.join(' · ')}</span>` : ''}
           <div class="media">
-            <img ${imgAttrs} />
+            ${img}
           </div>
           <div class="content">
-            <h3 id="${cssid(g.title)}-h" style="margin:.2rem 0 .2rem;"><a href="${g.itch}" target="_blank" rel="noopener noreferrer">${g.title}</a></h3>
-            <p class="prose">${g.blurb}</p>
+            <h3 id="${cssid(g.title)}-h" style="margin:.2rem 0 .2rem;">
+              ${g.itch
+                ? `<a href="${g.itch}" target="_blank" rel="noopener noreferrer">${g.title}</a>`
+                : g.title}
+            </h3>
+            <p class="prose">${g.blurb || ''}</p>
             ${g.images?.length ? gallery(g.images) : ''}
             ${g.video ? `<iframe class="iframe" src="${g.video}" title="${g.title} video" loading="lazy" allowfullscreen></iframe>` : ''}
-            ${g.itch ? itchWidget(g.itch) : ''}
+            ${g.itch ? `<p><a class="btn" href="${g.itch}" target="_blank" rel="noopener noreferrer">Play on itch.io ↗</a></p>` : ''}
             <details>
-              <summary>Post‑mortem</summary>
-              <div class="prose"><p>${g.postmortem}</p></div>
+              <summary>Post-mortem</summary>
+              <div class="prose"><p>${g.postmortem || ''}</p></div>
             </details>
           </div>
         </article>`;
-    }
+    };
 
     const cssid = (t) => t.toLowerCase().replace(/[^a-z0-9]+/g, '-');
     const gallery = (imgs) => `
@@ -409,10 +455,7 @@
         ${imgs.map(u => `<div class="card" style="grid-column: span 3; padding:.4rem; background:#10131a;"><img src="${u}" alt="Screenshot" loading="lazy" width="1200" height="675"></div>`).join('')}
       </div>`;
 
-    // Very simple Itch widget frame (replace URL with your game page). Many creators prefer the small card widget.
-    const itchWidget = (url) => `
-      <iframe class="iframe" src="${url.replace(/\/$/, '')}/embed" title="Itch.io widget" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
-
+    // No itch widget iframe to avoid intermittent embed errors.
     gamesGrid.innerHTML = data.games.map(gameCard).join('');
 
     const writingGrid = document.getElementById('writing-grid');
@@ -433,7 +476,7 @@
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 
-  <!-- Example JSON‑LD for one game (adjust values) -->
+  <!-- Example JSON-LD for one game (adjust values) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -444,7 +487,7 @@
     "url": "https://example.com#echo-circuit",
     "genre": ["Puzzle", "Rhythm"],
     "gamePlatform": ["Windows"],
-    "description": "A rhythm‑puzzle prototype where routes are composed like music.",
+    "description": "A rhythm-puzzle prototype where routes are composed like music.",
     "trailer": {"@type": "VideoObject", "name": "Echo Circuit Trailer", "embedUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"}
   }
   </script>
