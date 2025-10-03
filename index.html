@@ -425,11 +425,29 @@
           <img src="${g.cover}" alt="${g.title} cover" loading="lazy" width="1200" height="675" />
         </a>`;
 
-     const toEmbed = (u) => {
-        if (!u) return '';
-        if (u.includes('youtu.be/')) return u.replace('youtu.be/', 'www.youtube.com/embed/');
-        if (u.includes('watch?v=')) return u.replace('watch?v=', 'embed/');
-        return u;
+       const ytEmbed = (u) => {
+          if (!u) return '';
+          try {
+            const url = new URL(u);
+            // youtu.be/<id>
+            if (url.hostname.includes('youtu.be')) {
+              return `https://www.youtube-nocookie.com/embed/${url.pathname.slice(1)}`;
+            }
+            // youtube.com/watch?v=<id>
+            if (url.searchParams.has('v')) {
+              return `https://www.youtube-nocookie.com/embed/${url.searchParams.get('v')}`;
+            }
+            // already /embed/<id>
+            if (url.pathname.includes('/embed/')) {
+              const id = url.pathname.split('/embed/')[1].split(/[?&]/)[0];
+              return `https://www.youtube-nocookie.com/embed/${id}`;
+            }
+            // fallback: try last path segment
+            const last = url.pathname.split('/').filter(Boolean).pop();
+            return last ? `https://www.youtube-nocookie.com/embed/${last}` : u;
+          } catch {
+            return u;
+          }
         };
 
       return `
@@ -443,8 +461,18 @@
             <p class="prose">${g.blurb || ''}</p>
             ${g.images?.length ? gallery(g.images) : ''}
             ${g.videos?.length
-            ? g.videos.map(v => `<iframe class="iframe" src="${v}" title="${g.title} video" loading="lazy" allowfullscreen></iframe>`).join('')
-            : ''}
+              ? g.videos.map(v => `
+                  <iframe
+                    class="iframe"
+                    src="${ytEmbed(v)}"
+                    title="${g.title} video"
+                    loading="lazy"
+                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen
+                  ></iframe>
+                `).join('')
+              : ''}
             ${g.itch ? `<p><a class="btn" href="${g.itch}" target="_blank" rel="noopener noreferrer">Play on itch.io ↗</a></p>` : ''}
             <details>
               <summary>Post-mortem</summary>
