@@ -425,6 +425,13 @@
           <img src="${g.cover}" alt="${g.title} cover" loading="lazy" width="1200" height="675" />
         </a>`;
 
+     const toEmbed = (u) => {
+        if (!u) return '';
+        if (u.includes('youtu.be/')) return u.replace('youtu.be/', 'www.youtube.com/embed/');
+        if (u.includes('watch?v=')) return u.replace('watch?v=', 'embed/');
+        return u;
+        };
+
       return `
         <article class="card game ${g.featured ? 'featured' : ''}" role="listitem" aria-labelledby="${cssid(g.title)}-h">
           ${g.tools?.length ? `<span class="badge">${g.tools.join(' · ')}</span>` : ''}
