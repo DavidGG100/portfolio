@@ -246,7 +246,10 @@
         "roles": ["Level Design"],
         "tools": ["Unreal", "Blueprints"],
         "itch": "https://itch.io/",
-        "video": null,
+        "videos":[
+                 "https://youtu.be/NkVan1E9Cas",
+                 "https://youtu.be/JYmdp4oRX2A"
+                 ],
         "blurb": "Traversal challenge built around momentum and readable landmarks.",
         "postmortem": "What worked: traversal feel; navigational affordances. What didn’t: too many parallel mechanics introduced at once. Next: stagger mechanics, add foreshadowing setpieces."
       },
@@ -389,24 +392,21 @@
         "type": "Thesis",
         "year": 2024,
         "summary": "Case studies on storytelling through verbs and state change.",
-        "link": "#",
-        "download": "#"
+        "link": "documents/TrelloBoard - Letter Wars.pdf"
       },
       {
         "title": "GLIMMERFALL GDD (v1.2)",
         "type": "GDD",
         "year": 2025,
         "summary": "Goals, pillars, mechanics, and production notes.",
-        "link": "#",
-        "download": "#"
+        "link": "#"
       },
       {
         "title": "Pitch: The Last Lighthouse",
         "type": "Narrative Pitch",
         "year": 2023,
         "summary": "A character-driven mystery on a fog-bound archipelago.",
-        "link": "#",
-        "download": "#"
+        "link": "documents/Soup for The Consumer - Branching Narrative.html"
       }
     ]
   }
@@ -432,14 +432,12 @@
             ${img}
           </div>
           <div class="content">
-            <h3 id="${cssid(g.title)}-h" style="margin:.2rem 0 .2rem;">
-              ${g.itch
-                ? `<a href="${g.itch}" target="_blank" rel="noopener noreferrer">${g.title}</a>`
-                : g.title}
-            </h3>
+           <h3 id="${cssid(g.title)}-h" style="margin:.2rem 0 .2rem;">${g.title}</h3>
             <p class="prose">${g.blurb || ''}</p>
             ${g.images?.length ? gallery(g.images) : ''}
-            ${g.video ? `<iframe class="iframe" src="${g.video}" title="${g.title} video" loading="lazy" allowfullscreen></iframe>` : ''}
+            ${g.videos?.length
+            ? g.videos.map(v => `<iframe class="iframe" src="${v}" title="${g.title} video" loading="lazy" allowfullscreen></iframe>`).join('')
+            : ''}
             ${g.itch ? `<p><a class="btn" href="${g.itch}" target="_blank" rel="noopener noreferrer">Play on itch.io ↗</a></p>` : ''}
             <details>
               <summary>Post-mortem</summary>
@@ -466,8 +464,7 @@
           <div class="meta">${w.type} · ${w.year}</div>
           <p class="prose">${w.summary}</p>
           <p style="display:flex; gap:.8rem; flex-wrap:wrap;">
-            ${w.link ? `<a class="chip" href="${w.link}">Read</a>` : ''}
-            ${w.download ? `<a class="chip" href="${w.download}">Download PDF</a>` : ''}
+            ${w.link ? `<a class="chip" href="${w.link}" target="_blank" rel="noopener noreferrer">Read</a>` : ''}
           </p>
         </div>
       </article>`;
