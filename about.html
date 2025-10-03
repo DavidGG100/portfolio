@@ -1,0 +1,105 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About Me — David Gadelkarim</title>
+  <meta name="description" content="About David Gadelkarim — game designer based in London." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg:#0f1115; --text:#e6e7eb; --muted:#9aa1ad; --card:#171a21; --accent:#7dd6ff; --radius:18px; --maxw:1200px; }
+    html,body{height:100%} body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans";background:radial-gradient(1200px 600px at 50% -20%,#162033 0%,#0f1115 60%);color:var(--text);margin:0;line-height:1.5}
+    a{color:var(--text);text-underline-offset:2px}
+    .wrap{width:min(96vw,var(--maxw));margin:0 auto}
+    header{position:sticky;top:0;backdrop-filter:blur(8px);background:color-mix(in srgb,var(--bg) 80%,transparent);z-index:40;border-bottom:1px solid #1f2533}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
+    .nav a.brand{font-weight:800;letter-spacing:.2px;text-decoration:none}
+    .nav .links{display:flex;gap:1rem}.nav .links a{text-decoration:none;opacity:.85}.nav .links a:hover{opacity:1}
+    .hero{display:grid;grid-template-columns:1fr .8fr;gap:2rem;padding:3rem 0 1.5rem;align-items:center}
+    .hero h1{font-size:clamp(2rem,4vw + .5rem,3.2rem);line-height:1.08;margin:0 0 .6rem}
+    .hero p{color:var(--muted);max-width:75ch}
+    .card{background:var(--card);border:1px solid #21283a;border-radius:var(--radius);padding:1rem}
+    .chips{display:flex;flex-wrap:wrap;gap:.45rem}
+    .chip{font-size:.85rem;padding:.25rem .6rem;border:1px solid #293146;border-radius:999px;color:var(--muted);text-decoration:none}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
+    .col-7{grid-column:span 7}.col-5{grid-column:span 5}
+    @media (max-width:900px){.hero{grid-template-columns:1fr}.col-7,.col-5{grid-column:1/-1}}
+    footer{padding:3rem 0 4rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav" role="navigation" aria-label="Primary">
+      <a class="brand" href="index.html">David Gadelkarim — Game Designer</a>
+      <nav class="links" aria-label="Sections">
+        <a href="index.html">Games</a>
+        <a href="writing.html">Writing</a>
+        <a href="about.html">About Me</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <h1>About Me!</h1>
+        <p>Game designer focused on moment-to-moment feel, readable level language, and systems that create emergent stories. I’ve shown work at major exhibitions and develop across Unity and Unreal (C# / Blueprints). I’m currently based in London and open to junior design roles (AAA and indie).</p>
+        <div class="chips" aria-label="Focus areas">
+          <span class="chip">Systems & Mechanics</span><span class="chip">Level Design</span>
+          <span class="chip">Narrative Design</span><span class="chip">Rapid Prototyping</span>
+          <span class="chip">Playtesting</span>
+        </div>
+      </div>
+      <div class="card" aria-hidden="true">
+        <!-- Swap with a headshot or collage if you like -->
+        <img src="images/image1.jpg" alt="Project collage" style="width:100%;border-radius:12px" loading="lazy">
+      </div>
+    </section>
+
+    <section class="grid" style="margin-top:1rem">
+      <div class="card col-7">
+        <h2 style="margin:.2rem 0 1rem">Highlights</h2>
+        <ul style="margin:0 0 .6rem 1.2rem;color:var(--muted)">
+          <li>BA & MSc in Games Design.</li>
+          <li>Several shipped prototypes and exhibition builds across Unity & Unreal.</li>
+          <li>Strong documentation: GDDs, narrative pitch packs, research reports, production boards, devlogs.</li>
+        </ul>
+
+        <h3 style="margin:1rem 0 .5rem">Exhibitions / Showcases</h3>
+        <ul style="margin:0 0 .6rem 1.2rem;color:var(--muted)">
+          <li>List the big ones here (event · year · project).</li>
+          <li>…</li>
+        </ul>
+
+        <h3 style="margin:1rem 0 .5rem">Talks / Press</h3>
+        <ul style="margin:0 0 .6rem 1.2rem;color:var(--muted)">
+          <li>(Optional) Any panels, interviews, features.</li>
+        </ul>
+      </div>
+
+      <div class="card col-5">
+        <h2 style="margin:.2rem 0 1rem">Tools</h2>
+        <div class="chips" style="margin-bottom:1rem">
+          <span class="chip">Unity</span><span class="chip">Unreal</span><span class="chip">C#</span>
+          <span class="chip">Blueprints</span><span class="chip">Git</span><span class="chip">Jira/Trello</span>
+          <span class="chip">Aseprite</span><span class="chip">Figma</span>
+        </div>
+        <h2 style="margin:1.2rem 0 .6rem">Contact</h2>
+        <p style="color:var(--muted)">
+          Email: <a href="mailto:you@example.com">you@example.com</a><br>
+          Itch: <a href="https://megamelone.itch.io/" target="_blank" rel="noopener noreferrer">megamelone.itch.io ↗</a><br>
+          Twitter: <a href="#" target="_blank" rel="noopener noreferrer">@yourhandle ↗</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p>© <span id="year"></span> David Gadelkarim.</p>
+  </footer>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
