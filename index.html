@@ -62,7 +62,19 @@
 
     .game { grid-column: span 6; display:flex; flex-direction:column; gap: .75rem; }
     .game.featured { grid-column: span 8; }
-    .game .media { aspect-ratio: 16 / 9; background: #0b0d11; }
+    .game .media {
+      aspect-ratio: 16 / 9;
+      background: #0b0d11;
+      display: flex;              /* lets us center the img inside */
+      justify-content: center;    /* horizontal center */
+      align-items: center;        /* vertical center */
+    }
+
+    .game .media img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;        /* keeps whole image visible */
+    }
 
     .chips { display:flex; flex-wrap: wrap; gap:.4rem; }
     .chip { font-size:.75rem; padding:.2rem .5rem; border-radius:999px; border:1px solid #293146; color: var(--muted); text-decoration:none; }
@@ -122,7 +134,15 @@
         <div class="chips" aria-label="Tools"><span class="chip">Unity</span><span class="chip">Unreal</span><span class="chip">C#</span><span class="chip">Narrative</span><span class="chip">Level Design</span></div>
       </div>
       <div class="card hero-media" aria-hidden="true">
-        <img src="images/image1.jpg" alt="Abstract neon game grid" loading="lazy" width="1920" height="1200" />
+        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 8px;">
+          <iframe 
+            src="https://www.youtube.com/embed/xcTwV3yhbYY" 
+            title="Game Design Highlight Reel"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            allowfullscreen>
+          </iframe>
+        </div>
       </div>
     </section>
 
