@@ -35,6 +35,35 @@
     .col-5{grid-column:span 5}
     @media (max-width:900px){.hero{grid-template-columns:1fr}.col-7,.col-5{grid-column:1/-1}}
     footer{padding:3rem 0 4rem;color:var(--muted)}
+
+    #backToTop 
+    {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid #2a3650;
+      border-radius: 999px;
+      padding: 0.7rem 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(125, 214, 255, 0.3);
+      transition: all 0.3s ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #backToTop:hover {
+      box-shadow: 0 0 20px rgba(125, 214, 255, 0.6);
+      transform: translateY(-2px);
+    }
+
+    #backToTop.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
   </style>
 </head>
 <body>
@@ -42,7 +71,7 @@
     <div class="wrap nav" role="navigation" aria-label="Primary">
       <a class="brand" href="index.html">David Gadelkarim — Game Designer</a>
       <nav class="links" aria-label="Sections">
-        <a href="index.html">Games</a>
+        <a href="games.html">Games</a>
         <a href="writing.html">Writing</a>
         <a href="about.html" aria-current="page">About Me</a>
       </nav>
@@ -55,12 +84,12 @@
       <div>
         <h1>About Me</h1>
         <p>
-          .
+          Learn all about my upbringing, hobbies, passions, what I love about games and my 50 favorite video games!
         </p>
       </div>
       <div class="card" aria-hidden="true">
         <!-- Swap with a headshot or any personal photo -->
-        <img src="images/image1.jpg" alt="Photo/collage placeholder" style="width:100%;border-radius:12px" loading="lazy">
+        <img src="images/image25.jpg" alt="Photo/collage placeholder" style="width:100%;border-radius:12px" loading="lazy">
       </div>
     </section>
 
@@ -70,12 +99,27 @@
       <div class="card col-7">
         <h2 style="margin:.2rem 0 1rem">Upbringing</h2>
         <p style="color:var(--muted)">
-          .
+          A lot of my life has been defined by an amalgamation of cultural influence: being born in my home country of Egypt, living most of my formative life in Kuwait, spending all my school years studying in an American school, acquiring a Hungarian passport, and going to college in the UK. I’m perhaps the picture definition of a 3rd Culture Kid, and while I do sometimes feel separated from my culture of origin in that regard, I also believe this unique upbringing resulted in me being significantly more worldly, understanding, and generally empathetic. 
         </p>
+
+        <p style="color:var(--muted)">
+        I have always been attached to the arts, supplemented by a fascination with experimental and theoretical sciences, physics in particular. Due to the dissonant nature of those two paths, I was often left unsure of what my role would be in the future. I initially spent most of my life thinking I was going to grow up to be a musician, however, part of me also wanted to pursue computer science or even theoretical physics. 
+        </p>
+
+        <p style="color:var(--muted)">
+        It was only after playing Chrono Trigger for the first time in my last year of high-school that something clicked. I spent that final year playing through a massive library of games, ranging in genre and era. I was absolutely enraptured by everything regarding this medium of art, it was the dream consolidation between arts and sciences that I have always dreamed of pursuing, and I am now in a position where I have dedicated my life to the games medium, and will continue to do so. 
+        </p>
+
 
         <h2 style="margin:1.2rem 0 .6rem">What I Love About Games</h2>
         <p style="color:var(--muted)">
-          
+        I earnestly believe games to be the premier form of artistic expression, both for the creator and audience. There is no artistic medium more malleable and capable of such a grand variety of innovation and creativity. That also extends to audiences, as there are as many audiences as there are games in existence, with everyone approaching the artform in different means.   
+        </p>
+        <p style="color:var(--muted)">
+        Due to how personal the advent of interactivity is, everyone will engage with games differently, and everyone will desire different things out of their game experiences: social connection, competitiveness, narrative, skill expression,  relaxation and stress-relief, a sense of achievement, self-expression, curiosity, autonomy, cultural expression, nostalgia, and so much more.   
+        </p>
+        <p style="color:var(--muted)">
+        Game Designers have the profound role of creating these deeply personal and intimate experiences for our audiences, and that’s the core of what makes Games so beautiful, and why I love creating and experiencing art within this vast medium. 
         </p>
       </div>
 
@@ -83,11 +127,17 @@
       <div class="card col-5">
         <h2 style="margin:.2rem 0 1rem">Hobbies & Passions</h2>
         <ul style="margin:0 0 .6rem 1.2rem;color:var(--muted)">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
+          <li>I’m of course incredibly passionate about playing and studying games, with my favorite genres being narrative, puzzle, platforming, action, turn-based RPGs, and detective/information games, with a special love for video games that approach the medium in an experimental manner.</li> 
+          <br>
+          <li>I adore exploring the less formal sides of the industry, specifically through participating in game jams and more importantly playing other entries, providing feedback, and generally communicating with other participants. I’m also quite fond of attending games exhibitions in all shapes and forms, and university exhibitions even more so, as seeing students be creative is a very fulfilling feeling to me.</li>
+          <br>
+          <li>I’ve been playing musical instruments since I was 7 years old (I know how to proficiently play the Piano, Drums, Guitar, Bass, Trumpet, and French Horn)</li>
+          <br>
+          <li>My musical abilities have resulted in several cool opportunities, such as playing French Horn as a guest on stage with a travelling orchestra in Kuwait, participating in the orchestra pit in several local musical productions, leading a jazz combo (including several public performances and some studio recordings), and even participating in a private performance for members of the Kuwaiti government.</li>
+          <br>
+          <li>I love writing in all forms, whether it be analysis or short stories. I was heavily inspired by my high-school English teacher, who continuously encouraged my pursuit of writing in this manner. Most of it is extremely personal, but a few examples are available in this portfolio.</li>
+          <br>
+          <li>Lightning round: I enjoy manga, jazz music, longform podcasts, math and logic puzzles, watching sitcoms, youtube videos on theoretical physics, watching devlogs, professional wrestling, eating a variety of cultural foods, and travelling!</li>
         </ul>
       </div>
     </section>
@@ -100,15 +150,44 @@
         <!-- Put your collage image at /images/faves-collage.jpg (or change the src path) -->
         <img src="images/image23.png" alt="Collage of my 50 favorite games" loading="lazy" width="1920" height="1080" style="display:block;width:100%;border-top-left-radius:var(--radius);border-top-right-radius:var(--radius)">
         <figcaption style="padding:1rem;color:var(--muted)">
-          .
         </figcaption>
       </figure>
     </section>
+    
+    <section id="contact" aria-labelledby="contact-h">
+      <h1 id="contact-h">Contact</h1>
+      <p class="prose">Please feel free to reach out to me, even if it's just for a simple friendly chat!</p>
+      <p> Emails: <a href="mailto:d.gadelkarim0320201@arts.ac.uk">d.gadelkarim0320201@arts.ac.uk</a> and <a href="mailto:davidazmy02@gmail.com">davidazmy02@gmail.com</a>.</p>
+      <p> Phone Number (if you wish to call):<a href="tel:+447789104869"> +44 7789 104869</a></p>
+      <p> Phone Number (if you wish to message me on WhatsApp):<a href="tel:+96560468770"> +965 6046 8770</a></p>
+      <p> Social Media: <a href="https://www.linkedin.com/in/david-gadelkarim-403b91279/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
+    </section>
+
   </main>
 
   <footer class="wrap">
     <p>© <span id="year"></span> David Gadelkarim.</p>
   </footer>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    <button id="backToTop" aria-label="Back to top">↑ Back to Top</button>
+
+  <script>
+  const backToTopBtn = document.getElementById('backToTop');
+
+  // Show button when scrolled down
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTopBtn.classList.add('visible');
+    } else {
+      backToTopBtn.classList.remove('visible');
+    }
+  });
+
+  // Scroll smoothly to top
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
 </body>
 </html>

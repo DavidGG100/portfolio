@@ -9,34 +9,106 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap" rel="stylesheet">
+
   <style>
-    :root { --bg:#0f1115; --text:#e6e7eb; --muted:#9aa1ad; --card:#171a21; --accent:#7dd6ff; --radius:18px; --maxw:1200px; }
-    html,body{height:100%} body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans";background:radial-gradient(1200px 600px at 50% -20%,#162033 0%,#0f1115 60%);color:var(--text);margin:0;line-height:1.5}
+    :root { 
+      --bg:#0f1115; --text:#e6e7eb; --muted:#9aa1ad; 
+      --card:#171a21; --accent:#7dd6ff; --radius:18px; --maxw:1200px; 
+    }
+    html,body{height:100%}
+    body{
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans";
+      background:radial-gradient(1200px 600px at 50% -20%,#162033 0%,#0f1115 60%);
+      color:var(--text);
+      margin:0;line-height:1.5
+    }
     a{color:var(--text);text-underline-offset:2px}
     img{max-width:100%;height:auto;border-radius:calc(var(--radius) - 6px);display:block}
     .wrap{width:min(96vw,var(--maxw));margin:0 auto}
-    header{position:sticky;top:0;backdrop-filter:blur(8px);background:color-mix(in srgb,var(--bg) 80%,transparent);z-index:40;border-bottom:1px solid #1f2533}
+    header{
+      position:sticky;top:0;backdrop-filter:blur(8px);
+      background:color-mix(in srgb,var(--bg) 80%,transparent);
+      z-index:40;border-bottom:1px solid #1f2533
+    }
     .nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
     .nav a.brand{font-weight:800;letter-spacing:.2px;text-decoration:none}
-    .nav .links{display:flex;gap:1rem}.nav .links a{text-decoration:none;opacity:.85}.nav .links a:hover{opacity:1}
+    .nav .links{display:flex;gap:1rem}
+    .nav .links a{text-decoration:none;opacity:.85}
+    .nav .links a:hover{opacity:1}
     .hero{padding:3rem 0 1.5rem}
     .hero h1{font-size:clamp(2rem,4vw + .5rem,3.2rem);line-height:1.08;margin:0 0 .6rem}
     .hero p{color:var(--muted);max-width:75ch}
     .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
-    .card{background:var(--card);border:1px solid #21283a;border-radius:var(--radius);overflow:clip}
+    .card{
+      background:var(--card);
+      border:1px solid #21283a;
+      border-radius:var(--radius);
+      overflow:clip;
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .card:hover {
+      transform:translateY(-3px);
+      box-shadow:0 0 20px rgba(125,214,255,0.12);
+    }
     .content{padding:1rem}
-    .chip{display:inline-block;font-size:.8rem;padding:.25rem .55rem;border:1px solid #293146;border-radius:999px;color:var(--muted);text-decoration:none;margin-right:.35rem}
+    .chip{
+      display:inline-block;
+      font-size:.8rem;
+      padding:.25rem .55rem;
+      border:1px solid #293146;
+      border-radius:999px;
+      color:var(--muted);
+      text-decoration:none;
+      margin-right:.35rem
+    }
     .writing{grid-column:span 6}
     @media (max-width:900px){.writing{grid-column:1/-1}}
     footer{padding:3rem 0 4rem;color:var(--muted)}
+    h2.section-title {
+      margin: 3rem 0 1rem;
+      font-size: 1.6rem;
+      border-left: 3px solid var(--accent);
+      padding-left: .75rem;
+    }
+
+    #backToTop 
+    {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid #2a3650;
+      border-radius: 999px;
+      padding: 0.7rem 1.2rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 0 12px rgba(125, 214, 255, 0.3);
+      transition: all 0.3s ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #backToTop:hover {
+      box-shadow: 0 0 20px rgba(125, 214, 255, 0.6);
+      transform: translateY(-2px);
+    }
+
+    #backToTop.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+
   </style>
 </head>
+
 <body>
   <header>
     <div class="wrap nav" role="navigation" aria-label="Primary">
       <a class="brand" href="index.html">David Gadelkarim — Game Designer</a>
       <nav class="links" aria-label="Sections">
-        <a href="index.html">Games</a>
+        <a href="games.html">Games</a>
         <a href="writing.html">Writing</a>
         <a href="about.html">About Me</a>
       </nav>
@@ -46,12 +118,26 @@
   <main class="wrap">
     <section class="hero">
       <h1>Writing</h1>
-      <p>Theses, GDDs, narrative pitches, design research, and production materials. All links open in a new tab.</p>
+      <p>A large collection of my written work, ranging from design and research to narrative. Featuring Game Design Documents, Theses, Development Research, Scripts, Narrative Pitches, and more!</p>
     </section>
 
-    <section aria-labelledby="docs-h">
-      <h2 id="docs-h" style="margin:.5rem 0 1rem">Documents</h2>
-      <div class="grid" id="writing-grid" role="list"></div>
+    <section aria-labelledby="design-h">
+      <h1 id="design-h" class="section-title">Design and Research</h1>
+      <div class="grid" id="design-grid" role="list"></div>
+    </section>
+
+    <section aria-labelledby="narrative-h">
+      <h1 id="narrative-h" class="section-title">Narrative</h1>
+      <div class="grid" id="narrative-grid" role="list"></div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-h">
+      <h1 id="contact-h">Contact</h1>
+      <p class="prose">Please feel free to reach out to me, even if it's just for a simple friendly chat!</p>
+      <p> Emails: <a href="mailto:d.gadelkarim0320201@arts.ac.uk">d.gadelkarim0320201@arts.ac.uk</a> and <a href="mailto:davidazmy02@gmail.com">davidazmy02@gmail.com</a>.</p>
+      <p> Phone Number (if you wish to call):<a href="tel:+447789104869"> +44 7789 104869</a></p>
+      <p> Phone Number (if you wish to message me on WhatsApp):<a href="tel:+96560468770"> +965 6046 8770</a></p>
+      <p> Social Media: <a href="https://www.linkedin.com/in/david-gadelkarim-403b91279/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
     </section>
   </main>
 
@@ -59,10 +145,11 @@
     <p>© <span id="year"></span> David Gadelkarim.</p>
   </footer>
 
+
   <!-- Page data -->
   <script id="writing-data" type="application/json">
   {
-    "writing": [
+    "design": [
       {
         "title": "Thesis - How do variations in the flow of clues, the reasoning required to connect them, and the means by which conclusions are tested shape the balance between accessibility, fairness, and player ownership in detective games?",
         "type": "MA Thesis",
@@ -78,12 +165,91 @@
         "link": "documents/David Gadelkarim - BA Thesis.pdf"
       },
       {
-      "title": "The Red Rain Case - Game Design Document",
-        "type": "Narrative Pitch",
+        "title": "The Red Rain Case - Game Design Document",
+        "type": "GDD",
         "year": 2025,
-        "summary": "An thorough multi-page Game Design Document for The Red Rain Case, featuring a game overview, core concept, design pillars, aesthetic style, HUD & UI, player experience, and potential expansions.",
+        "summary": "Multi-page Game Design Document for The Red Rain Case, featuring a game overview, core concept, design pillars, aesthetic style, HUD & UI, player experience, and potential expansions.",
         "link": "documents/The Red Rain Case - GDD.pdf"
       },
+      {
+        "title": "Myth and Folklore Game Design Document",
+        "type": "GDD",
+        "year": 2022,
+        "summary": "I was tasked with creating a proof of concept Game Design Document covering a game based on my culture's folklore. The result is this GDD, showcasing a simple game based on the tale of 1001 Nights.",
+        "link": "documents/Myth and Folklore GDD.pdf"
+      },
+      {
+        "title": "1 Page GDD - Multiplayer Minesweeper Roguelike Concept",
+        "type": "GDD",
+        "year": 2025,
+        "summary": "Unlike the other 2 GDDs in this portfolio, this is a brief and efficient 1 page GDD, rather than a meticulous several page one. Its role is to establish an idea for a new project I will be working on.",
+        "link": "documents/Minesweeper Multiplayer - GDD.pdf"
+      },
+      {
+        "title": "Mini-Thesis - How do the aesthetic abstractions that occurred due to the technological limitations of early pixel-art RPGs parallel and contrast the artistic intentionality found within the pursuit of Representational Abstract Art?",
+        "type": "Miniature Thesis",
+        "year": 2024,
+        "summary": "I am utterly fascinated by the way restraint results in creativity and ingenuity. The final fantasy games are an exceptional example of this, and this analysis of Final Fantasy 6 examines that idea through the lens of Abstract Art.",
+        "link": "documents/David Gadelkarim Mini-Thesis.pdf"
+      },
+      {
+        "title": "Design Research Report - The Subjectivity of Perception in Interactive Art (You Are Here)",
+        "type": "Design Research Report",
+        "year": 2024,
+        "summary": "As a part of the creation of You Are Here, I conducted research on the philosophy of perception and its application to games. It ended up being very dense and esoteric research, but also highly rewarding to comprehend and apply to my work.",
+        "link": "documents/Development Report - David Gadelkarim.pdf"
+      },
+      {
+        "title": "Design Research Report - Semiotics in Games (Soup for The Consumer)",
+        "type": "Design Research Report",
+        "year": 2025,
+        "summary": "As a part of the creation of Soup for The Consumer, I conducted research on semiotics and its application to games. The research was a fascinating exploration of the way players interact with objects, and heavily informed the final version of the game.",
+        "link": "documents/Design Research Report - David Gadelkarim.pdf"
+      },
+      {
+        "title": "Marble Labyrinth - Floor Plans",
+        "type": "Floor Plans",
+        "year": 2024,
+        "summary": "In order to lasercut the perspex glass and wooden boards needed to create our tabletop escape room game, we had to make floor plans in Adobe Illustrator, these are the results.",
+        "link": "documents/Marble Labyrinth - Floor Plans.pdf"
+      },
+      {
+        "title": "Don't Touch THE THING - Manual",
+        "type": "Rules Manual",
+        "year": 2024,
+        "summary": "This is a manual for my first ever board game, Don't Touch THE THING, explaining all the rules and additional clarrifications to players with visual aid.",
+        "link": "documents/BoardGameManual.pdf"
+      },
+      {
+        "title": "Zine Pong",
+        "type": "Zine",
+        "year": 2025,
+        "summary": "As part of the Back and Forth project, Zine Pong is an experimental games zine of hypoethetical Ping Pong games that get more and more abstract as the zine progresses. This was displayed and passed out at Now Play This 2025.",
+        "link": "documents/Zine Pong.pdf"
+      },
+      {
+        "title": "Cube Pong Rules",
+        "type": "Ruleset",
+        "year": 2025,
+        "summary": "This document contains the rules of Cube Pong, we had to make a rules page that was easy to look at and comprehend, as the game itself is quite complex.",
+        "link": "documents/Back and Forth - Physical Rules.pdf"
+      },
+      {
+        "title": "Trello Board - Letter Wars",
+        "type": "Production Board",
+        "year": 2023,
+        "summary": "Letter Wars was created over a hectic 29 weeks, and this Trello Board covers the experience of creating that game in real time.",
+        "link": "documents/TrelloBoard - Letter Wars.pdf"
+      },
+      {
+        "title": "Exercise Trello Board",
+        "type": "Research Board",
+        "year": 2021,
+        "summary": "This Trello Board is entirely for ideation, with me being tasked with conducting games design research, and using that to design a simple mental and physical 12 second game.",
+        "link": "documents/TrelloBoard - Exercise.pdf"
+      }
+    ],
+    "narrative": [
       {
         "title": "The Red Rain Case - Concept and Character Pitch",
         "type": "Narrative Pitch",
@@ -113,96 +279,18 @@
         "link": "documents/The Red Rain Case - Gameplay Script.pdf"
       },
       {
-        "title": "Myth and Folklore Game Design Document",
-        "type": "GDD",
-        "year": 2022,
-        "summary": "I was tasked with creating a proof of concept Game Design Document covering a game based on my culture's folklore. The result is this GDD, showcasing a simple game based on the tale of 1001 Nights.",
-        "link": "documents/Myth and Folklore GDD.pdf"
-      },
-      {
-        "title": "1 Page Game Design Document - Multiplayer Minesweeper Roguelike Concept",
-        "type": "GDD",
-        "year": 2025,
-        "summary": "Unlike the other 2 GDDs in this portfolio, this is a brief and efficient 1 page GDD, rather than a meticulous several page one. Its role is to establish an idea for a new project I will be working on.",
-        "link": "documents/Minesweeper Multiplayer - GDD.pdf"
-      },
-      {
-        "title": "Trello Board - Letter Wars",
-        "type": "Trello",
-        "year": 2023,
-        "summary": "Letter Wars was created over a hectic 29 weeks, and this Trello Board covers the experience of creating that game in real time.",
-        "link": "documents/TrelloBoard - Letter Wars.pdf"
-      },
-      {
-        "title": "Excercise Trello Board",
-        "type": "Trello",
-        "year": 2021,
-        "summary": "This Trello Board is entirely for ideation, with me being tasked with conducting games design research, and using that to design a simple mental and physical 12 second game.",
-        "link": "documents/TrelloBoard - Exercise.pdf"
-      },
-      {
         "title": "Soup for The Consumer - Branching Dialogue",
-        "type": "Twine",
+        "type": "Twine Script",
         "year": 2025,
         "summary": "Soup for The Consumer is one of my most involved projects, and as part of the game, there is an in depth conversation tree a the end that features several branching paths. In order to create and test the branching dialogue, I created it in Twine first.",
         "link": "documents/Soup for The Consumer - Branching Narrative.html"
       },
       {
-        "title": "Zine Pong",
-        "type": "Zine",
-        "year": 2025,
-        "summary": "As part of the Back and Forth project, Zine Pong is an experimental games zine of hypoethetical Ping Pong games that get more and more abstract as the zine progresses. This was displayed and passed out at Now Play This 2025.",
-        "link": "documents/Zine Pong.pdf"
-      },
-      {
-        "title": "Cube Pong Rules",
-        "type": "Ruleset",
-        "year": 2025,
-        "summary": "This document contains the rules of Cube Pong, we had to make a rules page that was easy to look at and comprehend, as the game itself is quite complex.",
-        "link": "documents/Back and Forth - Physical Rules.pdf"
-      },
-      {
-        "title": "Marble Labyrinth - Floor Plans",
-        "type": "Floor Plans",
-        "year": 2024,
-        "summary": "In order to lasercut the perspex glass needed to create our tabletop escape room game, we had to make floor plans in Adobe Illustrator, these are the results.",
-        "link": "documents/Marble Labyrinth - Floor Plans.pdf"
-      },
-      {
-        "title": "Don't Touch  THE THING - Manual",
-        "type": "Rules Manual",
-        "year": 2024,
-        "summary": "This is a manual for my first ever board game, Don't Touch THE THING, explaining all the rules and additional clarrifications to players with visual aid.",
-        "link": "documents/BoardGameManual.pdf"
-      },
-
-      {
         "title": "Soup for The Consumer - All Dialogue",
-        "type": "Script",
+        "type": "Dialogue Script",
         "year": 2025,
         "summary": "Soup for The Consumer has 100 unique prompts, 100 unique responses from The Consumer, and a branching dialogue tree with 64 potential outcomes. This one document features all of that text.",
         "link": "documents/Soup Dialogue.pdf"
-      },
-      {
-        "title": "Design Research Report - Soup for The Consumer",
-        "type": "Design Research Report",
-        "year": 2025,
-        "summary": "As a part of the creation of Soup for The Consumer, I conducted research on semiotics and its application to games. The research was a fascinating exploration of the way players interact with objects, and heavily informed the final version of the game.",
-        "link": "documents/Design Research Report - David Gadelkarim.pdf"
-      },
-      {
-        "title": "Design Research Report - You Are Here",
-        "type": "Design Research Report",
-        "year": 2024,
-        "summary": "As a part of the creation of You Are Here, I conducted research on the philosophy of perception and its application to games. It ended up being very dense and esoteric research, but also highly rewarding to comprehend and apply to my work.",
-        "link": "documents/Development Report - David Gadelkarim.pdf"
-      },
-      {
-        "title": "Mini-Thesis - How do the aesthetic abstractions that occurred due to the technological limitations of early pixel-art RPGs parallel and contrast the artistic intentionality found within the pursuit of Representational Abstract Art?",
-        "type": "Miniature Thesis",
-        "year": 2024,
-        "summary": "I am utterly fascinated by the way restraint results in creativity and ingenuity. The final fantasy games are an exceptional example of this, and this analysis of Final Fantasy 6 examines that idea through the lens of Abstract Art.",
-        "link": "documents/David Gadelkarim Mini-Thesis.pdf"
       },
       {
         "title": "Dinner Party? - Surrealist Short Story",
@@ -224,9 +312,8 @@
 
   <script>
     const data = JSON.parse(document.getElementById('writing-data').textContent);
-    const grid = document.getElementById('writing-grid');
 
-    const card = (w) => `
+    const makeCard = (w) => `
       <article class="card writing" role="listitem">
         <div class="content">
           <h3 style="margin:.2rem 0">${w.title}</h3>
@@ -235,8 +322,31 @@
           ${w.link ? `<p style="margin:.6rem 0 0"><a class="chip" href="${w.link}" target="_blank" rel="noopener noreferrer">Open ↗</a></p>` : ``}
         </div>
       </article>`;
-    grid.innerHTML = data.writing.map(card).join('');
+
+    document.getElementById('design-grid').innerHTML = data.design.map(makeCard).join('');
+    document.getElementById('narrative-grid').innerHTML = data.narrative.map(makeCard).join('');
+
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  <button id="backToTop" aria-label="Back to top">↑ Back to Top</button>
+
+  <script>
+  const backToTopBtn = document.getElementById('backToTop');
+
+  // Show button when scrolled down
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTopBtn.classList.add('visible');
+    } else {
+      backToTopBtn.classList.remove('visible');
+    }
+  });
+
+  // Scroll smoothly to top
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
 </body>
 </html>

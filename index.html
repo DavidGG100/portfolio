@@ -1,531 +1,172 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>David Gadelkarim — Game Designer</title>
-  <meta name="description" content="Portfolio of game designer David: playable projects, post-mortems, and writing samples." />
-
-  <!-- Social previews (Open Graph) -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="David Gadelkarim — Game Designer" />
-  <meta property="og:description" content="Playable projects, post-mortems, and writing." />
-  <meta property="og:image" content="/og-card.jpg" />
-  <meta property="og:url" content="https://example.com" />
-  <meta name="twitter:card" content="summary_large_image" />
+  <title>Welcome — David Gadelkarim</title>
+  <meta name="description" content="Welcome to the personal portfolio of game designer David Gadelkarim." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap" rel="stylesheet">
+
   <style>
     :root {
       --bg: #0f1115;
       --text: #e6e7eb;
       --muted: #9aa1ad;
-      --card: #171a21;
       --accent: #7dd6ff;
+      --card: #171a21;
       --radius: 18px;
-      --maxw: 1200px;
-    }
-    html, body {height: 100%;}
-    body {
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
-      background: radial-gradient(1200px 600px at 50% -20%, #162033 0%, #0f1115 60%);
-      color: var(--text); margin: 0; line-height: 1.5;
-    }
-    a { color: var(--text); text-underline-offset: 2px; }
-    img { max-width: 100%; height: auto; border-radius: calc(var(--radius) - 6px); display: block; }
-    .wrap { width: min(96vw, var(--maxw)); margin: 0 auto; }
-
-    .skip { position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden; }
-    .skip:focus { left: 1rem; top: 1rem; width:auto; height:auto; background:#000; color:#fff; padding:.5rem .75rem; border-radius:.5rem; }
-
-    header { position: sticky; top: 0; backdrop-filter: blur(8px); background: color-mix(in srgb, var(--bg) 80%, transparent); z-index: 40; border-bottom: 1px solid #1f2533; }
-    .nav { display:flex; align-items:center; justify-content:space-between; padding: .9rem 0; }
-    .nav a.brand { font-weight: 800; letter-spacing: .2px; text-decoration: none; }
-    .nav .links { display:flex; gap: 1rem; }
-    .nav .links a { opacity: .8; text-decoration:none; }
-    .nav .links a:hover { opacity:1; }
-
-    .hero { display:grid; grid-template-columns: 1.2fr .8fr; gap: 2rem; padding: 3rem 0 2rem; align-items:center; }
-    .hero h1 { font-size: clamp(2rem, 4vw + .5rem, 3.5rem); line-height: 1.08; margin: 0 0 .6rem; }
-    .hero p { color: var(--muted); max-width: 60ch; }
-    .hero .card { background: linear-gradient(180deg, #161a22, #11141a); border: 1px solid #202535; border-radius: var(--radius); padding: 1rem; }
-
-    section { padding: 2rem 0; }
-    section h2 { font-size: clamp(1.25rem, 2.2vw + .4rem, 2rem); margin: 0 0 1rem; }
-
-    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1rem; }
-    .card { background: var(--card); border: 1px solid #21283a; border-radius: var(--radius); overflow: clip; position: relative; }
-    .card .content { padding: 1rem; }
-    .badge { position:absolute; top:.8rem; right:.8rem; background: rgba(125,214,255,.15); color: var(--accent); border:1px solid color-mix(in srgb, var(--accent), #000 70%); padding:.25rem .5rem; border-radius: 999px; font-size:.75rem; }
-
-    .game { grid-column: span 6; display:flex; flex-direction:column; gap: .75rem; }
-    .game.featured { grid-column: span 8; }
-    .game .media {
-      aspect-ratio: 16 / 9;
-      background: #0b0d11;
-      display: flex;              /* lets us center the img inside */
-      justify-content: center;    /* horizontal center */
-      align-items: center;        /* vertical center */
     }
 
-    .game .media img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;        /* keeps whole image visible */
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: radial-gradient(1200px 600px at 50% -20%, #162033 0%, var(--bg) 60%);
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
     }
 
-    .chips { display:flex; flex-wrap: wrap; gap:.4rem; }
-    .chip { font-size:.75rem; padding:.2rem .5rem; border-radius:999px; border:1px solid #293146; color: var(--muted); text-decoration:none; }
-    .chip:hover { border-color:#3a4664; }
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 3rem;
+      max-width: 1100px;
+      padding: 2rem;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
 
-    details { background: #12161f; border: 1px solid #1f2636; border-radius: calc(var(--radius) - 8px); padding:.6rem .8rem; }
-    details > summary { cursor:pointer; list-style: none; font-weight: 600; }
-    details > summary::-webkit-details-marker { display:none; }
-    details[open] { border-color: #2a3750; }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
 
-    .prose { color: var(--muted); }
-    .prose p { margin: .6rem 0; }
+    /* Vertical image stack */
+    .portrait-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .portrait {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+      background: var(--card);
+    }
+
+    .portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .intro h1 {
+      font-size: clamp(1.8rem, 4vw + .5rem, 3rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .intro p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      max-width: 40ch;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
 
     .btn {
-      display:inline-block; padding:.5rem .8rem; border:1px solid #2a3650; border-radius:999px;
-      text-decoration:none; font-weight:600; font-size:.9rem;
+      background: var(--card);
+      color: var(--text);
+      border: 1px solid #293146;
+      padding: .9rem 1.6rem;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 1.05rem;
+      text-decoration: none;
+      text-align: center;
+      position: relative;
+      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+      opacity: 0;
+      transform: translateY(15px);
     }
 
-    .iframe { aspect-ratio: 16 / 9; width: 100%; border: 0; border-radius: calc(var(--radius) - 8px); background:#0b0d11; }
-
-    .writing { grid-column: span 4; display:flex; flex-direction:column; }
-    .writing .meta { color: var(--muted); font-size: .9rem; }
-
-    footer { padding: 3rem 0 4rem; color: var(--muted); }
-
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; }
-      .game, .game.featured { grid-column: 1 / -1; }
-      .writing { grid-column: span 6; }
+    /* Soft neon hover glow */
+    .btn:hover {
+      background: color-mix(in srgb, var(--accent) 20%, var(--card));
+      transform: scale(1.04);
+      box-shadow: 0 0 15px rgba(125, 214, 255, 0.35);
     }
 
-    .game { container-type: inline-size; }
-    @container (max-width: 420px) {
-      .game .content { padding: .8rem; }
-      .chips { display:none; }
+    /* Sequential pop-in */
+    .btn:nth-child(1) { animation: popIn 0.6s 0.3s forwards; }
+    .btn:nth-child(2) { animation: popIn 0.6s 0.6s forwards; }
+    .btn:nth-child(3) { animation: popIn 0.6s 0.9s forwards; }
+
+    @keyframes popIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 850px) {
+      .container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .portrait-stack {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+      }
+
+      .portrait {
+        width: 45%;
+        max-height: 250px;
+      }
+
+      .intro p {
+        margin: 1rem auto 2rem;
+      }
     }
   </style>
 </head>
+
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header>
-    <div class="wrap nav" role="navigation" aria-label="Primary">
-      <a class="brand" href="#">David Gadelkarim — Game Designer</a>
-        <nav class="links" aria-label="Sections">
-          <a href="index.html">Games</a>
-          <a href="writing.html">Writing</a>
-          <a href="about.html">About Me</a>
-        </nav>
+  <div class="container">
+    <div class="portrait-stack">
+      <!-- Replace with your actual images -->
+      <div class="portrait">
+        <img src="images/image25.jpg" alt="David Gadelkarim portrait" loading="lazy">
+      </div>
+      <div class="portrait">
+        <img src="images/image1.jpg" alt="Collage of David’s game work" loading="lazy">
+      </div>
     </div>
-  </header>
 
-  <main id="main" class="wrap" role="main">
-    <section class="hero">
-      <div>
-        <h1>David Gadelkarim's Game Design Portfolio</h1>
-        <p>Hello, I'm David Gadelkarim. I design and build games. Below you’ll find a curated set of projects with short post-mortems and links to playable builds and videos, plus a very wide selection of writing and documentation (theses, GDDs, narrative pitches, etc) are available if you click on the "Writing" tab up top. Additionally, if you want to know about me personally, in terms of hobbies, prior non-game related experience, and favorite games, check out the "About Me" tab!</p>
+    <div class="intro">
+      <h1>My name is <span style="color:var(--accent)">David Gadelkarim</span> (He/Him).<br>Welcome to my Portfolio Website!</h1>
+      <h2>Where will your journey begin?</h2>
+      <div class="buttons">
+        <a href="games.html" class="btn">Games</a>
+        <a href="writing.html" class="btn">Writing</a>
+        <a href="about.html" class="btn">About Me</a>
       </div>
-      <div class="card hero-media" aria-hidden="true">
-        <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 8px;">
-          <iframe 
-            src="https://www.youtube.com/embed/ZCtuCGYI2fI" 
-            title="Game Design Highlight Reel"
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            allowfullscreen>
-          </iframe>
-        </div>
-      </div>
-    </section>
-
-    <section id="games" aria-labelledby="games-h">
-      <h2 id="games-h">Games</h2>
-      <div class="grid" id="games-grid" role="list"></div>
-    </section>
-
-    <section id="contact" aria-labelledby="contact-h">
-      <h2 id="contact-h">Contact</h2>
-      <p class="prose">For collaborations, talk slots, or London meetups, reach me at <a href="mailto:you@example.com">you@example.com</a> or on <a href="#">Twitter</a>.</p>
-    </section>
-  </main>
-
-  <footer class="wrap">
-    <p>© <span id="year"></span> David. Built with semantic HTML, CSS Grid, and a dash of JS. Images lazy-loaded; embeds are responsive.</p>
-  </footer>
-
-  <!-- JSON data you can edit without touching HTML structure -->
-  <script id="portfolio-data" type="application/json">
-  {
-    "games": [
-      {
-        "title": "The Red Rain Case (Releasing November 27, 2025)",
-        "featured": true,
-        "cover": "images/image18.png",
-        "images": [],
-        "itch": "https://megamelone.itch.io/project-time-detective",
-        "videos":[
-                 "https://youtu.be/0VHjSMoLJ5I"
-                 ],
-        "blurb": "Play as a time manipulating detective, solving a disappearance case in a city drenched in eternal night and rain.",
-        "postmortem": "What worked: tight core loop; input buffering. What didn’t: late scope creep on custom level editor; under-tested difficulty spikes. Next time: lock rules early, test with new players weekly."
-      },
-      {
-        "title": "Soup for The Consumer",
-        "cover": "images/image2.png",
-        "images": [],
-        "itch": "https://megamelone.itch.io/soup-for-the-consumer",
-        "videos":[
-                 "https://youtu.be/z1CxK9jxZ8Q",
-                 "https://youtu.be/xohz0RVmCGg",
-                 "https://youtu.be/X-63Adw0s2U"
-                 ],
-        "blurb": "Traversal challenge built around momentum and readable landmarks.",
-        "postmortem": "What worked: traversal feel; navigational affordances. What didn’t: too many parallel mechanics introduced at once. Next: stagger mechanics, add foreshadowing setpieces."
-      },
-      {
-        "title": "Cloud Posting",
-        "cover": "images/image17.png",
-        "images": [],
-        "itch": "https://megamelone.itch.io/cloud-posting",
-        "videos":[
-                 "https://youtu.be/RLhgUjcZqL4"
-                 ],
-        "blurb": "Traversal challenge built around momentum and readable landmarks.",
-        "postmortem": "What worked: traversal feel; navigational affordances. What didn’t: too many parallel mechanics introduced at once. Next: stagger mechanics, add foreshadowing setpieces."
-      },
-      {
-        "title": "An Ordinary Business Lunch",
-        "cover": "images/image20.png",
-        "images": [],
-        "itch": "https://mayansgames.itch.io/an-ordinary-business-lunch",
-        "videos":[
-                 "https://www.youtube.com/watch?v=icOGyGe-0vQ&t=206s"
-                 ],
-            "blurb": "Traversal challenge built around momentum and readable landmarks.",
-        "postmortem": "What worked: traversal feel; navigational affordances. What didn’t: too many parallel mechanics introduced at once. Next: stagger mechanics, add foreshadowing setpieces."
-      },
-      {
-        "title": "Back and Forth",
-        "cover": "images/image22.jpg",
-        "images": [],
-        "videos":[
-                 "https://youtu.be/YlJu1owMUDA",
-                 "https://youtu.be/SukuuqFIYyk"
-                 ],
-        "blurb": "Traversal challenge built around momentum and readable landmarks.",
-        "postmortem": "What worked: traversal feel; navigational affordances. What didn’t: too many parallel mechanics introduced at once. Next: stagger mechanics, add foreshadowing setpieces."
-      },
-      {
-        "title": "Back and Forth: Cube Pong",
-        "cover": "images/image11.jpg",
-        "images": [],
-        "videos":[
-                 "https://youtu.be/0AQQx7HePcs"
-                 ],
-        "blurb": "Traversal challenge built around momentum and readable landmarks.",
-        "postmortem": "What worked: traversal feel; navigational affordances. What didn’t: too many parallel mechanics introduced at once. Next: stagger mechanics, add foreshadowing setpieces."
-      },
-      {
-        "title": "Back and Forth: Beat Pong",
-        "cover": "images/image3.png",
-        "images": [],
-        "itch": "https://megamelone.itch.io/beat-pong",
-        "videos":[
-                 "https://youtu.be/7gdgd_BQejA",
-                 "https://youtu.be/aFSuQAO4oOg"
-                 ],
-        "blurb": "Traversal challenge built around momentum and readable landmarks.",
-        "postmortem": "What worked: traversal feel; navigational affordances. What didn’t: too many parallel mechanics introduced at once. Next: stagger mechanics, add foreshadowing setpieces."
-      },
-      {
-        "title": "You Are Here.",
-        "cover": "images/image4.png",
-        "images": [],
-        "itch": "https://megamelone.itch.io/you-are-here",
-        "videos":[
-                 "https://youtu.be/NkVan1E9Cas",
-                 "https://youtu.be/JYmdp4oRX2A"
-                 ],
-        "blurb": "Traversal challenge built around momentum and readable landmarks.",
-        "postmortem": "What worked: traversal feel; navigational affordances. What didn’t: too many parallel mechanics introduced at once. Next: stagger mechanics, add foreshadowing setpieces."
-      },
-      {
-        "title": "Letter Wars",
-        "cover": "images/image13.png",
-        "images": [],
-        "itch": "https://megamelone.itch.io/letter-wars",
-        "videos":[
-                 "https://youtu.be/ykMgiZ7Taok",
-                 "https://youtu.be/we-0NSkGnxs",
-                 "https://youtu.be/JrUqtKQQEK8"
-                 ],
-        "blurb": "<p>Letter Wars was my final BA Games Design project. It’s an ambitious 2D Boss Rush featuring over 20 bosses based on the letters of the alphabet, all with very distinct behaviors and movement patterns, solely developed by myself in around 3 months. The game employs a rather complex movement system, that while pretty finicky and awkward in places, is filled with interesting exploits and room for strategy. It was also designed to give the player as much freedom within their movement, allowing for a wide variety of ways to tackle the game's bosses.</p><p>The game was designed as a throwback to an older era where games were brutally difficult as a means of extending their length. This era brought on a modernist approach, with games intentionally designed to be as frustratingly difficult as possible. I aimed to create a middle ground between the two with Letter Wars, by designing incredibly difficult bosses, resulting in an elongated playtime, while also aiming for a degree of fairness and learnability .The process of designing the movement to be freeing yet balanced, while making bosses that were highly varied and escalating in difficulty was a herculean endeavour, and one made more difficult with admittedly wildly inefficient programming.</p>",
-        "postmortem": "What worked: traversal feel; navigational affordances. What didn’t: too many parallel mechanics introduced at once. Next: stagger mechanics, add foreshadowing setpieces."
-      },
-      {
-        "title": "RPS Ultra Adventure",
-        "cover": "images/image14.png",
-        "images": [],
-        "itch": "https://redsmiley.itch.io/rps-ultra-rpg",
-        "videos":[
-                 "https://youtu.be/TfSCAOQMqk4"
-                 ],
-        "blurb": "<p>An approximately 30 minute long 1-BIT turn based RPG game created within a single week. I was responsible for creating the entire RPG system, which was based off of Rock Paper Scissor, writing all of the dialogue, mapping out every single NPC location, item location, and the layout of every screen, and balancing the entire game. All of that on top of coding the entire combat system, adjusting the atmosphere, doing some artwork and incorporating all of the audio.</p><p>This project proved to be a significant test of my ability in forward thinking, and the ability to quickly and efficiently envision and layout a fun and interesting gaming experience. This was designed to be a relatively simple game in terms of difficulty, as the main draw was the atmosphere and the novelty of a Rock Paper Scissor centric RPG.</p>",
-        "postmortem": "What worked: traversal feel; navigational affordances. What didn’t: too many parallel mechanics introduced at once. Next: stagger mechanics, add foreshadowing setpieces."
-      },
-      {
-        "title": "Don't Touch THE THNIG",
-        "cover": "images/image15.jpg",
-        "images": [],
-        "videos":[
-                 "https://youtu.be/--XJHvj2Vkg",
-                 "https://youtu.be/mEdGnw53ayY"
-                 ],
-        "blurb": "Traversal challenge built around momentum and readable landmarks.",
-        "postmortem": "What worked: traversal feel; navigational affordances. What didn’t: too many parallel mechanics introduced at once. Next: stagger mechanics, add foreshadowing setpieces."
-      },
-      {
-        "title": "Marble Labyrinth",
-        "cover": "images/image16.jpg",
-        "images": [],
-        "videos":[
-                 "https://youtu.be/IazxLHcdurI",
-                 "https://youtu.be/aktTPTkNCTQ"
-                 ],
-        "blurb": "Traversal challenge built around momentum and readable landmarks.",
-        "postmortem": "What worked: traversal feel; navigational affordances. What didn’t: too many parallel mechanics introduced at once. Next: stagger mechanics, add foreshadowing setpieces."
-      },
-      {
-        "title": "Memories of Closure",
-        "cover": "images/image7.png",
-        "images": [],
-        "itch": "https://megamelone.itch.io/memories-of-closure",
-        "videos":[
-                 "https://youtu.be/sY7JjeIKbFs"
-                 ],
-        "blurb": "An abstract and atmospheric 3D Metroidvania, made for the Metroidvania game jam in a group of 4 across 1 month, where players explore a world constructed of consciousness and memory. It's a highly symbolic and esoteric experience, nothing is as it seems, and everything exists for a purpose. Our goal was to take the metroidvania genre, which has typically been housed in 2D form, and bring it to an esoteric 3D form. We also wanted to mix the genre of Metroidvanias with atmospheric horror, while layering it with a profound absurdity.",
-        "postmortem": "<p>Memories of Closure was an ambitious, abstract, atmospheric 3D Metroidvania developed in a month by a team of four for the Metroidvania Game Jam with the theme of “Echoes of the Past”. Our goal was to reinterpret a genre traditionally rooted in 2D exploration and reimagine it within a fully three-dimensional space. We wanted to fuse the slow-burn progression of a Metroidvania with the unease of atmospheric horror, crafting something that felt dreamlike, disorienting, and deeply symbolic. The world we envisioned was a physical manifestation of consciousness and memory, a place where every door, corridor, and object held meaning. Nothing was as it appeared, and everything existed for a reason.</p><p>From a design standpoint, the project was remarkably successful given its constraints. Despite having only two enemy types: a toy turret that homed in on sound and a UFO that followed a strict patrol route, we managed to create an experience that felt consistently tense and varied across numerous interconnected rooms. The restraint forced us to think creatively about level composition. Each area was designed around three primary power-ups: marbles that could be thrown to create noise and lure enemies away; a blanket that rendered the player invisible while stationary; and a pogo stick that enabled high vertical traversal. These abilities interacted elegantly with the limited enemy roster, producing gameplay that oscillated between methodical stealth and high-risk movement. The marbles and blanket, in particular, created moments of genuine anxiety, asking players to weaponize vulnerability and silence, while the pogo stick introduced spatial freedom and a compelling verticality to the level design. Together, they formed the foundation for a surprisingly layered and dynamic 3D Metroidvania structure.</p><p>The level design itself remains one of the game’s greatest strengths. With only a month of development, we managed to build a complex map that encouraged backtracking, discovery, and mastery, all the hallmarks of the genre. A perfect run of the game lasted around fifteen minutes, but a first-time playthrough could easily stretch to an hour or more. That’s an impressive achievement for a 1 month jam title, especially one operating on such an experimental premise. The density of rooms, secrets, and narrative fragments gave the experience a tangible sense of weight and intention.</p><p>Atmospherically, Memories of Closure succeeded in establishing a haunting tone through minimal means. We deliberately excluded music, instead allowing the environment’s diegetic sounds to fill the void. The mechanical whir of the turrets, the faint hum of the UFOs, the creaking of doors and the echo of the player’s footsteps became the entire soundscape. Each noise carried dramatic weight. This choice heightened the sense of dread and vulnerability, reinforcing the game’s psychological themes. We also used doors as a deliberate design tool. Every room was hidden behind one, forcing players to confront uncertainty each time they progressed. Hearing an enemy’s mechanical sounds on the other side of a closed door often produced genuine apprehension. It was a simple but powerful piece of interactive storytelling that relied entirely on stoking the player’s imagination.</p><p>Narratively, the project struck an intriguing chord. The labyrinthine structure of the world was framed as the fragmented mind of a child processing trauma, with each “memory” scattered throughout the environment as collectible fragments of context. Interacting with these memories revealed short text entries, highlighting intimate, disjointed recollections that explained the surreal world around the player. While the writing could have been stronger in places, with some of the prose being quite blunt, the concept effectively validated our design choices, linking the surreal environment to the internal logic of grief and remembrance. Optional memories off the main path also encouraged exploration and rewarded curiosity. In retrospect, adding a menu to track collected memories would have made this system even more satisfying, transforming it into a natural 100% collectible loop for completionist players. Still, even without that feature, the idea successfully grounded the abstraction in emotion and meaning.</p><p>For all its conceptual and mechanical successes, Memories of Closure had several critical flaws that undermined its playability. Chief among them was its unforgiving save system. Checkpoints were placed too far apart, meaning that a single mistake could erase ten or fifteen minutes of progress. This design unintentionally punished experimentation, making players more cautious and, consequently, slowing the game’s natural rhythm. What should have been an exploratory experience became a tense, risk-averse crawl. A simple solution would have been auto-saving whenever the player passed through a door, which would have preserved the game’ challenge without disrespecting the player’s time.</p><p>The game’s visual presentation also suffered from technical limitations. We wanted to achieve a sense of oppressive darkness to heighten the horror atmosphere, but our inexperience with lighting tools, particularly Shader Graph, forced us to rely on crude, low-light environments. The result was that many areas were simply too dark, making key doors and pathways difficult to locate. In hindsight, the same tone could have been achieved with dynamic lighting, color contrast, and effective shader use rather than sheer dimness. Similarly, while the level layout was intricate, the visual similarity between rooms made navigation confusing. Each area needed a stronger environmental identity in the form of distinct palettes, props, lighting cues, etc, to help the player orient themselves within the labyrinth.</p><p>The most significant shortcoming, however, was the narrative payoff. Throughout the game, players are motivated by the search for “The Truth,” the final memory that supposedly unites all the preceding fragments. But by the time we reached development’s end, I hadn’t yet discovered what that truth was. Pressed for time, I defaulted to an open-ended finale that offered no resolution. It was an anticlimax that invalidated the emotional buildup. For a game centered on memory, identity, and closure, that absence of closure was especially glaring. Players who invested in the journey were denied revelation and were left with unearned ambiguity instead. If I could revisit the project, defining that narrative endpoint, the emotional and thematic core of the entire experience, would be my first priority.</p><p>Despite its flaws, Memories of Closure remains one of the projects I’m proudest of. It was one of several instances where a jam game transcended its scope to suggest something larger, existing as a genuine prototype for a commercial-scale experience. With improved lighting, a more forgiving save structure, distinct environmental design, and a resolved narrative arc, it could easily stand as a full-fledged indie horror Metroidvania.</p>"
-      },
-      {
-        "title": "I Wanna Grow Taller!",
-        "cover": "images/image19.jpg",
-        "images": [],
-        "itch": "https://megamelone.itch.io/i-wanna-grow-taller",
-        "videos":[
-                 "https://youtu.be/0MzLem6nQik"
-                 ],
-        "blurb": "A charming endless runner planned and crafted in only 3 hours for the Trijam Game Jam. Due to the massive restriction, this was a very effective excercise in restraint, and an agile scrum approach to design and development. We aimed for a very mechanically simple yet fun gameplay loop, and made all the focus on the presentation which proved to be the correct decision as we won first place in this game jam.",
-        "postmortem": "What worked: traversal feel; navigational affordances. What didn’t: too many parallel mechanics introduced at once. Next: stagger mechanics, add foreshadowing setpieces."
-      },
-      {
-        "title": "ROCKBOTTOM HERO",
-        "cover": "images/image6.png",
-        "images": [],   
-        "itch": "https://megamelone.itch.io/rockbottom-hero",
-        "videos":[
-                 "https://youtu.be/6juZCb-4T0Y"
-                 ],
-        "blurb": "Rockbottom Hero is a comedic auto-runner made with a grid-based system. This remains the most stressful game I've ever had to make, as it was simply too ambitious for the meager 3 day time limit. Despite that, we were still able to construct the vision we initially had in mind, but in exchange made some sacrifices. Due to the time limit, we had to change the game from being challenging, to being a simple game and instead focusing on the comedic nature of it. This restriction allowed us to rethink our base vision and make something more enjoyable.",
-        "postmortem": "<p>Developed in just three days for a game jam, Rockbottom Hero remains one of the most stressful projects I’ve ever undertaken. It was far too ambitious for the time limit, especially given the complexity of the grid-based system we built from scratch. But even amidst the crunch, we managed to realize the core vision we set out to achieve, albeit with a few compromises. To meet the deadline, we shifted focus from challenge to comedy, choosing to lean into the absurdity of the premise rather than fight the constraints of the clock. That creative pivot proved to be one of the best decisions we could have made.</p><p>The jam’s theme was “connections,” and I still absolutely adore how we chose to interpret it. The player takes on the role of a fallen “hero of legend” who, after being turned to stone by the demon king, can no longer fight on his own. To reach the final battle, he must literally be carried to victory by an ever-growing entourage of villagers from various towns, each with their own distinct abilities. The gameplay reflects this premise in a clever, self-contained way: the player arranges these civilians on a grid, presses “play,” and watches as they move and toss the petrified hero from one tile to another, forming a literal chain of connections that propels him toward the level’s end.</p><p>That design decision that merged mechanical and thematic “connection” resulted in one of the most creatively cohesive jam games I’ve ever worked on. The absurdity of the situation is matched perfectly by the game’s tone. The animations, sound effects, and music all contribute to a joyful sense of chaos. Watching a group of civilians batten pass a stone hero across a level feels ridiculous in the best way possible. Despite the lack of difficulty, the sheer spectacle and comedic rhythm of each run keep the player consistently engaged  throughout. It’s one of those rare games where the feel of pressing “play” is inherently enjoyable, with the payoff for planning and placing down units feeling excellent.</p><p>I’m also incredibly proud of how much we managed to fit into such a short timeframe. Across the three-day jam, we produced twelve fully functional levels and six unique units that the player unlocks progressively. Each level introduced new layouts and mechanical wrinkles, ensuring the experience never overstayed its welcome. The fact that the game runs about ten minutes and sustains its momentum the whole way through speaks volumes about our pacing instincts and scope management. We were able to fill the project with little bits of detailing to make it really come to life despite the tight time limit, which is a massive boon to our ability to plan and execute on a project in a short timeframe. The ending, where the civilians finally defeat the demon king with a “friendship beam” while the petrified hero remains motionless, still makes me laugh every time I think about it, and is a perfect encapsulation of what makes this short project so near and dear to me.</p><p>If there’s one thing that keeps me thinking about Rockbottom Hero, however, it’s how much potential it has beyond the jam version. With the right adjustments, this could absolutely work as a full commercial release, that being a complete humorous, puzzle-driven mobile title with an enjoyably light and comedic narrative. To reach that point, though, it would need a stronger layer of challenge. Right now, the puzzles are simple to the point of novelty; the humor carries the experience, but that appeal would inevitably fade in a longer game. Increasing complexity through more intricate level layouts, additional unit types, and interdependent mechanics would give players more to think about while maintaining the whimsical tone.</p><p>I’d also love to see the world expanded narratively. Between levels, short comic panels or storyboards could depict the villagers’ ongoing misadventures as they trek closer to the demon king. That episodic storytelling would give the game a sense of journey and structure while allowing the comedy to evolve naturally. Similarly, introducing boss encounters could give players new ways to use their units, perhaps combining puzzle-solving with light strategy elements. The existing visual and mechanical foundation could easily support all of that.</p><p>A structural flaw to also consider for the jam version while thinking about the game on a commercial scope, is that the levels feel isolated, with each one feeling like a self-contained vignette rather than part of a continuous adventure. Connecting them through consistent geography and escalating environments would go a long way toward making the world feel cohesive. The grid-based system already lends itself beautifully to modular expansion; it’s easy to imagine players progressing from grassy fields to volcanic cliffs to the demon king’s citadel, each new environment introducing hazards or unit types that keep the formula fresh.</p><p>Looking back, Rockbottom Hero is the perfect example of creative constraint turning stress into inspiration. The three-day time limit forced us to strip away unnecessary complexity and focus entirely on tone, pacing, and absurd joy. What emerged was a game that thrives on charm and personality rather than depth, and a project that I continuously find myself going back to because it just brings me so much joy.</p>"
-      },
-      {
-        "title": "SLUG HOUSE",
-        "cover": "images/image5.png",
-        "images": [],
-        "itch": "https://megamelone.itch.io/slug-house",
-        "videos":[
-                 "https://youtu.be/R35iKvDaEt8"
-                 ],
-        "blurb": "A 2D side-scroller beat-em-up made in a group of 4 in 2 weeks for the GameDev.js game jam. For this project, our main priority was making a beat-em-up with fantastic game feel, so we researched all the ways in which games of that manner juice their gameplay experience, and we implemented as much of it as possible, with the mechanics and level design coming in secondary to audiovisual experience in that regard. We treated this more as an experiment and learning opportunity, than a jam we rigorously aimed to win. ",
-        "postmortem": "<p>SLUG HOUSE was a two-week experiment in pure game feel. Developed by a team of four for the GameDev.js Jam, the project set out to build a side-scrolling beat-em-up that prioritized audiovisual feedback above all else. Rather than focusing on deep mechanics or complex level design, our intent was to study and emulate what makes action games feel good, to understand the craft behind the flashes, pauses, shakes, and tactile energy that make combat satisfying. We weren’t as concerned about competing with the other jam entries, as much as we were concerned with using this as a forum for experimentation on juice and game feel.</p><p>And in that respect, SLUG HOUSE absolutely delivered. From the moment the player throws their glass down at the bar and the screen jolts in time with the crash of shattering glass, kickstarting the player experience, the tone is immediately set. The background music kicks in right on cue, a custom track we composed ourselves, and the game bursts to life with raw, grungy attitude. Every punch lands with a satisfying crunch, supported by strong use of hitstop, screenshake, white flashes, and particle effects. The environmental interactivity amplifies that sense of chaos, with stools and glasses that explode on impact, adding dynamic, collateral energy to every fight. Even the enemies contribute to the game’s momentum, occasionally landing blows on each other by mistake, which opens the door to playful positioning and strategic manipulation.</p><p>The art direction carried the same commitment to style. The game’s “papery” collage aesthetic, with grungy textures drenched in neon color gave it a distinctive, handcrafted look. The world felt simultaneously dirty and vibrant, like something torn out of a late-night fever dream. It’s one of the most visually cohesive games I’ve worked on in a jam context, and I’m proud of how seamlessly we integrated the visuals with the soundscape and feedback systems. Even the tutorialization was thoughtfully executed: the game introduced its mechanics naturally through interaction, requiring only movement inputs at first and layering additional abilities at a comfortable pace. Everything about the presentation felt confident and deliberate.</p><p>Unfortunately, the same couldn’t be said for the core gameplay. Beneath the audiovisual polish, SLUG HOUSE simply wasn’t fun to play. The reason was structural: up until the very end of development, we didn’t actually have a collective and cohesive vision on what the game’s main mechanic was. That uncertainty haunted the project. The only attack available to players was a single chargeable punch. The longer the player held it, the more powerful it became, but overcharging would cause the character to fall over. This was our attempt to fit the jam’s theme of “balance.” It was, to be frank, an unimaginative and lazy interpretation of the theme, not to mention tedious to actually play through. The combat lacked rhythm, flow, and variety. What could have been a kinetic, expressive brawler instead became a repetitive waiting game, punctuated by awkward pauses.</p><p>The problems deepened when technical issues emerged. The second enemy type we’d designed broke late in development, forcing us to rely entirely on one basic enemy throughout the whole experience. Combined with the single attack option, this led to a monotonous loop that quickly lost its appeal. Beneath the stylish presentation, there was no real tension, mastery, or escalation, just beautifully rendered repetition. It was frustrating to realize that despite all our effort in crafting the feel, we had forgotten to ensure that the gameplay loop beneath it was strong enough to support that polish.</p><p>In hindsight, I find our approach to the jam theme disappointingly literal. Instead of embedding “balance” into the mechanics of combat itself, we could have explored it thematically or physically, for example, tying it to the player’s movement or posture. One idea that came later was to treat the protagonist’s drunkenness as the core challenge: requiring players to constantly keep themselves upright using the mouse, while also managing attacks and dodges, with the attacks being actual combo strings rather than the boring singular charge attack we had. That sort of system could have embodied the theme more meaningfully, would have been more fun to play and would have created constant tension between control and chaos. It would have made the act of simply staying upright as expressive as throwing a punch.</p><p>Ultimately, SLUG HOUSE stands as my most visually and mechanically lopsided project, a beautiful aesthetic wrapped around a hollow core. It’s the only jam game I’ve worked on that I consider a complete mechanical failure, but also one of the most important learning experiences I’ve had. It taught me that “juice” alone can’t sustain engagement. Screenshake and particles can make a good game great, but they can’t make a bad one fun. Strong feedback amplifies satisfaction, but it doesn’t replace it.</p><p>If I were to revisit SLUG HOUSE, I would start from the opposite direction: build the combat loop first, then layer the feel on top. Define a clear thematic relationship between mechanics and tone, and make the player’s physicality, their balance, control, and momentum, central to both. The aesthetic, audio, and juice would then enhance a foundation that actually deserved that energy. As it stands, SLUG HOUSE is a gorgeous yet unplayable mess, but it’s a mess that taught me exactly where style ends and substance begins.</p>"
-      },
-      {
-        "title": "Little Vocab Master!",
-        "cover": ["images/image24.jpg"],
-        "images": [],
-        "itch": "https://itch.io/",
-        "videos":[
-                 "https://youtu.be/MKNA8PXvqiI"
-                 ],
-        "blurb": "The prompt that we were given was to make a game with the same base mechanics as an app store game named 'Pack Master', but with our own unique spin. The brunt of the task was less to do with developing the game, and more so designing a blueprint and delivering a sales pitch with a target audience in mind. We made our take on this prompt a kid friendly game. Linked is the video I scripted, voiced, and edited, pitching the game.",
-        "postmortem": "<p>Little Vocab Master! was a unique project in my portfolio, distinct from most of my other work because it wasn’t centered around coding or asset creation, but on conceptualization, market positioning, and presentation, with the submission not coming in the form of a game, but in the form of a video Pitch Deck. The assignment challenged us to take the mechanical framework of an existing app store title, Pack Master, and create our own iteration with a fresh identity and target demographic. Our group chose to reimagine it as a kid-friendly edutainment game designed to be played by children with supervision from guardians. My responsibilities included scripting, voicing, and editing the video pitch, alongside helping shape the concept into something that felt both commercially viable and pedagogically meaningful.</p><p>What immediately worked about Little Vocab Master! was the strength and clarity of its vision. From the outset, we anchored the pitch in a specific audience: parents looking for meaningful digital activities to share with their children. The focus on shared play distinguished it from the flood of solitary educational apps on the market. The game’s premise, encouraging vocabulary building and pattern recognition through simple drag-and-drop interactions, was intuitive enough for children, yet structured in a way that made collaboration natural. The pitch deck communicated that purpose with precision, pairing a consistent visual tone with a confident narrative throughline. The idea to extend the concept into language learning was a particular highlight. Framing it as a tool that could help families learn together, whether English, Spanish, or any other supported language, which added a level of universality and scalability that publishers could immediately recognize as marketable. It wasn’t just a charming idea for a game; it was a plausible product.</p><p>The process also reinforced how presentation can amplify design intent. The video pitch, in particular, became a valuable exercise in communicating ideas succinctly and persuasively. In scripting and editing it, I learned to think like both a designer and a marketer: balancing enthusiasm with clarity, and ensuring that every piece of information served the central vision. Although, in hindsight, it’s clear my public speaking needed work, something that I have since continued to work on. It’s easy for student or early-career designers to view pitch decks as academic exercises, but this project helped me realize that the ability to sell your idea, to crucially make it understood and desired, is as integral as the ability to build it.</p><p>Still, the experience revealed several shortcomings in how I approached the production reality behind the concept. The timeline outlined in the pitch deck was far too vague and lenient. I estimated one to three days per level, a figure that in retrospect didn’t properly account for workflow efficiency or asset reusability. With systems in place and preexisting assets, a competent team could easily produce ten levels a day. It was a clear reminder that pitch decks have to be promises of deliverability. If I want to present a game concept professionally, the development roadmap needs to reflect grounded, data-driven assumptions rather than loose intuition.</p><p>The prototype itself also underscored the gap between vision and execution. It was incomplete, missing core functionalities such as win/loss conditions and scaling adjustments. Some levels were literally impossible to complete due to oversized drag assets. Even more critically, the prototype was designed for mouse and keyboard, not for mobile, which was supposed to be its primary platform. That decision undercut the pitch’s central claim of accessibility and undermined the user experience we were promising. It taught me that a prototype, even when non-representative of the final scope, must still embody the spirit of the product. A publisher or investor should be able to play a vertical slice and immediately understand the intended loop, feedback, and emotional beats. If that experience isn’t present, even in simplified form, then the pitch risks losing credibility.</p><p>In retrospect, Little Vocab Master! was one of the most educational projects I’ve worked on precisely because of those oversights. It taught me to view pitch decks as holistic design documents, not just marketing tools. A compelling presentation must integrate creative appeal, logistical realism, and technical feasibility. That balance between vision and execution is what separates an interesting idea from a fundable product. If I were to redo this project today, I would start by tightening the production estimates with realistic benchmarks, ensuring that every timeline and milestone aligns with tested development cycles. I’d also prioritize a more polished, platform-accurate prototype to match the expectations of the intended market.</p>" 
-      },
-      {
-        "title": "GRAVITY: NULL",
-        "cover": "images/image10.png",
-        "images": [],
-        "itch": "https://redsmiley.itch.io/gravity-null",
-        "videos":[
-                 "https://youtu.be/tmEAkPlMgwo"
-                 ],
-        "blurb": "My first 3D game, made in collaboration with 2 other people in a brief timespan for a game jam. It was a first person platforming speedrunner with the unique mechanic of stopping gravity. It consists of 7 levels all of which have a time limit of 20 seconds, and steadily introduces new mechanics as the game progresses.",
-        "postmortem": "<p>GRAVITY: NULL marked an important milestone for me: my first 3D game, created in collaboration with two other developers over the course of a month for the 2023 20 Second Jam. The jam had no specific theme, only the restriction that the game itself had to last 20 seconds, a limitation that immediately shaped our design philosophy. We decided to create a frantic first-person platformer set within a malfunctioning space colony, where players had to sprint, jump, and manipulate gravity to escape before time ran out. The result was a compact, seven-level speedrunning experience that encouraged mastery and experimentation through failure and repetition.</p><p>For a first 3D project, the development process went remarkably smoothly. It was also my first time collaborating with a 3D artist, and compared to my earlier struggles managing 2D art production in Renaissance Accademia, this experience was cohesive and frictionless. We quickly found a shared visual language for the game’s aesthetic, one that was sleek, minimal, and one that leaned heavy into science fiction, which made the world feel unified despite its short runtime. The central gravity manipulation mechanic also turned out to be an inspired choice. It gave the platforming a distinctive rhythm, as players learned to manipulate gravity at precise moments to navigate obstacles in unconventional ways. This mechanic allowed for a surprising amount of design depth within the short time limits, and as new interactions and hazards were introduced across levels, the game maintained a steady sense of novelty without overwhelming players. The manic pace created by the 20-second timer tied everything together, giving each stage an underlying urgency that elevated even simple platforming sequences into tense player experiences.</p><p>However, for a project that spanned an entire month, the scope of GRAVITY: NULL ultimately felt too small. The game’s seven levels, while tightly designed, resulted in a total runtime of only about two minutes when played perfectly, far less than what could have been achieved in that timeframe. Looking back, it’s clear that we could have comfortably implemented at least 20 levels of comparable quality, expanding both the game’s longevity and its mechanical exploration. Beyond its brevity, the game also suffered from weak narrative cohesion. The supposed “escape” from a collapsing space colony was never convincingly represented in the environments. Each stage ended with the player reaching a small room containing a bed, an arbitrary visual motif that didn’t tie meaningfully into the story, and one that made every level feel disconnected from the last, resulting in a complete lack of consistent narrative. None of the rooms felt like believable parts of a human-occupied colony; they were abstract liminal spaces designed for traversal rather than storytelling. This lack of environmental logic undermined the worldbuilding, leaving the experience feeling disconnected from its premise.</p><p>The game’s sense of urgency was similarly underdeveloped on the visual side. While a persistent beeping sound effect hinted at a looming catastrophe, there were no visible signs of destruction or decay, no flickering lights, ruptured structures, or debris to sell the idea of a collapsing station. Even small touches, like sparking panels, distant explosions, or shifting lighting, could have dramatically improved immersion. A handful of particle effects and environmental cues would have made the player feel the disaster rather than merely hear about it.</p><p.>If GRAVITY: NULL were to be revisited, its foundation could easily support a more robust and cinematic experience. More levels, stronger environmental storytelling, and dynamic world feedback would make the game’s tension and pace feel justified rather than imposed. Despite these shortcomings, I still view Gravity Runner as a significant success in terms of design clarity, teamwork, and technical growth. It demonstrated that I could not only design within 3D space but also collaborate effectively across disciplines to build something coherent. The game’s biggest flaw wasn’t its execution, it was simply that we didn’t aim big enough within the time we had.</p>"
-      },
-      {
-        "title": "Eternal Game Night",
-        "cover": "images/image9.png",
-        "images": [],
-        "itch": "https://megamelone.itch.io/endless-game-night",
-        "videos":[
-                 "https://youtu.be/txqmGvpPTUQ"
-                 ],
-        "blurb": "Eternal Game Night is an atmospheric puzzle game where the player engages in a simple card game with the devil. Like I Wanna Grow Taller, mentioned previously in this portfolio, this game was planned and made in 3 hours, we went for a completely different approach for this game. Our first 3 hour game was physical, while we made this one a mentally oriented cryptic puzzle game.",
-        "postmortem": "<p>Eternal Game Night was conceived as an atmospheric puzzle experience, a short, cryptic encounter in which the player plays a dangerous card game against the devil himself. It was created as part of a rapid three-hour game jam, similar to I Wanna Grow Taller (another project mentioned earlier in this portfolio), but where that game emphasized physical reaction and reflexes in the form of an endless runner, Eternal Game Night leaned entirely into mood and mental tension. We wanted to see how much atmosphere and meaning we could convey in an extremely limited timeframe, relying less on mechanical complexity and more on tone, and immersion.</p><p>Despite the narrow window for development, the atmosphere became the game’s greatest triumph. Within minutes of play, Eternal Game Night evokes a tangible unease. The flickering candlelight, the heavy stillness of the table, and the oppressive silence combine to build a sense of ritual and dread. There is no music, only the faint, unsettling flickering of candlelight, interrupted by the grating scrape of the devil dragging his arm across the table, and the sound of candles extinguishing one by one as the player answers riddles incorrectly. Each failure further dims the room, eroding the player’s sense of security until only darkness and the devil’s laughter remain. It’s a deceptively simple setup, but one that captures a tangible tension through audiovisual presentation. The lack of overt complexity became an asset; with no HUD, no score, and no tutorial, the player’s imagination fills in the gaps. Which is something supplemented by the minimalist pixel artwork that leaves much to the imagination, as the devil’s full form is left obscured, only a hand providing insight into his form.</p><p>The development process itself was also unusually smooth given the constraints. Completing a game, from concept to implementation, in under three hours is an immense logistical and creative challenge, and yet this project came together efficiently and coherently. We managed to design, prototype, and polish the experience within the allotted time without major technical issues or creative disagreements. That fluidity is something I’ve rarely replicated since, and it stands as a testament to the clarity of the idea and our ability to commit to a singular vision under pressure.</p><p>Where Eternal Game Night faltered, however, was in its core gameplay. While the setting and concept suggested a rich psychological duel, the actual mechanics amounted to a rudimentary riddle-matching exercise. Players were presented with five illustrated cards, each depicting a symbolic image, and tasked with pairing one to a riddle’s answer. The riddles themselves were blunt and straightforward, lacking the wit or layered ambiguity that could have deepened the game’s tension. Rather than pulling players further into the atmosphere, they had the opposite effect, breaking the immersion by reminding players of the game’s artificiality. The writing, which could have served as the game’s narrative and thematic backbone, ended up undercutting its own tone, with the prose being exceptionally weaker than I’m comfortable with looking back. The result was a well presented experience that felt hollow at its mechanical core. If I were to revisit Eternal Game Night, I would keep the presentation exactly as it is, the lighting, pacing, and sound design all serve the intended mood perfectly, but I would completely redesign the gameplay itself.</p><p>Ultimately, Eternal Game Night stands as a fascinating exercise in minimalism under pressure. In just three hours, it managed to craft an atmosphere that lingered well beyond its brief playtime. Though its mechanics were weak, the experience revealed how much emotional power can be drawn from careful audiovisual design, and how a simple idea, when executed with focus and restraint, can still leave a strong impression with players, and our 2nd place placement within the game jam is proof of that.</p>"
-      },
-      {
-        "title": "Return to Your Roots",
-        "cover": "images/image8.png",
-        "images": [],
-        "itch": "https://megamelone.itch.io/return-to-your-roots",
-        "videos":[
-                 "https://youtu.be/SIKIDwaMszU"
-                 ],
-        "blurb": "<p>In this Boss Rush game, begin at your strongest, as you control time and fire lasers to trounce the enemy before you, however, as you progress, your strength will drain as you return to your roots against adversaries who take away time itself. </p><p>As my first ever game jam game, the first game I’ve ever worked on in a solely online environment, and a game made in only 3 days no less, this was never going to be the most ideal work. It’s to the point that my teammate and I constantly make fun of this game, as it is quite weak in retrospect. However, it did still have some interesting ideas to it despite that.</p>",
-        "postmortem": "<p>Return to Your Roots was created during my first-ever game jam, the Global Game Jam, and it marked not only my introduction to the format but also my first time developing a game entirely online. Built in just three days, it was never going to be an ideal production, and my teammate and I still look back on it with a mixture of amusement and affection. Despite its rough edges, the project had some genuinely interesting ideas that made it a memorable experience.</p><p>The jam’s theme that year was “roots,” and I was genuinely pleased with how we chose to interpret it. Rather than exploring roots in the literal or ancestral sense, we designed a game where the player regresses to their origins, becoming weaker as the game progresses. The player begins as a mighty tree capable of stopping time and firing powerful lasers, but with each boss defeated, they lose one of these abilities. Their form simultaneously devolves, from a fully-grown tree to a sapling and, finally, to a powerless seed. The game concludes with the player facing the same tutorial boss that once posed no challenge, now a formidable and wildly difficult final opponent, a reversal of power that underscored the game’s theme of decline and inevitability. The way we flipped the inevitability of time into a reversal of time was equally interesting, as it presented an unconventional approach to that theme and idea.While the execution was imperfect, I still find this concept to be an elegant game jam theme interpretation.</p><p>Visually, I also remain fond of the game’s juvenile pixel art style. In particular, the second and third bosses, a sentient hourglass and a wizard who shifted between a baby and old age, were conceptually strong and fit perfectly within the narrative of time and decay. The art direction, though simple, captured the surreal, allegorical tone we were aiming for.</p><p>That said, the game’s development process and final implementation were riddled with beginner mistakes. Because it was our first jam, we lacked even the most basic workflow infrastructure. Without version control in the form of Github, we had to pass the Unity project back and forth via Google Drive, which led to countless overwrites and inefficiencies. My inexperience with Unity coding also showed, as I wrote much of the gameplay logic as frame-dependent rather than time-dependent, resulting in inconsistent behavior across systems. On top of that, the game completely lacked audio or music, leaving it feeling unfinished and lifeless. The combat system suffered from similar oversights: the punch hitbox was positioned far from the character’s actual arms to make the game slightly more forgiving, however, as a result, players appeared to damage enemies by punching the air. It looked absurd and broke immersion entirely. This could have been consolidated by simply having the punch animation feature the player sprite extending their arms to cover that hitbox, or even particle effects to cover the deadspace. Weak UI and minimal tutorialization compounded the issue, leaving players unsure of how to interact with the game. That experience, however, became an invaluable lesson, as ever since, I’ve made it a priority to treat tutorialization as a core design element, even within the time restrained environments of a game jam production, ensuring that players can intuitively and engagingly understand the systems in front of them, no matter how short the development timeline is.</p><p>Looking back, Return to Your Roots is the kind of game that probably only works within a game jam context. Its central mechanic, becoming weaker as you progress, is conceptually fascinating but mechanically frustrating. Punishing players for advancing, and stripping away their abilities, runs counter to what makes games satisfying. Expanding this project into a larger scope would have required reworking its entire design philosophy. As it stands, the game serves better as an experiment in theme-driven design than as a blueprint for a longer experience. If I were to revisit it, I would focus solely on quality-of-life improvements and stronger game feel: adding sound, tightening feedback, and cleaning up animation and combat. For all its flaws, Return to Your Roots remains an important milestone: a rough, chaotic, but earnest start to my journey as a designer.</p>"
-      },
-      {
-        "title": "Renaissance Accademia",
-        "cover": "images/image12.jpg",
-        "images": [],
-        "itch": "https://megamelone.itch.io/renaissacnceaccademia",
-        "videos":[
-                 "https://youtu.be/VZ0daeik9QM"
-                 ],
-        "blurb": "<p>An atmospheric 3 level 2D platformer game made by 5 people. This was a fisrt term 2nd year university assignment and definitely the weakest work in this portfolio, but important to note nonetheless. For the longest time, it was the largest group I have ever worked on a game with. It was a very crucial learning experience, as we had to create a game with a singular cohesive vision between 5 people who did not know each other very well.</p> <p>All of this while being unable to meet in person due to the pandemic, and unable to call because of timezone differences. This meant that this collaborative project had to be done entirely through messaging. It was an invaluable experience, as I was the group leader, and this project taught me how to cordially take different people's differing visions and organize and combine them in a cohesive manner, which is a skill I have been able to foster for future group projects which were significantly stronger in output and cohesion.</p>",
-        "postmortem": "<p>The concept behind Renaissance Accademia was genuinely compelling. The idea of exploring an abandoned mage academy and uncovering tomes that gradually grant new abilities provided a strong narrative and mechanical foundation for a platformer. While the final product didn’t fully deliver on that premise, the potential was clear, particularly in the last level. The final upgrade, which granted players a bird’s-eye view of the stage, hinted at a far more ambitious and intriguing design philosophy. It was a glimpse into what the game could have been under better circumstances, with more time, experience, and creative stability behind it. Despite its flaws, I still hold some fondness for certain aspects of the project, especially the main menu. Its aesthetic, UI layout, and accompanying audio design came together nicely, establishing a mood that the rest of the game struggled to reach.</p><p>On the other hand, the game’s visual and mechanical execution fell well short of its potential. Renaissance Accademia marked my first experience working with 2D art assets (sprites, backgrounds, and animation) within Unity, and the results reflected that inexperience. The game simply looked poor in motion, lacking cohesion between the visual elements. I also failed in my role as a team lead by not providing clear specifications or technical guidelines to the artists. This lack of direction created inconsistencies across the art and animation that were difficult to resolve later in development. Even more detrimental was the near-total absence of feedback during gameplay. Player deaths, for instance, weren’t handled through a proper scene reset; instead, the player’s position was simply teleported back to the start. Because movement inputs persisted through death, players would often respawn mid-motion, immediately losing additional lives without understanding why. This created confusion, frustration, and a general sense of disconnection from the game’s mechanics.</p><p>The project was also constrained by the parameters of its original assignment. We were required to build only three levels, with the first two adhering to pre-defined layouts supplied by the course. This restriction made it difficult to explore the game’s more creative or narrative-driven possibilities. Under different circumstances, Renaissance Accademia could have evolved into a richer, more atmospheric experience, one that emphasized exploration, environmental storytelling, and a sense of discovery as players pieced together the world’s history through the abilities they unlocked. With more polished audiovisual design, tighter feedback systems, and freedom to iterate on the core concept, the game could have been a genuinely engaging exploration-platformer rather than a poor prototype for a great concept.</p>"
-      },
-      {
-        "title": "Castle Protector",
-        "cover": ["images/image21.png"],
-        "images": [],
-        "itch": "https://megamelone.itch.io/castle-protector",
-        "videos":[
-                 "https://youtu.be/KPYKzzLkPpE"
-                 ],
-        "blurb": "<p>Protect your castle from the Shape Army in this mentally strenuating Endless Runner! The only thing that can defeat them are custom made bullets designed to destroy enemies of their same shape. If you shoot an enemy with the wrong shape, the enemy will get stronger and you will lose a life.</p><p> Made for the University of the Art London’s BA Games Design course in my first year, this is the first game I ever made from scratch all on my own, and as a result, it’s certainly rough in several areas.</p>",
-        "postmortem": "<p>My goal with this project was to create an endless runner that pushed back against the genre’s typical reliance on relaxed, flow-state play. Instead of the usual rhythmic, meditative pacing, I wanted something mentally straining, a game that constantly demanded the player’s focus. To achieve that, I designed a system where players had to continuously analyze the shapes approaching them, assess their sizes, and respond with the correct inputs. In that sense, the core concept was a success: the game achieved its intended intensity, keeping players in a constant state of active decision-making rather than passive reaction.</p><p>However, the game’s feel fell short of what it needed to sustain that intensity. It was often unclear to players when they had taken damage, when their attacks landed successfully, or even how well they were performing overall. The lack of feedback, both visual and tactile, made each interaction feel flat and unresponsive. The death screen appeared too suddenly, breaking the rhythm rather than punctuating it. As a result, the experience lacked the satisfaction and clarity that make high-pressure gameplay enjoyable.</p><p>Looking back, there are a number of changes that would have significantly improved the experience. Visual feedback should have been a priority: particle effects and subtle screenshake could have reinforced successful hits, while a reflected projectile animation would have clearly communicated when players attacked with the wrong shape. Enemies needed visible health indicators, perhaps a simple number displayed in their core, to help players understand progress and manage pacing. Likewise, the castle that the player defends could have visually deteriorated as health was lost, adding a layer of contextual urgency. Input design also contributed to the frustration; firing bullets via individual button presses led to overstimulation and misinputs. A cycling mechanic for switching projectile shapes would have been far more intuitive. Enemy difficulty should have ramped up gradually, with tougher enemies introduced as the player’s score increased. Finally, an animation upon defeat and a proper audio layer would have gone a long way in giving the game a sense of impact and closure.</p><p>While the concept succeeded in subverting endless runner conventions, the execution lacked the tactile feedback necessary to make that subversion enjoyable. With stronger game feel, pacing, and clarity, the design could better deliver on its unique premise, transforming stress into satisfaction rather than confusion.</p>"
-      }
-    ]
-  }
-  </script>
-
-  <script>
-    const $ = (s, r=document) => r.querySelector(s);
-    const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
-
-    const data = JSON.parse(document.getElementById('portfolio-data').textContent);
-    const gamesGrid = document.getElementById('games-grid');
-
-    const gameCard = (g) => {
-      const img = `
-        <a href="${g.itch || '#'}" ${g.itch ? 'target="_blank" rel="noopener noreferrer"' : ''} aria-label="Open ${g.title} on itch.io">
-          <img src="${g.cover}" alt="${g.title} cover" loading="lazy" width="1200" height="675" />
-        </a>`;
-
-       const ytEmbed = (u) => {
-          if (!u) return '';
-          try {
-            const url = new URL(u);
-            // youtu.be/<id>
-            if (url.hostname.includes('youtu.be')) {
-              return `https://www.youtube-nocookie.com/embed/${url.pathname.slice(1)}`;
-            }
-            // youtube.com/watch?v=<id>
-            if (url.searchParams.has('v')) {
-              return `https://www.youtube-nocookie.com/embed/${url.searchParams.get('v')}`;
-            }
-            // already /embed/<id>
-            if (url.pathname.includes('/embed/')) {
-              const id = url.pathname.split('/embed/')[1].split(/[?&]/)[0];
-              return `https://www.youtube-nocookie.com/embed/${id}`;
-            }
-            // fallback: try last path segment
-            const last = url.pathname.split('/').filter(Boolean).pop();
-            return last ? `https://www.youtube-nocookie.com/embed/${last}` : u;
-          } catch {
-            return u;
-          }
-        };
-
-      return `
-        <article class="card game ${g.featured ? 'featured' : ''}" role="listitem" aria-labelledby="${cssid(g.title)}-h">
-          ${g.tools?.length ? `<span class="badge">${g.tools.join(' · ')}</span>` : ''}
-          <div class="media">
-            ${img}
-          </div>
-          <div class="content">
-           <h3 id="${cssid(g.title)}-h" style="margin:.2rem 0 .2rem;">${g.title}</h3>
-            <p class="prose">${g.blurb || ''}</p>
-            ${g.images?.length ? gallery(g.images) : ''}
-            ${g.videos?.length
-              ? g.videos.map(v => `
-                  <iframe
-                    class="iframe"
-                    src="${ytEmbed(v)}"
-                    title="${g.title} video"
-                    loading="lazy"
-                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen
-                  ></iframe>
-                `).join('')
-              : ''}
-            ${g.itch ? `<p><a class="btn" href="${g.itch}" target="_blank" rel="noopener noreferrer">Itch.io Page ↗</a></p>` : ''}
-            <details>
-              <summary>Post-mortem</summary>
-              <div class="prose"><p>${g.postmortem || ''}</p></div>
-            </details>
-          </div>
-        </article>`;
-    };
-
-    const cssid = (t) => t.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-    const gallery = (imgs) => `
-      <div class="grid" style="grid-template-columns: repeat(6, 1fr); gap:.6rem;">
-        ${imgs.map(u => `<div class="card" style="grid-column: span 3; padding:.4rem; background:#10131a;"><img src="${u}" alt="Screenshot" loading="lazy" width="1200" height="675"></div>`).join('')}
-      </div>`;
-
-    // No itch widget iframe to avoid intermittent embed errors.
-    gamesGrid.innerHTML = data.games.map(gameCard).join('');
-
-    const writingGrid = document.getElementById('writing-grid');
-    const writingCard = (w) => `
-      <article class="card writing" role="listitem">
-        <div class="content">
-          <h3 style="margin:.2rem 0;">${w.title}</h3>
-          <div class="meta">${w.type} · ${w.year}</div>
-          <p class="prose">${w.summary}</p>
-          <p style="display:flex; gap:.8rem; flex-wrap:wrap;">
-            ${w.link ? `<a class="chip" href="${w.link}" target="_blank" rel="noopener noreferrer">Read</a>` : ''}
-          </p>
-        </div>
-      </article>`;
-    writingGrid.innerHTML = data.writing.map(writingCard).join('');
-
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-
-  <!-- Example JSON-LD for one game (adjust values) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "VideoGame",
-    "name": "Echo Circuit",
-    "author": {"@type": "Person", "name": "David"},
-    "image": ["https://example.com/echo-circuit-cover.jpg"],
-    "url": "https://example.com#echo-circuit",
-    "genre": ["Puzzle", "Rhythm"],
-    "gamePlatform": ["Windows"],
-    "description": "A rhythm-puzzle prototype where routes are composed like music.",
-    "trailer": {"@type": "VideoObject", "name": "Echo Circuit Trailer", "embedUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"}
-  }
-  </script>
+    </div>
+  </div>
 </body>
 </html>
