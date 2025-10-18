@@ -38,6 +38,25 @@
     .hero{padding:3rem 0 1.5rem}
     .hero h1{font-size:clamp(2rem,4vw + .5rem,3.2rem);line-height:1.08;margin:0 0 .6rem}
     .hero p{color:var(--muted);max-width:75ch}
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero-image {
+      width: 100%;
+      border-radius: var(--radius);
+    }
+
+    /* Mobile-friendly stacking */
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
     .card{
       background:var(--card);
