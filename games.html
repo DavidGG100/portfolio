@@ -134,6 +134,22 @@
       pointer-events: auto;
     }
 
+    .close-panel-btn {
+      margin-top: 1.5rem;
+      background: #222a38;
+      border: 1px solid #30394c;
+      padding: .5rem 1rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-size: .9rem;
+      color: var(--muted);
+    }
+
+.close-panel-btn:hover {
+  background: #2c3447;
+}
+
+
     .game-collapsed {
       display: flex;
       align-items: center;
@@ -193,7 +209,7 @@
   <main id="main" class="wrap" role="main">
     <section class="hero">
       <div>
-        <h1>David Gadelkarim's Game Design Portfolio</h1>
+        <h1>David Gadelkarim's Games Portfolio</h1>
         <p>Below you’ll find a curated selection of every single games project I've ever worked on (22 games total), paired with thorough post-mortems and links to videos and playable builds.</p>
       </div>
       <div class="card hero-media" aria-hidden="true">
@@ -536,31 +552,51 @@
         </div>`
       ).join("");
 
-      expanded.innerHTML = `
-        <div class="content">
-          <h3>${game.title}</h3>
-          <div class="media">${mediaGallery}</div>
-          <p class="prose">${game.blurb || ""}</p>
+    expanded.innerHTML = `
+      <div class="content">
+        <h3>${game.title}</h3>
 
-          ${videoEmbeds}
+        <div class="media">${mediaGallery}</div>
+        <p class="prose">${game.blurb || ""}</p>
 
-          ${game.postmortem ? `
-          <details>
-            <summary>Postmortem <span style="font-size:0.85rem; color:var(--muted);">(Read More)</span></summary>
-            <div class="prose">${game.postmortem}</div>
-          </details>` : ""}
-        </div>
-      `;
+        ${videoEmbeds}
+
+        ${game.postmortem ? `
+        <details>
+          <summary>
+            Postmortem 
+            <span style="font-size:0.85rem; color:var(--muted);">(Read More)</span>
+          </summary>
+          <div class="prose">${game.postmortem}</div>
+        </details>` : ""}
+
+        <button class="close-panel-btn">Close Panel ✕</button>
+      </div>
+    `;
 
       /* ---- CLICK HANDLING ---- */
       collapsed.addEventListener("click", () => {
         wrapper.classList.toggle("open");
       });
 
-      wrapper.appendChild(collapsed);
-      wrapper.appendChild(expanded);
-      grid.appendChild(wrapper);
-    });
+    wrapper.appendChild(collapsed);
+    wrapper.appendChild(expanded);
+
+    /* ---- FINAL STEP (SAFE CLOSE BUTTON HANDLER) ---- */
+    const closeBtn = expanded.querySelector(".close-panel-btn");
+    if (closeBtn) {
+      closeBtn.addEventListener("click", (e) => {
+        e.stopPropagation();                  // prevent re-opening
+        wrapper.classList.remove("open");     // close panel
+        wrapper.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      });
+    }
+
+    grid.appendChild(wrapper);
+  });
     </script>
 
 
