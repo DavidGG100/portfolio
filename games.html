@@ -134,6 +134,47 @@
       pointer-events: auto;
     }
 
+    .game-collapsed {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: .8rem 1rem;
+      background: var(--card);
+      border: 1px solid #21283a;
+      border-radius: var(--radius);
+      cursor: pointer;
+    }
+
+    .game-collapsed img {
+      width: 120px;
+      height: auto;
+      border-radius: calc(var(--radius) - 6px);
+    }
+
+    .game-collapsed-title {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .game-collapsed-readmore {
+      color: var(--muted);
+      font-size: .85rem;
+      margin-left: .5rem;
+    }
+
+    .game-expanded {
+      display: none;
+      margin-top: .5rem;
+    }
+
+    .game-wrapper.open .game-expanded {
+      display: block;
+    }
+
+    .game-wrapper {
+      grid-column: 1 / -1; /* full width */
+    }
+
   </style>
 </head>
 <body>
@@ -197,7 +238,7 @@
   {
     "games": [
       {
-        "title": "The Red Rain Case (Open Demo Releasing November 27, 2025)",
+        "title": "The Red Rain Case (In Development)",
         "featured": true,
         "cover": "images/image18.png",
         "images": 
@@ -212,7 +253,7 @@
                  "https://youtu.be/cHQM97LTKH0"
                  ],
         "blurb": "<p>In The Red Rain Case, players control a cosmic entity that exists as a divine anthropomorphisation of Truth itself. This entity takes the shape of a Detective who has full dominion over the flow of time. Whenever the fog of mistruth reaches a breaking point, the gears of time shatter, Red Rain falls from the sky, and this Detective appears, with a single-minded determination to find the truth.</p><p>Due to the Detective’s existence as Truth personified, they are unable to discern between human shapes, voices, and smell, to be as objective as possible. Instead, they derive the truth by taking individual beings out of the flow of time, and rewinding their relevant actions forwards and backwards.</p><p>The world the player explores is one where time is immaterial, and as a result, the figures they see in the world are from several different events in time, all converging in this one moment. Players have to figure out what time frame every character is from, and the order of events within each respective time frame. They solve this solely through analyzing the pasts and futures of these individual characters, paying close attention to positioning and action.</p><p>This is my final MA Games Design project, as well as my single most ambitious work. It contains a dynamic music track as well, with different layers of the music representing the different timeframes. The layers increase or decrease in volume depending on how close or far the player is in terms of solving the layer’s respective time frame.</p><p>I fully intended to have this game be both a showcase piece, and a commercial release. On the one hand, I’m currently working on creating an alternative controller in the shape of a pocket watch that players use to control time within the game, and on the other, I plan on massively expanding the game’s scope, and having it published. This project represents the fruits of all my labour as a game designer.</p>",
-        "postmortem": "Will become available when the university submission version of it is complete."
+        "postmortem": "Will become available soon."
       },
       {
         "title": "Soup for The Consumer",
@@ -464,83 +505,64 @@
   </script>
 
   <script>
-    const $ = (s, r=document) => r.querySelector(s);
-    const $$ = (s, r=document) => Array.from(r.querySelectorAll(s));
+    const data = JSON.parse(document.getElementById("portfolio-data").textContent);
+    const grid = document.getElementById("games-grid");
 
-    const data = JSON.parse(document.getElementById('portfolio-data').textContent);
-    const gamesGrid = document.getElementById('games-grid');
+    data.games.forEach(game => {
 
-    const gameCard = (g) => {
-      const img = `<img src="${g.cover}" alt="${g.title} cover" loading="lazy" width="1200" height="675" />`;
+      const wrapper = document.createElement("div");
+      wrapper.className = "game-wrapper";
 
-       const ytEmbed = (u) => {
-          if (!u) return '';
-          try {
-            const url = new URL(u);
-            // youtu.be/<id>
-            if (url.hostname.includes('youtu.be')) {
-              return `https://www.youtube-nocookie.com/embed/${url.pathname.slice(1)}`;
-            }
-            // youtube.com/watch?v=<id>
-            if (url.searchParams.has('v')) {
-              return `https://www.youtube-nocookie.com/embed/${url.searchParams.get('v')}`;
-            }
-            // already /embed/<id>
-            if (url.pathname.includes('/embed/')) {
-              const id = url.pathname.split('/embed/')[1].split(/[?&]/)[0];
-              return `https://www.youtube-nocookie.com/embed/${id}`;
-            }
-            // fallback: try last path segment
-            const last = url.pathname.split('/').filter(Boolean).pop();
-            return last ? `https://www.youtube-nocookie.com/embed/${last}` : u;
-          } catch {
-            return u;
-          }
-        };
+      /* ---- COLLAPSED PREVIEW ---- */
+      const collapsed = document.createElement("div");
+      collapsed.className = "game-collapsed";
+      collapsed.innerHTML = `
+        <img src="${game.cover}" alt="${game.title}">
+        <div class="game-collapsed-title">${game.title}</div>
+        <div class="game-collapsed-readmore">(Read More)</div>
+      `;
 
-      return `
-        <article class="card game ${g.featured ? 'featured' : ''}" role="listitem" aria-labelledby="${cssid(g.title)}-h">
-          ${g.tools?.length ? `<span class="badge">${g.tools.join(' · ')}</span>` : ''}
-          <div class="media">
-            ${img}
-          </div>
-          <div class="content">
-           <h3 id="${cssid(g.title)}-h" style="margin:.2rem 0 .2rem;">${g.title}</h3>
-            <div class="prose">${g.blurb || ''}</div>
-            ${g.images?.length ? gallery(g.images) : ''}
-            ${g.videos?.length
-              ? g.videos.map(v => `
-                  <iframe
-                    class="iframe"
-                    src="${ytEmbed(v)}"
-                    title="${g.title} video"
-                    loading="lazy"
-                    allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen
-                  ></iframe>
-                `).join('')
-              : ''}
-            ${g.itch ? `<p><a class="btn" href="${g.itch}" target="_blank" rel="noopener noreferrer">Itch.io Page ↗</a></p>` : ''}
-            <details>
-              <summary>Project Post-mortem (click to expand)</summary>
-              <div class="prose"><p>${g.postmortem || ''}</p></div>
-            </details>
-          </div>
-        </article>`;
-    };
+      /* ---- EXPANDED FULL PANEL ---- */
+      const expanded = document.createElement("div");
+      expanded.className = "game-expanded card";
 
-    const cssid = (t) => t.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-    const gallery = (imgs) => `
-      <div class="grid" style="grid-template-columns: repeat(6, 1fr); gap:.6rem;">
-        ${imgs.map(u => `<div class="card" style="grid-column: span 3; padding:.4rem; background:#10131a;"><img src="${u}" alt="Screenshot" loading="lazy" width="1200" height="675"></div>`).join('')}
-      </div>`;
+      const mediaGallery = game.images.map(img => 
+        `<img src="${img}" style="margin-bottom:.5rem;">`
+      ).join("");
 
-    // No itch widget iframe to avoid intermittent embed errors.
-    gamesGrid.innerHTML = data.games.map(gameCard).join('');
+      const videoEmbeds = game.videos.map(v => `
+        <div style="margin-top:1rem;">
+          <iframe class="iframe" src="${v.replace("youtu.be/", "www.youtube.com/embed/")}" allowfullscreen></iframe>
+        </div>`
+      ).join("");
 
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+      expanded.innerHTML = `
+        <div class="content">
+          <h3>${game.title}</h3>
+          <div class="media">${mediaGallery}</div>
+          <p class="prose">${game.blurb || ""}</p>
+
+          ${videoEmbeds}
+
+          ${game.postmortem ? `
+          <details>
+            <summary>Postmortem <span style="font-size:0.85rem; color:var(--muted);">(Read More)</span></summary>
+            <div class="prose">${game.postmortem}</div>
+          </details>` : ""}
+        </div>
+      `;
+
+      /* ---- CLICK HANDLING ---- */
+      collapsed.addEventListener("click", () => {
+        wrapper.classList.toggle("open");
+      });
+
+      wrapper.appendChild(collapsed);
+      wrapper.appendChild(expanded);
+      grid.appendChild(wrapper);
+    });
+    </script>
+
 
   <button id="backToTop" aria-label="Back to top">↑ Back to Top</button>
 
