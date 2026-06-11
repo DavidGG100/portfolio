@@ -1,72 +1,398 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>David Gadelkarim: About Me</title>
-  <meta name="description" content="About David Gadelkarim, 23 year old Game Designer based in London, born in Alexandria, Egypt." />
+  <meta name="description" content="A panel-based About Me presentation for game designer David Gadelkarim." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap" rel="stylesheet">
+
   <style>
-    :root { --bg:#0f1115; --text:#e6e7eb; --muted:#9aa1ad; --card:#171a21; --accent:#7dd6ff; --radius:18px; --maxw:1200px; }
-    html,body{height:100%}
-    body{
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans";
-      background:radial-gradient(1200px 600px at 50% -20%,#162033 0%,#0f1115 60%);
-      color:var(--text);margin:0;line-height:1.5
+    :root {
+      --bg: #120f17;
+      --bg-glow: #3a1f3f;
+      --bg-glow-soft: #28172c;
+
+      --surface: #1d1723;
+      --surface-soft: #15111a;
+      --surface-strong: #2b2032;
+      --surface-hover: #35243a;
+      --surface-skip: #fff1e8;
+
+      --text: #fff2ea;
+      --text-inverse: #120f17;
+      --muted: #d8bdc8;
+      --muted-strong: #f0d5c7;
+
+      --accent: #ff8a70;
+      --accent-strong: #ffc46b;
+      --accent-soft: #4a2a3f;
+
+      --border: #5a3a5f;
+      --border-soft: #3a2a40;
+      --border-strong: #ff8a70;
+
+      --shadow-soft: rgba(0, 0, 0, 0.36);
+      --shadow-deep: rgba(0, 0, 0, 0.48);
+      --shadow-glow: rgba(255, 138, 112, 0.22);
+      --shadow-glow-strong: rgba(255, 196, 107, 0.32);
+
+      --transparent: transparent;
+      --radius: 18px;
+      --maxw: 1200px;
     }
-    a{color:var(--text);text-underline-offset:2px}
-    .wrap{width:min(96vw,var(--maxw));margin:0 auto}
-    header{position:sticky;top:0;backdrop-filter:blur(8px);background:color-mix(in srgb,var(--bg) 80%,transparent);z-index:40;border-bottom:1px solid #1f2533}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
-    .nav a.brand{font-weight:800;letter-spacing:.2px;text-decoration:none}
-    .nav .links{display:flex;gap:1rem}
-    .nav .links a{text-decoration:none;opacity:.85}
-    .nav .links a:hover{opacity:1}
 
-    .hero{display:grid;grid-template-columns:1fr .8fr;gap:2rem;padding:3rem 0 1.5rem;align-items:center}
-    .hero h1{font-size:clamp(2rem,4vw + .5rem,3.2rem);line-height:1.08;margin:0 0 .6rem}
-    .hero p{color:var(--muted);max-width:75ch}
-    .card{background:var(--card);border:1px solid #21283a;border-radius:var(--radius);padding:1rem}
-    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
-    .col-7{grid-column:span 7}
-    .col-5{grid-column:span 5}
-    @media (max-width:900px){.hero{grid-template-columns:1fr}.col-7,.col-5{grid-column:1/-1}}
-    footer{padding:3rem 0 4rem;color:var(--muted)}
+    * { box-sizing: border-box; }
 
-    #backToTop 
-    {
-      position: fixed;
-      bottom: 2rem;
-      right: 2rem;
-      background: var(--card);
+    html,
+    body {
+      min-height: 100%;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      background:
+        radial-gradient(1200px 600px at 50% -20%, var(--bg-glow) 0%, var(--bg-glow-soft) 38%, var(--bg) 70%);
       color: var(--text);
-      border: 1px solid #2a3650;
-      border-radius: 999px;
-      padding: 0.7rem 1.2rem;
-      font-weight: 600;
-      cursor: pointer;
-      box-shadow: 0 0 12px rgba(125, 214, 255, 0.3);
-      transition: all 0.3s ease;
-      opacity: 0;
-      pointer-events: none;
+      line-height: 1.5;
     }
 
-    #backToTop:hover {
-      box-shadow: 0 0 20px rgba(125, 214, 255, 0.6);
-      transform: translateY(-2px);
+    a {
+      color: var(--text);
+      text-underline-offset: 2px;
     }
 
-    #backToTop.visible {
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .wrap {
+      width: min(94vw, var(--maxw));
+      margin: 0 auto;
+    }
+
+    .skip {
+      position: absolute;
+      left: -999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    .skip:focus {
+      left: 1rem;
+      top: 1rem;
+      width: auto;
+      height: auto;
+      background: var(--surface-skip);
+      color: var(--text-inverse);
+      padding: .5rem .75rem;
+      border-radius: .5rem;
+      z-index: 99;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(8px);
+      background: color-mix(in srgb, var(--bg) 84%, var(--transparent));
+      z-index: 40;
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .9rem 0;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: .2px;
+      text-decoration: none;
+    }
+
+    .links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .links a {
+      text-decoration: none;
+      opacity: .86;
+      transition: color .2s ease, opacity .2s ease;
+    }
+
+    .links a:hover,
+    .links a[aria-current="page"] {
       opacity: 1;
-      pointer-events: auto;
+      color: var(--accent-strong);
     }
 
+    main {
+      min-height: calc(100vh - 64px);
+      display: grid;
+      align-items: center;
+      padding: 1.5rem 0 2rem;
+    }
+
+    .presentation-shell {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .arrow {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-size: 1.65rem;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 0 14px var(--shadow-glow);
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+    }
+
+    .arrow:hover,
+    .arrow:focus-visible {
+      background: var(--surface-hover);
+      border-color: var(--border-strong);
+      box-shadow: 0 0 24px var(--shadow-glow-strong);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .slide {
+      min-height: min(78vh, 760px);
+      background: linear-gradient(180deg, var(--surface-strong), var(--surface));
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 8px);
+      padding: clamp(1.15rem, 2.4vw, 2rem);
+      box-shadow:
+        0 22px 60px var(--shadow-deep),
+        0 0 34px var(--shadow-glow);
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 1rem;
+      overflow: hidden;
+    }
+
+    .slide-header {
+      border-bottom: 1px solid var(--border-soft);
+      padding-bottom: .85rem;
+    }
+
+    .slide-topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 1rem;
+      margin-bottom: .55rem;
+    }
+
+    .section-label,
+    .counter {
+      margin: 0;
+      color: var(--accent-strong);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      font-size: clamp(.85rem, 1.1vw, 1rem);
+      line-height: 1.2;
+    }
+
+    .counter {
+      white-space: nowrap;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4.2vw, 4.9rem);
+      line-height: .98;
+      margin: 0;
+      text-wrap: balance;
+    }
+
+    .slide-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(260px, .92fr);
+      gap: 1rem;
+      min-height: 0;
+      align-items: stretch;
+    }
+
+    .slide-body.text-only {
+      grid-template-columns: 1fr;
+    }
+
+    .text-panel,
+    .image-panel,
+    .contact-panel {
+      background: var(--surface-soft);
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius);
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--text) 3%, var(--transparent));
+      min-height: 0;
+    }
+
+    .text-panel,
+    .contact-panel {
+      padding: clamp(1rem, 2.2vw, 2rem);
+      display: grid;
+      align-content: center;
+      gap: 1rem;
+    }
+
+    .image-panel {
+      display: grid;
+      place-items: center;
+      padding: .8rem;
+      overflow: hidden;
+    }
+
+    .image-panel img {
+      width: 100%;
+      height: 100%;
+      max-height: 520px;
+      object-fit: contain;
+      border-radius: calc(var(--radius) - 7px);
+      background: var(--surface-soft);
+    }
+
+    .body-text {
+      margin: 0;
+      color: var(--text);
+      font-size: clamp(1.05rem, 1.65vw, 1.55rem);
+      line-height: 1.42;
+      max-width: 72ch;
+    }
+
+    .body-text.small {
+      font-size: clamp(.98rem, 1.25vw, 1.18rem);
+      line-height: 1.55;
+    }
+
+    .body-list {
+      margin: 0;
+      padding-left: 1.2rem;
+      color: var(--text);
+      font-size: clamp(1rem, 1.45vw, 1.32rem);
+      line-height: 1.5;
+      display: grid;
+      gap: .85rem;
+    }
+
+    .highlight {
+      color: var(--muted-strong);
+      font-weight: 800;
+    }
+
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .progress {
+      height: .45rem;
+      flex: 1;
+      background: var(--accent-soft);
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid var(--border-soft);
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--accent), var(--accent-strong));
+      border-radius: inherit;
+      transition: width .25s ease;
+    }
+
+    .mobile-controls {
+      display: none;
+      gap: .8rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 900px) {
+      main {
+        align-items: start;
+      }
+
+      .presentation-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .desktop-arrow {
+        display: none;
+      }
+
+      .mobile-controls {
+        display: flex;
+      }
+
+      .slide {
+        min-height: auto;
+        overflow: visible;
+      }
+
+      .slide-body {
+        grid-template-columns: 1fr;
+      }
+
+      .image-panel img {
+        max-height: 320px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .links {
+        justify-content: flex-start;
+      }
+
+      .slide-topline {
+        flex-direction: column;
+      }
+
+      h1 {
+        font-size: clamp(1.75rem, 12vw, 3.25rem);
+      }
+
+      .arrow {
+        width: 2.75rem;
+        height: 2.75rem;
+      }
+    }
   </style>
 </head>
+
 <body>
+  <a class="skip" href="#main">Skip to content</a>
+
   <header>
     <div class="wrap nav" role="navigation" aria-label="Primary">
       <a class="brand" href="index.html">David Gadelkarim: Game Designer</a>
@@ -78,118 +404,208 @@
     </div>
   </header>
 
-  <main class="wrap">
-    <!-- HERO: brief personal intro + photo -->
-    <section class="hero">
-      <div>
-        <h1>About Me</h1>
-        <p>
-          Learn all about my upbringing, hobbies, passions, what I love about games and my 50 favorite video games!
-        </p>
-      </div>
-      <div class="card" aria-hidden="true">
-        <!-- Swap with a headshot or any personal photo -->
-        <img src="images/image25.jpg" alt="Photo/collage placeholder" style="width:100%;border-radius:12px" loading="lazy">
-      </div>
+  <main id="main" class="wrap">
+    <section class="presentation-shell" aria-label="About Me presentation carousel">
+      <button class="arrow desktop-arrow" type="button" id="previousSlide" aria-label="Previous slide">‹</button>
+
+      <article class="slide" aria-live="polite">
+        <div class="slide-header">
+          <div class="slide-topline">
+            <p class="section-label" id="slideLabel"></p>
+            <div class="counter" id="slideCounter"></div>
+          </div>
+          <h1 id="slideTitle"></h1>
+        </div>
+
+        <div class="slide-body" id="slideBody"></div>
+
+        <div class="slide-footer">
+          <div class="progress" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
+          <span id="footerHint">Use ← / → or A / D</span>
+        </div>
+
+        <div class="mobile-controls" aria-label="Mobile presentation controls">
+          <button class="arrow" type="button" id="previousSlideMobile" aria-label="Previous slide">‹</button>
+          <button class="arrow" type="button" id="nextSlideMobile" aria-label="Next slide">›</button>
+        </div>
+      </article>
+
+      <button class="arrow desktop-arrow" type="button" id="nextSlide" aria-label="Next slide">›</button>
     </section>
-
-    <!-- TWO-COLUMN PERSONAL SECTIONS -->
-    <section class="grid" style="margin-top:1rem">
-      <!-- LEFT COLUMN: Upbringing + What I love about games -->
-      <div class="card col-7">
-        <h2 style="margin:.2rem 0 1rem">Upbringing</h2>
-        <p style="color:var(--muted)">
-          A lot of my life has been defined by an amalgamation of cultural influence: being born in my home country of Egypt, living most of my formative life in Kuwait, spending all my school years studying in an American school, acquiring a Hungarian passport, and going to college in the UK. I’m perhaps the picture definition of a 3rd Culture Kid, and while I do sometimes feel separated from my culture of origin in that regard, I also believe this unique upbringing resulted in me being significantly more worldly, understanding, and generally empathetic. 
-        </p>
-
-        <p style="color:var(--muted)">
-        I have always been attached to the arts, supplemented by a fascination with experimental and theoretical sciences, physics in particular. Due to the dissonant nature of those two paths, I was often left unsure of what my role would be in the future. I initially spent most of my life thinking I was going to grow up to be a musician, however, part of me also wanted to pursue computer science or even theoretical physics. 
-        </p>
-
-        <p style="color:var(--muted)">
-        It was only after playing Chrono Trigger for the first time in my last year of high-school that something clicked. I spent that final year playing through a massive library of games, ranging in genre and era. I was absolutely enraptured by everything regarding this medium of art, it was the dream consolidation between arts and sciences that I have always dreamed of pursuing, and I am now in a position where I have dedicated my life to the games medium, and will continue to do so. 
-        </p>
-
-
-        <h2 style="margin:1.2rem 0 .6rem">What I Love About Games</h2>
-        <p style="color:var(--muted)">
-        I earnestly believe games to be the premier form of artistic expression, both for the creator and audience. There is no artistic medium more malleable and capable of such a grand variety of innovation and creativity. That also extends to audiences, as there are as many audiences as there are games in existence, with everyone approaching the artform in different means.   
-        </p>
-        <p style="color:var(--muted)">
-        Due to how personal the advent of interactivity is, everyone will engage with games differently, and everyone will desire different things out of their game experiences: social connection, competitiveness, narrative, skill expression,  relaxation and stress-relief, a sense of achievement, self-expression, curiosity, autonomy, cultural expression, nostalgia, and so much more.   
-        </p>
-        <p style="color:var(--muted)">
-        Game Designers have the profound role of creating these deeply personal and intimate experiences for our audiences, and that’s the core of what makes Games so beautiful, and why I love creating and experiencing art within this vast medium. 
-        </p>
-      </div>
-
-      <!-- RIGHT COLUMN: Hobbies & Passions -->
-      <div class="card col-5">
-        <h2 style="margin:.2rem 0 1rem">Hobbies & Passions</h2>
-        <ul style="margin:0 0 .6rem 1.2rem;color:var(--muted)">
-          <li>I’m of course incredibly passionate about playing and studying games, with my favorite genres being narrative, puzzle, platforming, action, turn-based RPGs, and detective/information games, with a special love for video games that approach the medium in an experimental manner.</li> 
-          <br>
-          <li>I adore exploring the less formal sides of the industry, specifically through participating in game jams and more importantly playing other entries, providing feedback, and generally communicating with other participants. I’m also quite fond of attending games exhibitions in all shapes and forms, and university exhibitions even more so, as seeing students be creative is a very fulfilling feeling to me.</li>
-          <br>
-          <li>I’ve been playing musical instruments since I was 7 years old (I know how to proficiently play the Piano, Drums, Guitar, Bass, Trumpet, and French Horn)</li>
-          <br>
-          <li>My musical abilities have resulted in several cool opportunities, such as playing French Horn as a guest on stage with a travelling orchestra in Kuwait, participating in the orchestra pit in several local musical productions, leading a jazz combo (including several public performances and some studio recordings), and even participating in a private performance for members of the Kuwaiti government.</li>
-          <br>
-          <li>I love writing in all forms, whether it be analysis or short stories. I was heavily inspired by my high-school English teacher, who continuously encouraged my pursuit of writing in this manner. Most of it is extremely personal, but a few examples are available in this portfolio.</li>
-          <br>
-          <li>Lightning round: I enjoy manga, jazz music, longform podcasts, math and logic puzzles, watching sitcoms, youtube videos on theoretical physics, tabletop RPGs, indie devlog content, professional wrestling, eating a variety of cultural foods, and travelling!</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- FAVORITE GAMES: single collage image + descriptor -->
-    <section style="margin-top:2rem; text-align:center;">
-      <h2>Favorite Games (Top 50)</h2>
-      <h4>By 50 I of course mean 49 because 50 is not a perfect square and thus not conducive to a collage in this manner!</h4>
-
-      <img src="images/image23.png"
-           alt="Collage of my 50 favorite games"
-           style="width:100%; height:auto; display:block; margin:1rem auto; border:none; background:none;">
-    </section>
-    
-    <section id="contact" aria-labelledby="contact-h">
-      <h1 id="contact-h">Contact</h1>
-      <p class="prose">Please feel free to reach out to me, even if it's just for a simple friendly chat!</p>
-      <p> Emails: <a href="mailto:d.gadelkarim0320201@arts.ac.uk">d.gadelkarim0320201@arts.ac.uk</a> and <a href="mailto:davidazmy02@gmail.com">davidazmy02@gmail.com</a>.</p>
-      <p> Other links: <a href="https://linktr.ee/megamelone" target="_blank" rel="noopener noreferrer">Linktree</a>, 
-      <a href="https://www.linkedin.com/in/david-gadelkarim-403b91279/" target="_blank" rel="noopener noreferrer">LinkedIn</a>, 
-      <a href="https://megamelone.itch.io/" target="_blank" rel="noopener noreferrer">Itch.io</a>, 
-      <a href="https://github.com/DavidGG100" target="_blank" rel="noopener noreferrer">Github</a>, 
-      <a href="https://bsky.app/profile/megamelone.bsky.social" target="_blank" rel="noopener noreferrer">BlueSky</a>, 
-      <a href="https://backloggd.com/u/Mel/" target="_blank" rel="noopener noreferrer">Backloggd</a>
-      </p>
-    </section>
-
   </main>
 
-  <footer class="wrap">
-    <p>© <span id="year"></span> David Gadelkarim.</p>
-  </footer>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-    <button id="backToTop" aria-label="Back to top">↑ Back to Top</button>
-
   <script>
-  const backToTopBtn = document.getElementById('backToTop');
+    const slides = [
+      {
+        label: "About Me",
+        title: "David Gadelkarim",
+        body: [
+          "Game Designer based in London, born in Alexandria, Egypt.",
+          "This little presentation covers my upbringing, creative roots, love of games, hobbies, and favourite games."
+        ],
+        image: "PortraitOfMe.jpg",
+        imageAlt: "Portrait of David Gadelkarim"
+      },
+      {
+        label: "Upbringing",
+        title: "A Third-Culture Background",
+        body: [
+          "A lot of my life has been defined by an amalgamation of cultural influence: being born in Egypt, living most of my formative life in Kuwait, spending my school years in an American school, acquiring a Hungarian passport, and going to college in the UK.",
+          "I sometimes feel separated from my culture of origin, but I also believe this upbringing made me more worldly, understanding, and empathetic."
+        ]
+      },
+      {
+        label: "Creative Roots",
+        title: "Arts, Science, and Uncertainty",
+        body: [
+          "I have always been attached to the arts, supplemented by a fascination with experimental and theoretical sciences, especially physics.",
+          "For a long time, I thought I would become a musician, while another part of me wanted to pursue computer science or theoretical physics."
+        ]
+      },
+      {
+        label: "The Click",
+        title: "Chrono Trigger Changed Everything",
+        body: [
+          "After playing Chrono Trigger for the first time in my last year of high school, something clicked.",
+          "Games became the dream consolidation between arts and sciences that I had always wanted to pursue, and I have now dedicated my life to the medium."
+        ]
+      },
+      {
+        label: "Games",
+        title: "Why I Love This Medium",
+        body: [
+          "I earnestly believe games to be the premier form of artistic expression, both for the creator and the audience.",
+          "There is no artistic medium more malleable, or capable of such a grand variety of innovation and creativity."
+        ]
+      },
+      {
+        label: "Interactivity",
+        title: "Everyone Plays Differently",
+        body: [
+          "Because interactivity is so personal, everyone engages with games differently and wants different things from them.",
+          "Games can offer social connection, competition, narrative, skill expression, relaxation, achievement, self-expression, curiosity, autonomy, cultural expression, nostalgia, and so much more."
+        ]
+      },
+      {
+        label: "Design Philosophy",
+        title: "Creating Personal Experiences",
+        body: [
+          "Game Designers have the profound role of creating deeply personal and intimate experiences for audiences.",
+          "That is the core of what makes games beautiful, and why I love creating and experiencing art within this vast medium."
+        ]
+      },
+      {
+        label: "Hobbies & Passions",
+        title: "Playing, Studying, and Sharing Games",
+        list: [
+          "Favourite genres: narrative, puzzle, platforming, action, turn-based RPGs, and detective/information games.",
+          "Special love for experimental games that approach the medium in unusual ways.",
+          "Deep interest in game jams, playing other entries, giving feedback, and speaking with other participants.",
+          "Fondness for exhibitions, especially university exhibitions where student creativity is on display."
+        ]
+      },
+      {
+        label: "Music",
+        title: "A Life of Instruments",
+        list: [
+          "I have played musical instruments since I was 7 years old.",
+          "I can proficiently play piano, drums, guitar, bass, trumpet, and French horn.",
+          "I have played French horn as a guest with a travelling orchestra in Kuwait, performed in orchestra pits for local musicals, led a jazz combo, recorded in studios, and performed privately for members of the Kuwaiti government."
+        ]
+      },
+      {
+        label: "Writing & Curiosities",
+        title: "Stories, Analysis, and Everything Else",
+        list: [
+          "I love writing in all forms, whether analysis or short stories.",
+          "A high-school English teacher heavily inspired and encouraged my writing.",
+          "Lightning round: manga, jazz, longform podcasts, math and logic puzzles, sitcoms, theoretical physics videos, tabletop RPGs, indie devlogs, professional wrestling, cultural foods, and travel."
+        ]
+      },
+      {
+        label: "Favourite Games",
+        title: "Top 50-ish",
+        body: [
+          "By 50 I of course mean 49, because 50 is not a perfect square and therefore not conducive to a collage in this manner."
+        ],
+        image: "images/image23.png",
+        imageAlt: "Collage of David Gadelkarim's favourite games"
+      },
+      {
+        label: "Contact",
+        title: "Reach Out Anytime",
+        contact: [
+          "davidazmy02@gmail.com",
+        ]
+      }
+    ];
 
-  // Show button when scrolled down
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-      backToTopBtn.classList.add('visible');
-    } else {
-      backToTopBtn.classList.remove('visible');
+    let currentIndex = 0;
+
+    const labelEl = document.getElementById('slideLabel');
+    const titleEl = document.getElementById('slideTitle');
+    const counterEl = document.getElementById('slideCounter');
+    const bodyEl = document.getElementById('slideBody');
+    const progressEl = document.getElementById('progressBar');
+
+    function renderSlide(index) {
+      const slide = slides[index];
+      labelEl.textContent = slide.label;
+      titleEl.textContent = slide.title;
+      counterEl.textContent = `${index + 1} / ${slides.length}`;
+      progressEl.style.width = `${((index + 1) / slides.length) * 100}%`;
+
+      const textMarkup = slide.list
+        ? `<div class="text-panel"><ul class="body-list">${slide.list.map(item => `<li>${item}</li>`).join('')}</ul></div>`
+        : slide.contact
+          ? `<div class="contact-panel">${slide.contact.map(item => `<p class="body-text">${item}</p>`).join('')}</div>`
+          : `<div class="text-panel">${slide.body.map((item, bodyIndex) => `<p class="body-text ${bodyIndex > 0 ? 'small' : ''}">${item}</p>`).join('')}</div>`;
+
+      const imageMarkup = slide.image
+        ? `<div class="image-panel"><img src="${slide.image}" alt="${slide.imageAlt}" loading="eager"></div>`
+        : '';
+
+      bodyEl.className = slide.image ? 'slide-body' : 'slide-body text-only';
+      bodyEl.innerHTML = `${textMarkup}${imageMarkup}`;
     }
-  });
 
-  // Scroll smoothly to top
-  backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-</script>
+    function goToSlide(direction) {
+      currentIndex = (currentIndex + direction + slides.length) % slides.length;
+      renderSlide(currentIndex);
+    }
 
+    document.getElementById('previousSlide').addEventListener('click', () => goToSlide(-1));
+    document.getElementById('nextSlide').addEventListener('click', () => goToSlide(1));
+    document.getElementById('previousSlideMobile').addEventListener('click', () => goToSlide(-1));
+    document.getElementById('nextSlideMobile').addEventListener('click', () => goToSlide(1));
+
+    document.addEventListener('keydown', (event) => {
+      const key = event.key.toLowerCase();
+      const activeTag = document.activeElement?.tagName?.toLowerCase();
+
+      if (activeTag === 'input' || activeTag === 'textarea' || activeTag === 'select') return;
+
+      if (key === 'arrowleft' || key === 'a') goToSlide(-1);
+      if (key === 'arrowright' || key === 'd') goToSlide(1);
+    });
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    document.addEventListener('touchstart', (event) => {
+      touchStartX = event.changedTouches[0].screenX;
+    });
+
+    document.addEventListener('touchend', (event) => {
+      touchEndX = event.changedTouches[0].screenX;
+      const swipeDistance = touchEndX - touchStartX;
+
+      if (Math.abs(swipeDistance) < 50) return;
+      if (swipeDistance > 0) goToSlide(-1);
+      if (swipeDistance < 0) goToSlide(1);
+    });
+
+    renderSlide(currentIndex);
+  </script>
 </body>
 </html>

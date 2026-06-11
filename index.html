@@ -1,10 +1,10 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>David Gadelkarim: Game Designer</title>
-    <meta name="description" content="Portfolio of David Gadelkarim: Game Designer and Developer based in London. Explore my games, writing, and design work.">
+  <meta name="description" content="Portfolio of David Gadelkarim: Game Designer and Developer based in London." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,164 +12,299 @@
 
   <style>
     :root {
-      --bg: #0f1115;
-      --text: #e6e7eb;
-      --muted: #9aa1ad;
-      --accent: #7dd6ff;
-      --card: #171a21;
+      --bg: #120f17;
+      --bg-glow: #3a1f3f;
+      --bg-glow-soft: #28172c;
+
+      --surface: #1d1723;
+      --surface-soft: #15111a;
+      --surface-strong: #2b2032;
+      --surface-hover: #35243a;
+      --surface-skip: #fff1e8;
+
+      --text: #fff2ea;
+      --text-inverse: #120f17;
+      --muted: #d8bdc8;
+      --muted-strong: #f0d5c7;
+
+      --accent: #ff8a70;
+      --accent-strong: #ffc46b;
+      --accent-soft: #4a2a3f;
+
+      --border: #5a3a5f;
+      --border-soft: #3a2a40;
+      --border-strong: #ff8a70;
+
+      --shadow-soft: rgba(0, 0, 0, 0.36);
+      --shadow-deep: rgba(0, 0, 0, 0.48);
+      --shadow-glow: rgba(255, 138, 112, 0.22);
+      --shadow-glow-strong: rgba(255, 196, 107, 0.32);
+
+      --transparent: transparent;
       --radius: 18px;
+      --radius-large: 28px;
+      --selector-size: min(84vmin, 680px);
+      --selector-size-mobile: min(88vmin, 560px);
     }
 
-    html, body {
-      height: 100%;
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      min-height: 100%;
       margin: 0;
-      background: radial-gradient(1200px 600px at 50% -20%, #162033 0%, var(--bg) 60%);
-      font-family: 'Inter', system-ui, sans-serif;
+    }
+
+    body {
+      background:
+        radial-gradient(1200px 600px at 50% -20%, var(--bg-glow) 0%, var(--bg-glow-soft) 38%, var(--bg) 70%);
       color: var(--text);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       overflow: hidden;
     }
 
-    .container {
+    .stage {
+      min-height: 100vh;
+      min-height: 100svh;
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: center;
-      gap: 3rem;
-      max-width: 1100px;
-      padding: 2rem;
+      place-items: center;
+      padding: clamp(1rem, 3vw, 2rem);
+    }
+
+    .selector {
+      width: var(--selector-size);
+      aspect-ratio: 1 / 1;
+      position: relative;
+      display: grid;
+      place-items: center;
       opacity: 0;
-      animation: fadeIn 1s ease forwards;
+      animation: fade-in .7s ease forwards;
     }
 
-    @keyframes fadeIn {
-      to { opacity: 1; }
+    @keyframes fade-in {
+      to {
+        opacity: 1;
+      }
     }
 
-    /* Vertical image stack */
-    .portrait-stack {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .portrait {
-      border-radius: var(--radius);
+    .section-link {
+      width: 100%;
+      height: 100%;
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-large);
+      padding: 0;
+      margin: 0;
       overflow: hidden;
-      box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
-      background: var(--card);
+      cursor: pointer;
+      background: linear-gradient(180deg, var(--surface-strong), var(--surface));
+      box-shadow:
+        0 22px 60px var(--shadow-deep),
+        0 0 34px var(--shadow-glow);
+      transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease, opacity .2s ease;
     }
 
-    .portrait img {
+    .section-link:hover,
+    .section-link:focus-visible {
+      transform: scale(1.018);
+      border-color: var(--border-strong);
+      box-shadow:
+        0 26px 70px var(--shadow-deep),
+        0 0 42px var(--shadow-glow-strong);
+      outline: none;
+    }
+
+    .section-link:active {
+      transform: scale(.992);
+    }
+
+    .section-link.is-changing {
+      opacity: 0;
+      transform: scale(.985);
+    }
+
+    .section-link img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
+      user-select: none;
+      -webkit-user-drag: none;
+      background: var(--surface-soft);
     }
 
-    .intro h1 {
-      font-size: clamp(1.8rem, 4vw + .5rem, 3rem);
-      line-height: 1.1;
-      margin-bottom: 1rem;
-    }
-
-    .intro p {
-      color: var(--muted);
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-      max-width: 40ch;
-    }
-
-    .buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .btn {
-      background: var(--card);
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: clamp(3rem, 7vw, 4.8rem);
+      height: clamp(3rem, 7vw, 4.8rem);
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--surface) 76%, var(--transparent));
       color: var(--text);
-      border: 1px solid #293146;
-      padding: .9rem 1.6rem;
-      border-radius: var(--radius);
-      font-weight: 600;
-      font-size: 1.05rem;
-      text-decoration: none;
-      text-align: center;
-      position: relative;
-      transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
-      opacity: 0;
-      transform: translateY(15px);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      line-height: 1;
+      z-index: 2;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 14px var(--shadow-glow);
+      transition: transform .24s ease, border-color .24s ease, box-shadow .24s ease, background .24s ease, color .24s ease;
     }
 
-    /* Soft neon hover glow */
-    .btn:hover {
-      background: color-mix(in srgb, var(--accent) 20%, var(--card));
-      transform: scale(1.04);
-      box-shadow: 0 0 15px rgba(125, 214, 255, 0.35);
+    .arrow:hover,
+    .arrow:focus-visible {
+      border-color: var(--border-strong);
+      box-shadow: 0 0 24px var(--shadow-glow-strong);
+      background: color-mix(in srgb, var(--surface-hover) 86%, var(--transparent));
+      color: var(--accent-strong);
+      outline: none;
     }
 
-    /* Sequential pop-in */
-    .btn:nth-child(1) { animation: popIn 0.6s 0.3s forwards; }
-    .btn:nth-child(2) { animation: popIn 0.6s 0.6s forwards; }
-    .btn:nth-child(3) { animation: popIn 0.6s 0.9s forwards; }
-
-    @keyframes popIn {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .arrow:active {
+      transform: translateY(-50%) scale(.95);
     }
 
-    @media (max-width: 850px) {
-      .container {
-        grid-template-columns: 1fr;
-        text-align: center;
+    .arrow-left {
+      left: calc(-1 * clamp(4rem, 9vw, 9rem));
+    }
+
+    .arrow-right {
+      right: calc(-1 * clamp(4rem, 9vw, 9rem));
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media (max-width: 720px) {
+      .selector {
+        width: var(--selector-size-mobile);
       }
 
-      .portrait-stack {
-        flex-direction: row;
-        justify-content: center;
-        gap: 1rem;
+      .arrow {
+        background: color-mix(in srgb, var(--surface-soft) 62%, var(--transparent));
       }
 
-      .portrait {
-        width: 45%;
-        max-height: 250px;
+      .arrow-left {
+        left: .75rem;
       }
 
-      .intro p {
-        margin: 1rem auto 2rem;
+      .arrow-right {
+        right: .75rem;
       }
     }
   </style>
 </head>
-
 <body>
-  <div class="container">
-    <div class="portrait-stack">
-      <!-- Replace with your actual images -->
-      <div class="portrait">
-        <img src="images/image25.jpg" alt="David Gadelkarim portrait" loading="lazy">
-      </div>
-      <div class="portrait">
-        <img src="images/image1.jpg" alt="Collage of David’s game work" loading="lazy">
-      </div>
-    </div>
+  <main class="stage" aria-label="Portfolio section selector">
+    <div class="selector">
+      <button class="arrow arrow-left" type="button" id="previous" aria-label="Previous section">‹</button>
 
-    <div class="intro">
-      <h1>
-        My name is <span style="color:var(--accent)">David Gadelkarim</span> (He/Him).
-        <br>Welcome to my Games Portfolio Website!
-      </h1>
-      <h2>Where will your journey begin?</h2>
-      <div class="buttons">
-        <a href="games.html" class="btn">Games</a>
-        <a href="writing.html" class="btn">Writing</a>
-        <a href="about.html" class="btn">About Me</a>
-      </div>
+      <button class="section-link" type="button" id="section-link" aria-label="Open Games section">
+        <img id="section-image" src="images/image1.jpg" alt="Games section" decoding="async">
+      </button>
+
+      <button class="arrow arrow-right" type="button" id="next" aria-label="Next section">›</button>
+      <span class="sr-only" id="section-status" aria-live="polite">Games section selected</span>
     </div>
-  </div>
+  </main>
+
+  <script>
+    const sections = [
+      {
+        name: "Games",
+        image: "images/MainGames.jpg",
+        url: "games.html"
+      },
+      {
+        name: "Writing",
+        image: "images/MainWriting.jpg",
+        url: "writing.html"
+      },
+      {
+        name: "About Me",
+        image: "images/MainAbout.jpg",
+        url: "about.html"
+      }
+    ];
+
+    const sectionLink = document.getElementById("section-link");
+    const sectionImage = document.getElementById("section-image");
+    const sectionStatus = document.getElementById("section-status");
+    const previousButton = document.getElementById("previous");
+    const nextButton = document.getElementById("next");
+
+    let currentIndex = 0;
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    function getWrappedIndex(index) {
+      return (index + sections.length) % sections.length;
+    }
+
+    function renderSection() {
+      const section = sections[currentIndex];
+
+      sectionLink.classList.add("is-changing");
+
+      window.setTimeout(() => {
+        sectionImage.src = section.image;
+        sectionImage.alt = `${section.name} section`;
+        sectionLink.setAttribute("aria-label", `Open ${section.name} section`);
+        sectionStatus.textContent = `${section.name} section selected`;
+        sectionLink.classList.remove("is-changing");
+      }, 140);
+    }
+
+    function goToSection(direction) {
+      currentIndex = getWrappedIndex(currentIndex + direction);
+      renderSection();
+    }
+
+    function openCurrentSection() {
+      window.location.href = sections[currentIndex].url;
+    }
+
+    previousButton.addEventListener("click", () => goToSection(-1));
+    nextButton.addEventListener("click", () => goToSection(1));
+    sectionLink.addEventListener("click", openCurrentSection);
+
+    document.addEventListener("keydown", (event) => {
+      const key = event.key.toLowerCase();
+      const activeTag = document.activeElement?.tagName?.toLowerCase();
+
+      if (activeTag === "input" || activeTag === "textarea" || activeTag === "select") return;
+
+      if (key === "arrowleft" || key === "a") goToSection(-1);
+      if (key === "arrowright" || key === "d") goToSection(1);
+      if (key === "enter") openCurrentSection();
+    });
+
+    sectionLink.addEventListener("touchstart", (event) => {
+      touchStartX = event.changedTouches[0].screenX;
+    }, { passive: true });
+
+    sectionLink.addEventListener("touchend", (event) => {
+      touchEndX = event.changedTouches[0].screenX;
+      const swipeDistance = touchEndX - touchStartX;
+
+      if (Math.abs(swipeDistance) < 50) return;
+      if (swipeDistance > 0) goToSection(-1);
+      if (swipeDistance < 0) goToSection(1);
+    }, { passive: true });
+
+    renderSection();
+  </script>
 </body>
 </html>
