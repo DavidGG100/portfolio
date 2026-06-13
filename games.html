@@ -1,18 +1,26 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>David Gadelkarim's Games Portfolio</title>
-  <meta name="description" content="A focused one-game-at-a-time carousel portfolio of game designer David Gadelkarim's projects." />
+
+  <meta
+    name="description"
+    content="A focused one-game-at-a-time carousel portfolio of game designer David Gadelkarim's projects."
+  >
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
     :root {
-      /* Core palette: warm plum, cream, coral, and soft gold. */
       --bg: #120f17;
       --bg-glow: #3a1f3f;
       --bg-glow-soft: #28172c;
@@ -23,10 +31,9 @@
       --surface-hover: #35243a;
       --surface-skip: #fff1e8;
 
-      --text: #fff2ea;
+      --text: #ffffff;
       --text-inverse: #120f17;
-      --muted: #fff2ea;
-      --muted-strong: #f0d5c7;
+      --muted: #d8bdc8;
 
       --accent: #ff8a70;
       --accent-strong: #ffc46b;
@@ -36,17 +43,19 @@
       --border-soft: #3a2a40;
       --border-strong: #ff8a70;
 
-      --shadow-soft: rgba(0, 0, 0, 0.36);
       --shadow-deep: rgba(0, 0, 0, 0.48);
       --shadow-glow: rgba(255, 138, 112, 0.22);
       --shadow-glow-strong: rgba(255, 196, 107, 0.32);
 
       --transparent: transparent;
+
       --radius: 18px;
       --maxw: 1200px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     html,
     body {
@@ -55,9 +64,26 @@
 
     body {
       margin: 0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        Segoe UI,
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        "Noto Sans",
+        sans-serif;
+
       background:
-        radial-gradient(1200px 600px at 50% -20%, var(--bg-glow) 0%, var(--bg-glow-soft) 38%, var(--bg) 70%);
+        radial-gradient(
+          1200px 600px at 50% -20%,
+          var(--bg-glow) 0%,
+          var(--bg-glow-soft) 38%,
+          var(--bg) 70%
+        );
+
       color: var(--text);
       line-height: 1.5;
     }
@@ -68,8 +94,8 @@
     }
 
     img {
-      max-width: 100%;
       display: block;
+      max-width: 100%;
     }
 
     .wrap {
@@ -91,9 +117,9 @@
       top: 1rem;
       width: auto;
       height: auto;
+      padding: .5rem .75rem;
       background: var(--surface-skip);
       color: var(--text-inverse);
-      padding: .5rem .75rem;
       border-radius: .5rem;
       z-index: 99;
     }
@@ -102,9 +128,16 @@
       position: sticky;
       top: 0;
       backdrop-filter: blur(8px);
-      background: color-mix(in srgb, var(--bg) 84%, var(--transparent));
-      z-index: 40;
+
+      background:
+        color-mix(
+          in srgb,
+          var(--bg) 84%,
+          var(--transparent)
+        );
+
       border-bottom: 1px solid var(--border-soft);
+      z-index: 40;
     }
 
     .nav {
@@ -123,9 +156,9 @@
 
     .links {
       display: flex;
-      gap: 1rem;
       flex-wrap: wrap;
       justify-content: flex-end;
+      gap: 1rem;
     }
 
     .links a {
@@ -136,8 +169,8 @@
 
     .links a:hover,
     .links a[aria-current="page"] {
-      opacity: 1;
       color: var(--accent-strong);
+      opacity: 1;
     }
 
     main {
@@ -157,15 +190,20 @@
     .arrow {
       width: 3rem;
       height: 3rem;
-      border-radius: 999px;
       border: 1px solid var(--border);
+      border-radius: 999px;
       background: var(--surface);
       color: var(--text);
       font-size: 1.65rem;
       line-height: 1;
       cursor: pointer;
       box-shadow: 0 0 14px var(--shadow-glow);
-      transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease,
+        border-color .2s ease;
     }
 
     .arrow:hover,
@@ -179,17 +217,59 @@
 
     .showcase {
       min-height: min(78vh, 760px);
-      background: linear-gradient(180deg, var(--surface-strong), var(--surface));
-      border: 1px solid var(--border);
-      border-radius: calc(var(--radius) + 8px);
-      padding: clamp(1rem, 2vw, 1.6rem);
-      box-shadow:
-        0 22px 60px var(--shadow-deep),
-        0 0 34px var(--shadow-glow);
       display: grid;
       grid-template-rows: auto 1fr auto;
       gap: 1rem;
+      padding: clamp(1rem, 2vw, 1.6rem);
+
+      background:
+        linear-gradient(
+          180deg,
+          var(--surface-strong),
+          var(--surface)
+        );
+
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 8px);
+
+      box-shadow:
+        0 22px 60px var(--shadow-deep),
+        0 0 34px var(--shadow-glow);
+
       overflow: hidden;
+      cursor: pointer;
+
+      transition:
+        border-color .2s ease,
+        box-shadow .2s ease,
+        transform .2s ease;
+    }
+
+    .showcase.has-link:hover {
+      border-color: var(--border-strong);
+
+      box-shadow:
+        0 22px 60px var(--shadow-deep),
+        0 0 44px var(--shadow-glow-strong);
+
+      transform: translateY(-2px);
+    }
+
+    .showcase:focus-visible {
+      outline: 3px solid var(--accent-strong);
+      outline-offset: 5px;
+    }
+
+    .showcase:not(.has-link) {
+      cursor: default;
+    }
+
+    .showcase:not(.has-link):hover {
+      border-color: var(--border);
+      box-shadow:
+        0 22px 60px var(--shadow-deep),
+        0 0 34px var(--shadow-glow);
+      transform: none;
     }
 
     .showcase-header {
@@ -197,38 +277,46 @@
       align-items: start;
       justify-content: space-between;
       gap: 1rem;
-      border-bottom: 1px solid var(--border-soft);
       padding-bottom: .8rem;
+      border-bottom: 1px solid var(--border-soft);
     }
 
     h1 {
+      margin: 0;
       font-size: clamp(1.55rem, 2.7vw, 2.8rem);
       line-height: 1.08;
-      margin: 0;
     }
 
     .counter {
+      padding-top: .2rem;
       color: var(--accent-strong);
       font-weight: 800;
       white-space: nowrap;
-      padding-top: .2rem;
     }
 
     .media-grid {
       display: grid;
       grid-template-columns: minmax(220px, .88fr) minmax(320px, 1.12fr);
+      align-items: stretch;
       gap: 1rem;
       min-height: 0;
-      align-items: stretch;
     }
 
     .panel {
+      min-height: 0;
       background: var(--surface-soft);
       border: 1px solid var(--border-soft);
       border-radius: var(--radius);
+
+      box-shadow:
+        inset 0 0 0 1px
+        color-mix(
+          in srgb,
+          var(--text) 3%,
+          var(--transparent)
+        );
+
       overflow: hidden;
-      min-height: 0;
-      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--text) 3%, var(--transparent));
     }
 
     .cover-panel,
@@ -243,8 +331,8 @@
       height: 100%;
       max-height: 430px;
       object-fit: contain;
-      border-radius: calc(var(--radius) - 7px);
       background: var(--surface-soft);
+      border-radius: calc(var(--radius) - 7px);
     }
 
     .video-frame {
@@ -256,23 +344,50 @@
     }
 
     .writeup {
-      margin: 0;
-      color: var(--muted);
-      font-size: clamp(.98rem, 1.2vw, 1.08rem);
       max-width: 90ch;
-    }
-
-    .controls-note {
-      color: var(--muted);
-      font-size: .88rem;
-      margin-top: .6rem;
+      margin: 0;
+      color: var(--text);
+      font-size: clamp(.98rem, 1.2vw, 1.08rem);
     }
 
     .mobile-controls {
       display: none;
-      gap: .8rem;
       justify-content: center;
+      gap: .8rem;
       margin-top: 1rem;
+    }
+
+    .progress-track {
+      grid-column: 1 / -1;
+      width: 100%;
+      height: .45rem;
+      background: var(--accent-soft);
+      border-radius: 999px;
+
+      box-shadow:
+        inset 0 0 0 1px
+        color-mix(
+          in srgb,
+          var(--text) 4%,
+          var(--transparent)
+        );
+
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--accent),
+          var(--accent-strong)
+        );
+
+      border-radius: inherit;
+      transition: width .28s ease;
     }
 
     @media (max-width: 900px) {
@@ -341,7 +456,10 @@
 
   <header>
     <div class="wrap nav" role="navigation" aria-label="Primary">
-      <a class="brand" href="index.html">David Gadelkarim: Game Designer</a>
+      <a class="brand" href="index.html">
+        David Gadelkarim: Game Designer
+      </a>
+
       <nav class="links" aria-label="Sections">
         <a href="games.html" aria-current="page">Games</a>
         <a href="writing.html">Writing</a>
@@ -351,10 +469,27 @@
   </header>
 
   <main id="main" class="wrap">
-    <section class="carousel-shell" aria-label="Games portfolio carousel">
-      <button class="arrow desktop-arrow" type="button" id="previousGame" aria-label="Previous game">‹</button>
+    <section
+      class="carousel-shell"
+      aria-label="Games portfolio carousel"
+    >
+      <button
+        class="arrow desktop-arrow"
+        type="button"
+        id="previousGame"
+        aria-label="Previous game"
+      >
+        ‹
+      </button>
 
-      <article class="showcase" aria-live="polite">
+      <article
+        class="showcase"
+        id="gameShowcase"
+        tabindex="0"
+        role="link"
+        aria-live="polite"
+        aria-label="Open current game"
+      >
         <div class="showcase-header">
           <h1 id="gameTitle"></h1>
           <div class="counter" id="gameCounter"></div>
@@ -362,7 +497,12 @@
 
         <div class="media-grid">
           <div class="panel cover-panel">
-            <img id="gameCover" src="" alt="" loading="eager">
+            <img
+              id="gameCover"
+              src=""
+              alt=""
+              loading="eager"
+            >
           </div>
 
           <div class="panel video-panel">
@@ -372,188 +512,339 @@
               title="Game video"
               src=""
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen>
-            </iframe>
+              allowfullscreen
+            ></iframe>
           </div>
         </div>
 
         <div>
           <p class="writeup" id="gameWriteup"></p>
-          <div class="controls-note"></div>
-          <div class="mobile-controls" aria-label="Mobile carousel controls">
-            <button class="arrow" type="button" id="previousGameMobile" aria-label="Previous game">‹</button>
-            <button class="arrow" type="button" id="nextGameMobile" aria-label="Next game">›</button>
+
+          <div
+            class="mobile-controls"
+            aria-label="Mobile carousel controls"
+          >
+            <button
+              class="arrow"
+              type="button"
+              id="previousGameMobile"
+              aria-label="Previous game"
+            >
+              ‹
+            </button>
+
+            <button
+              class="arrow"
+              type="button"
+              id="nextGameMobile"
+              aria-label="Next game"
+            >
+              ›
+            </button>
           </div>
         </div>
       </article>
 
-      <button class="arrow desktop-arrow" type="button" id="nextGame" aria-label="Next game">›</button>
+      <button
+        class="arrow desktop-arrow"
+        type="button"
+        id="nextGame"
+        aria-label="Next game"
+      >
+        ›
+      </button>
+
+      <div class="progress-track" aria-hidden="true">
+        <div
+          class="progress-fill"
+          id="gameProgress"
+        ></div>
+      </div>
     </section>
   </main>
 
   <script>
     const games = [
-  {
-    "title": "The Red Rain Case (In Development)",
-    "cover": "images/image18.png",
-    "video": "https://youtu.be/maFZJLIZqCs",
-    "writeup": "In The Red Rain Case, players control a cosmic entity that exists as a divine anthropomorphisation of Truth itself. This entity takes the shape of a Detective who has full dominion over the flow of time. Whenever the fog of mistruth reaches a breaking point, the gears of time shatter, Red Rain falls from the sky, and this Detective appears, with a single-minded determination to find the truth. Due to the Detective’s existence as Truth personified, they are unable to discern between human shapes, voices, and smell, to be as objective as possible. Instead, they derive the truth by taking individual beings out of the…"
-  },
-  {
-    "title": "Soup for The Consumer",
-    "cover": "images/image2.png",
-    "video": "https://youtu.be/z1CxK9jxZ8Q",
-    "writeup": "Soup for The Consumer is my 3rd term MA Games Design practical project, it’s a surreal and absurd cooking game, where players are tasked to cook emotions using rational objects. There are no right or wrong answers, the game exists entirely as a canvas for self-expression, and an exploration of the meaning and value of objects and symbols. This game was chosen to be on display at MCM London Comic Con's EGX Leftfield Collection."
-  },
-  {
-    "title": "Cloud Posting",
-    "cover": "images/image17.png",
-    "video": "https://youtu.be/RLhgUjcZqL4",
-    "writeup": "Cloud Posting is a satire on the role of social media in the deterioration of human interaction, masquerading as a relaxing sky writing game! It was made in just 4 days for the GMTK Jam with the theme of “loop”, and contains quite a complex writing detection system, and a heavily elaborate branching narrative tree based on player performance as well as the missions they choose to accept/deny."
-  },
-  {
-    "title": "An Ordinary Business Lunch",
-    "cover": "images/image20.png",
-    "video": "https://www.youtube.com/watch?v=icOGyGe-0vQ&t=206s",
-    "writeup": "Ranking 19 out of 853 entries in the 2025 Boss Rush Jam, An Ordinary Business Lunch is an innovative and bizarre boss rush game, where players compete in a wits based tug-of-war with a satanic mafia don in a series of business lunches. The theme for the jam was “spin” and we incorporated that by having players do battle with a lazy susan as the battlefield."
-  },
-  {
-    "title": "Back and Forth",
-    "cover": "images/image22.jpg",
-    "video": "https://youtu.be/YlJu1owMUDA",
-    "writeup": "Back and Forth is an anthology project featuring a video game, a physical arcade machine, and an experimental games zine, all of which were exhibited at Now Play This 2025. The theme of the exhibition was folkgames, and we covered that topic by taking the singular concept of “Ping Pong” and iterating on it, pushing to its absolute limits through the different parts of this anthology project."
-  },
-  {
-    "title": "Back and Forth: Cube Pong",
-    "cover": "images/image11.jpg",
-    "video": "https://youtu.be/0AQQx7HePcs",
-    "writeup": "Part of the Back and Forth anthology project exhibited at Now Play This 2025, Cube Pong is a high-octane arcade machine, where players are tasked to do quite mental computation, while physically manipulating a giant dice. It’s a competitive 2 player game, pushing players’ mental and physical aptitudes to their absolute limits."
-  },
-  {
-    "title": "Back and Forth: Beat Pong",
-    "cover": "images/image3.png",
-    "video": "https://youtu.be/7gdgd_BQejA",
-    "writeup": "Part of the Back and Forth anthology project exhibited at Now Play This 2025, Beat Pong combines 4 different game genres into one hectic and visually striking experience: rhythm games, turn-based systems, card-based battlers, and boss rushes."
-  },
-  {
-    "title": "You Are Here.",
-    "cover": "images/image4.png",
-    "video": "https://youtu.be/NkVan1E9Cas",
-    "writeup": "An unconventional piece made for the first unit of my Games Design MA covering the subjectivity of perception, and the reality/unreality of interactive media. These abstract ideas are explored through a platformer featuring 2 characters and 2 controllers, with players controlling a 2D and 3D character simultaneously using both a Dancepad and a Controller respectively."
-  },
-  {
-    "title": "Letter Wars",
-    "cover": "images/image13.png",
-    "video": "https://youtu.be/ykMgiZ7Taok",
-    "writeup": "Letter Wars was my final BA Games Design project. It’s an ambitious 2D Boss Rush featuring over 20 bosses based on the letters of the alphabet, all with very distinct behaviors and movement patterns, solely developed by myself in around 3 months. The game was created to be an homage to the late 2000s-early 2010s era of free brutally difficult online games."
-  },
-  {
-    "title": "RPS Ultra Adventure",
-    "cover": "images/image14.png",
-    "video": "https://youtu.be/TfSCAOQMqk4",
-    "writeup": "An approximately 30 minute long 1-BIT turn based RPG game, created as a homage to the 80-90s retro era of RPGs within a single week for the 1 Bit Game Jam under the theme Light and Darkness. Players explore a world overlayed between a Light and Dark dimension, as they meet with eccentric NPCs and engaging in friendly and deadly games of Rock, Paper, Scissor."
-  },
-  {
-    "title": "Don't Touch THE THNIG",
-    "cover": "images/image15.jpg",
-    "video": "https://youtu.be/--XJHvj2Vkg",
-    "writeup": "A board game I created for my masters course, and my first ever purely physical game design work. It’s a frenetic dexterity based party game, where players flick tokens across the table until one is left standing. However, while doing that, players must be aware of one all too crucial rule: Don’t Touch THE THING."
-  },
-  {
-    "title": "Marble Labyrinth",
-    "cover": "images/image16.jpg",
-    "video": "https://youtu.be/IazxLHcdurI",
-    "writeup": "This project was born out of the task to make a tabletop escape room. In a group of 4, we made a cooperative marble maze with several floors. Players have to work together to solve physical and mental puzzles in order to reach the end of this elaborate and flashy contraption we created."
-  },
-  {
-    "title": "Memories of Closure",
-    "cover": "images/image7.png",
-    "video": "https://youtu.be/sY7JjeIKbFs",
-    "writeup": "An abstract and atmospheric 3D Metroidvania, made for the Metroidvania game jam in a group of 4 across 1 month, where players explore a world constructed of consciousness and memory. It's a highly symbolic and esoteric experience, nothing is as it seems, and everything exists for a purpose. Our goal was to take the metroidvania genre, which has typically been housed in 2D form, and bring it to an esoteric 3D form. We also wanted to mix the genre of Metroidvanias with atmospheric horror, while layering it with a profound absurdity."
-  },
-  {
-    "title": "I Wanna Grow Taller!",
-    "cover": "images/image19.jpg",
-    "video": "https://youtu.be/0MzLem6nQik",
-    "writeup": "A charming endless runner planned and crafted in only 3 hours for the Trijam Game Jam. Due to the massive restriction, this was a very effective excercise in restraint, and an agile scrum approach to design and development. We aimed for a very mechanically simple yet fun gameplay loop, and made all the focus on the presentation which proved to be the correct decision as we won first place in this game jam."
-  },
-  {
-    "title": "ROCKBOTTOM HERO",
-    "cover": "images/image6.png",
-    "video": "https://youtu.be/6juZCb-4T0Y",
-    "writeup": "Rockbottom Hero is a comedic auto-runner made with a grid-based system. This remains the most stressful game I've ever had to make, as it was simply too ambitious for the meager 3 day time limit. Despite that, we were still able to construct the vision we initially had in mind."
-  },
-  {
-    "title": "SLUG HOUSE",
-    "cover": "images/image5.png",
-    "video": "https://youtu.be/R35iKvDaEt8",
-    "writeup": "A 2D side-scroller beat-em-up made in a group of 4 in 2 weeks for the GameDev.js game jam. For this project, our main priority was making a beat-em-up with fantastic game feel, so we researched all the ways in which games of that manner juice their gameplay experience, and we implemented as much of it as possible, with the mechanics and level design coming in secondary to audiovisual experience in that regard. We treated this more as an experiment and learning opportunity, than a jam we rigorously aimed to win."
-  },
-  {
-    "title": "Little Vocab Master!",
-    "cover": "images/image24.jpg",
-    "video": "https://youtu.be/MKNA8PXvqiI",
-    "writeup": "The prompt that we were given was to make a game with the same base mechanics as an app store game named 'Pack Master', but with our own unique spin. The brunt of the task was less to do with developing the game, and more so designing a blueprint and delivering a sales pitch with a target audience in mind. We made our take on this prompt a kid friendly game. Linked is the video I scripted, voiced, and edited, pitching the game."
-  },
-  {
-    "title": "GRAVITY: NULL",
-    "cover": "images/image10.png",
-    "video": "https://youtu.be/tmEAkPlMgwo",
-    "writeup": "My first 3D game, made in collaboration with 2 other people in a brief timespan for a game jam. It was a first person platforming speedrunner with the unique mechanic of stopping gravity. It consists of 7 levels all of which have a time limit of 20 seconds, and steadily introduces new mechanics as the game progresses."
-  },
-  {
-    "title": "Eternal Game Night",
-    "cover": "images/image9.png",
-    "video": "https://youtu.be/txqmGvpPTUQ",
-    "writeup": "Eternal Game Night is an atmospheric puzzle game where the player engages in a simple card game with the devil. Like I Wanna Grow Taller, mentioned previously in this portfolio, this game was planned and made in 3 hours, we went for a completely different approach for this game. Our first 3 hour game was physical, while we made this one a mentally oriented cryptic puzzle game."
-  },
-  {
-    "title": "Return to Your Roots",
-    "cover": "images/image8.png",
-    "video": "https://youtu.be/SIKIDwaMszU",
-    "writeup": "In this Boss Rush game, begin at your strongest, as you control time and fire lasers to trounce the enemy before you, however, as you progress, your strength will drain as you return to your roots against adversaries who take away time itself. As my first ever game jam game, the first game I’ve ever worked on in a solely online environment, and a game made in only 3 days no less, this was never going to be the most ideal work. It’s to the point that my teammate and I constantly make fun of this game, as it is quite weak in retrospect. However…"
-  },
-  {
-    "title": "Renaissance Accademia",
-    "cover": "images/image12.jpg",
-    "video": "https://youtu.be/VZ0daeik9QM",
-    "writeup": "An atmospheric 3 level 2D platformer game made by 5 people. This was a fisrt term 2nd year university assignment and definitely the weakest work in this portfolio, but important to note and reflect on nonetheless, as it's a very imporant formative experence for me as a designer."
-  },
-  {
-    "title": "Castle Protector",
-    "cover": "images/image21.png",
-    "video": "https://youtu.be/KPYKzzLkPpE",
-    "writeup": "Protect your castle from the Shape Army in this mentally strenuating Endless Runner! The only thing that can defeat them are custom made bullets designed to destroy enemies of their same shape. If you shoot an enemy with the wrong shape, the enemy will get stronger and you will lose a life. Made for the University of the Art London’s BA Games Design course in my first year, this is the first game I ever designed and created from scratch, and as a result, it’s certainly rough in several areas, but also an interesting and valuable work to discus because of those limitations and rough…"
-  }
-];
+      {
+        title: "Crimson Rain",
+        cover: "images/image29.jpg",
+        video: "https://youtu.be/6m14KlNicKQ",
+        link: "https://megamelone.itch.io/crimon-rain-prototype",
+        writeup:
+        "Crimson Rain was brought about by an observation regarding the history of stereotyping and motivated reasoning in classic detective literature, and the potential impacts in which those harmful foundations being operationalised in games could result in, which is a topic I will be giving a talk on at British DiGRA 2026. Rather than provide an answer or a solution to this observation, my aim was to experiment with the dynamics of detective gameplay, creating a game where every character is visually indistinguishable and deduction can only be posited through their respective actions. When bias based on appearance and circumstance is omitted, how does the detective game experience change, how do we reach truth if so much of its foundation is omitted, how do we deal with non-objective truth? As players manipulate time with a custom-built alternative controller made for the game, these are the questions I try to guide them into pondering."
+      },
+      {
+        title: "The Sealed Box of Absurdity",
+        cover: "images/image37.png",
+        video: "https://youtu.be/PRNwYSBidJ0",
+        link: "https://megamelone.itch.io/the-sealed-box-of-absurdity",
+        writeup:
+        "It’s human nature to be curious, as it is to be discomforted by the unknown and the lack of answers. The Sealed Box of Absurdity plays on that nature and discomfort, creating a mystery game with no actual answers, as players explore 1,000 dimensions filled with unexplainable absurdity and nonsense. While attempting to uncover any semblance of rationality within these sealed boxes, they encounter a previous denizen of the box, slowly driving themself to ruin trying to figure out any semblance of truth within it. However, the ultimate thesis of the game is that sometimes things just exist, we just exist, and that’s all the truth there is to it. Whether that’s a comforting reality, or an existential one, it’s one that I believe is important to contend with. Hence, the creation of this frankly wildly ambitious game, and the series of nonsensical oddities within its walls."
+      },
+      {
+        title: "Soup for The Consumer",
+        cover: "images/image2.png",
+        video: "https://youtu.be/X-63Adw0s2U",
+        link: "https://megamelone.itch.io/soup-for-the-consumer",
+        writeup:
+        "An abstract exploration of what objects, emotions, and the concept of meaning are, Soup for The Consumer tasks players with cooking emotions using inedible objects as ingredients. The game offers no right or wrong answers, merely a canvas for self expression, as players reflect on their relationships with heavy emotions, and a wide variety of seemingly mundane objects. This game stemmed from research on semiotics, mapping out a framework for understanding organic meaning-making in games, by charting the relationship between symbols and context, and the ways in which their respective conventionality and unconventionality shape how meaning is formed. When I place all of these conventional objects, in this entirely unconventional space, what meaning emerges? Everyone responds to this game differently, and takes different things out of it, I hope you can also make your own soup, made from your own truth."
+      },
+      {
+        title: "Cloud Posting",
+        cover: "images/image17.png",
+        video: "https://youtu.be/RLhgUjcZqL4",
+        link: "https://megamelone.itch.io/cloud-posting",
+        writeup:
+        "Talking to people is really hard, so it’s a good thing that we have the internet to help us make social communication significantly less intimate and personal! Unfortunately, the world of Cloud Posting doesn’t have that same access to impersonal digital communication, so you’re forced to take on that role, being tasked by the denizens of this world to write messages in the sky for everyone to see. With quite the complex writing detection system on the back-end, and a QWOP-esque chaotic control-scheme on the front-end, players will most likely fail these requests, upon which, they will encounter the game’s branching narrative system, where their missions change depending on whether they were successful or not with their requests. This paradoxically ambitious and relaxing game was made in just 3 days for 2025’s GMTK Game Jam."
+      },
+      {
+        title: "An Ordinary Business Lunch",
+        cover: "images/image20.png",
+        video:
+          "https://www.youtube.com/watch?v=icOGyGe-0vQ&t=206s",
+        link:
+          "https://mayansgames.itch.io/an-ordinary-business-lunch",
+        writeup:
+        "A classic business lunch is something we frankly all have experience with: the variety of foods, the negotiations, the tepid and tedious pleasantries, the tendency to hurl plates at each other, the green skinned Eldritchian Demon in front of you wearing the skin of a corporate CEO with the ability to extract human souls at a whim, and of course the professionally written emails! An Ordinary Business Lunch is a wholly accurate simulation, of the not at all soul-crushing experience of participating in a business lunch, with absolutely no hyperbole at all to convey the vapidity of the false comradery formed between individuals who care solely about their own profits. It's an innovative boss rush game, where you battle using a lazy susan, spinning it, eating foods, and throwing plates, in a battle of attrition and wits against your all-powerful opponent, who may or may not pull a gun out on you in the process."
+      },
+      {
+        title: "Back and Forth",
+        cover: "images/image22.jpg",
+        video: "https://youtu.be/YlJu1owMUDA",
+        link: "",
+        writeup:
+        "As an exploration on “Folk Games” and the manner in which play evolves between cultures, communities and contexts, Back and Forth was created as an experimental games anthology, taking the base framework of Ping Pong and seeing just how much it can be pushed before it becomes unrecogniseable, and frankly an entirely different game. It features a digital game, a physical arcade machine, and a zine, all of which have absurd and abstracted interpretations of Ping Pong, and all of which were showcased at Now Play This 2025. We split the core of the game into 4 ideas: back and forth gameplay, the aesthetic components of the game (that being the table, rackets, and ball), the points based system, and the physical movements associated with the game, and looked to deconstruct those elements in different ways and combinations."
+      },
+      {
+        title: "Back and Forth: Cube Pong",
+        cover: "images/image11.jpg",
+        video: "https://youtu.be/0AQQx7HePcs",
+        link: "",
+        writeup:
+        "Cube Pong is the centerpiece of the larger Back and Forth anthology, a ridiculously high-production fusion of arcade and board game design centred around arithmetic, spatial reasoning, and the basic pleasure of making another person panic. Players race to move a giant die across a grid of numbered tiles, matching an on-screen value using the die and the tile beneath it, while their opponent hammers through a sequence of buttons in an attempt to score before they can finish. It is frantic, mentally exhausting, and remarkably revealing of the people playing it: some gradually sharpen their arithmetic, some fall into intense flow states, and others become far more competitive than they were probably expecting. Watching those differences emerge became one of the most interesting parts of the project, particularly because the game’s simple back-and-forth structure leaves so much room for each pair of players to establish their own pace, tension, and relationship."
+      },
+      {
+        title: "Back and Forth: Beat Pong",
+        cover: "images/image26.jpg",
+        video: "https://youtu.be/7gdgd_BQejA",
+        link: "https://megamelone.itch.io/beat-pong",
+        writeup:
+        "The Back and Forth games anthology gave birth to an unholy fusion of genres in the shape of Beat Pong. This game was essentially designed entirely by long walks and longer showers, with painted images in my head paving the way for my design. The idea of the sound of a ping pong being the beat for a rhythm game, the image of a ping pong ball floating in an infinite rotation above the field of play, and the general neon feel to the game, essentially were the design equivalent of “it came to me in a dream” and the result honestly reflects that process. Beat Pong is weird, frantic, and if not for the aesthetic symbols synonymous with Ping Pong, has virtually no mechanical connection to the game the anthology is centered on exploring and deconstructing, and I believe that chaos is entirely to its benefit."
+      },
+      {
+        title: "You Are Here.",
+        cover: "images/image4.jpg",
+        video: "https://youtu.be/NkVan1E9Cas",
+        link: "https://megamelone.itch.io/you-are-here",
+        writeup:
+        "You Are Here is a wildly experimental project, which explores the subjectivity of perception, and the extent to which the reality presented by a game can temporarily become the player’s own. Players control a 2D character with a dancepad and a 3D character with a conventional controller, creating a deliberate mismatch between physical and digital dimensionality: the body is tied to the flatter, less realistic world, while the familiar language of game controls belongs to the space closest to our own. By demanding greater physical urgency and attention from the 2D character, the game asks whether our sense of presence is actually shaped by visual realism, or by where our body, effort, and immediate concern are situated. As both characters move simultaneously through their respective spaces, the player is left occupying two realities at once, with neither holding an entirely stable claim to being the more “real” one."
+      },
+      {
+        title: "The Broken Computer",
+        cover: "images/image39.jpg",
+        video: "https://youtu.be/FWjPTtQWYHE",
+        link: "https://megamelone.itch.io/letter-wars",
+        writeup:
+        "This is incredibly silly, and realistically should not be here, but is also a wonderful encapsulation of my process as a game designer. At Voidspace Live 2026, there was a non-functioning computer stuck in an infinite boot-loop, and instead of chucking it away, we created a miniature installation piece for it on the spot, tasking visitors of the exhibit to have a crack at trying to fix this computer, with an open forum on the side, so players can write their findings to help future players. People surprisingly resonated with the absurdity of this, and there was genuine cumulative progress being made as people left behind strings for their successors to pull at. It’s a beautiful reminder that play can come in any shape, and that play can take the form of something pure and selfless, a shared communal experience that brings people who may not even meet far closer together."
+      },
+      {
+        title: "Letter Wars",
+        cover: "images/image13.png",
+        video: "https://youtu.be/ykMgiZ7Taok",
+        link: "https://megamelone.itch.io/letter-wars",
+        writeup:
+        "Letter Wars is a brutally difficult 2D boss rush where every letter of the alphabet is given its own movement, personality, and lovingly excessive lore. The alphabet began as a practical solution to my complete lack of artistic ability, but quickly became a fascinating design constraint: how do you make over twenty universally recognisable symbols feel entirely distinct using the same movement and attack system? My answer involved three months of wild ambition, thirty separate scenes, almost no reusable code, and an amount of brute force that I remain strangely proud of. Its difficulty draws from the wonderfully hostile era of late-2000s online games, where progress was earned through repetition, stubbornness, and hundreds of deaths; an approach that will alienate plenty of people, but can also inspire the rare player to spend three uninterrupted hours refusing to let a single letter defeat them (this was a real thing that happened, where an 8 year old spent 3 uninterrupted hours beating the game to completion)."
+      },
+      {
+        title: "RPS Ultra Adventure",
+        cover: "images/image14.png",
+        video: "https://youtu.be/TfSCAOQMqk4",
+        link: "https://redsmiley.itch.io/rps-ultra-rpg",
+        writeup:
+        "RPS Ultra Adventure is a 1-bit surrealist comedy turn-based RPG made in a single week, built around the entirely reasonable premise that every person, monster, and eldritch horror settles their problems through Rock Paper Scissors. Players move between two versions of the same world: a relentlessly cheerful Light World filled with suspiciously friendly people, and a Dark World populated by abstract creatures, ominous drones, and equally ridiculous conversations. Beneath the surreal dialogue and very committed Rock Paper Scissors obsession is a strange little world that occasionally allows something sincere and philosophical to slip through, before immediately returning to nonsense. For a thirty-minute RPG held together by one week of frantic design, improvised file-sharing, and an unreasonable amount of personal investment, it remains one of the clearest expressions of my love for eccentric retro RPGs."
+      },
+      {
+        title: "Don't Touch THE THNIG",
+        cover: "images/image15.jpg",
+        video: "https://youtu.be/--XJHvj2Vkg",
+        link: "",
+        writeup:
+        "Built around the socially irresistible act of telling people they cannot touch something, Don’t Touch THE THING is a dexterity-based party game where players flick heart-shaped tokens around an ominous centerpiece, trying to force each other into skulls or THE THING, while their own defeated pieces can be returned to the board as hazards. The game emerged after roughly ten failed prototypes taught me to stop burying physical play beneath complicated systems, and instead trust the pleasure of flicking wooden objects at your friends. Its single prohibition applies even during setup and cleanup, giving THE THING a strange authority beyond the formal boundaries of play; people remain wary of it even when there is no strategic reason to be. Eliminated players tend to become invested spectators and enthusiastic backseat flickers, lending the game a loud, communal energy."
+      },
+      {
+        title: "Gazing Endless Eye",
+        cover: "images/image38.png",
+        video: "https://youtu.be/8U3WYguIN28",
+        link:
+          "https://megamelone.itch.io/gazing-endless-eye",
+        writeup:
+        "Gazing Endless Eye was made in Flickgame for the Game Poem Wall at London Game Festival’s Play Praxis, and was based on the haiku: “Gazing Endless Eye / It Sees Mirrors In Your Mind / Shame, Fear, Grief, Rage, Joy.” It is about the exposing feeling of having other people experience my art, and the vulnerability of knowing that people are peering into something deeply personal. The process, the blood, the sweat, and the tears I put into a game are all there to be seen. Players click deeper and deeper into the eye, staring at it, confronting it, and gradually learning to accept that the gazing eye exists, because I am making art for those gazing eyes. They are endless. They learn from my work, they love it, they hate it, and sometimes they misunderstand it, but my art makes them feel something. I make games for those gazing endless eyes. As someone who is a minority in several different ways, those eyes can be difficult to look at, but they are still deeply important to me."
+      },
+      {
+        title: "Marble Labyrinth",
+        cover: "images/image16.jpg",
+        video: "https://youtu.be/aktTPTkNCTQ",
+        link: "",
+        writeup:
+        "The task of building a tabletop escape room, resulted in the creation of a politically satirical, socially taxing experience. The transparent, three-storey yacht lovingly built from laser-cut perspex and wood, housed The Marble Labyrinth, which places two players in shared control of an assassin represented by a single marble. One player can only tilt the structure along the X-axis, while the other controls the Y-axis, making every movement an exercise in communication, trust, and the occasional shouted accusation. The boat is filled with ramps, gates, hidden information, and physical puzzles, culminating in a final room I designed around six guard marbles that must all be herded into a single chamber and locked away before the assassin can reach their target. What fascinated me most was how naturally the physical object created cooperation: neither player could act independently, and even the simplest movement became a small negotiation between two people trying to think through one body."
+      },
+      {
+        title: "Memories of Closure",
+        cover: "images/image7.png",
+        video: "https://youtu.be/sY7JjeIKbFs",
+        link:
+          "https://megamelone.itch.io/memories-of-closure",
+        writeup:
+        "A child’s memory is rarely stable, objective, or particularly interested in making sense. Memories of Closure takes that instability and constructs an entire 3D Metroidvania from it, with players exploring a consciousness shaped by trauma, fragmented recollections, and ordinary childhood objects that have acquired entirely new meanings. Marbles distract the mechanical entities from seeing you, the warmth of a blanket makes you invisible to evil, and a pogo stick grants freedom within a world that otherwise feels oppressive and uncertain. With no music and every room concealed behind a closed door, much of the horror comes from listening, waiting, and imagining what may be moving on the other side. The world asks players to move through memory the way memory is often experienced: partially, emotionally, and without the comfort of a complete explanation."
+      },
+      {
+        title: "I Wanna Grow Taller!",
+        cover: "images/image19.jpg",
+        video: "https://youtu.be/0MzLem6nQik",
+        link:
+          "https://megamelone.itch.io/i-wanna-grow-taller",
+        writeup:
+        "Made in only three hours for Trijam, I Wanna Grow Taller! is a very simple endless runner about a man whose neck stretches endlessly into the sky, eventually carrying him past birds, chipmunks, satellites, meteors, and tiny four-armed alien versions of those same chipmunks. The game itself is deliberately slight, with most of our attention going towards presentation, pacing, and making one small joke feel as polished as possible; an approach that earned it first place in the jam. Its more lasting value came afterwards, when I began treating that simple movement system as a test bed for increasingly ridiculous methods of control. Since then, I have played it using a dance pad, Donkey Konga bongos, a drawing tablet, mobile touch controls, and even the pitch of my own voice. It became the starting point for much of my interest in alternative controllers, and a useful reminder that a mechanically unremarkable game can become remarkably fertile once you start asking how else a person might physically interact with it."
+      },
+      {
+        title: "ROCKBOTTOM HERO",
+        cover: "images/image6.png",
+        video: "https://youtu.be/6juZCb-4T0Y",
+        link: "https://megamelone.itch.io/rockbottom-hero",
+        writeup:
+        "A legendary hero has been turned to stone, so naturally the only way he can complete his quest is by being thrown around by increasingly large groups of villagers. Rockbottom Hero is a comedic grid-based auto-runner where players arrange civilians with different abilities, press play, and watch them carry, launch, and baton-pass the petrified hero towards the end of each level. Created in three days for a jam themed around “connections,” the game takes that idea very literally, with every successful run relying on a chain of people physically moving someone who is supposedly meant to be saving them. We originally planned for something far more difficult, but the time limit forced us to simplify the puzzles and focus on the absurdity instead, which ultimately gave the game far more personality. By the end, the villagers are the ones defeating the demon king with a friendship beam while the hero remains completely motionless, which feels like the only appropriate conclusion to a game about collective effort being credited to the least useful person involved."
+      },
+      {
+        title: "Animal Trax",
+        cover: "images/image40.png",
+        video: "https://youtu.be/uFffijJf7is",
+        link: "https://shani-t8.itch.io/animal-trax",
+        writeup:
+        "Sometimes you have to protect the passengers on your safari from getting mauled by very adorable looking wild animals, by gyroscopically controlling the 6-sided head of the train you're conducting to match the animal approaching you to satiate it. That all too common experience is at the heart of Animal Trax, made for the 2026 Global Game Jam in Goldsmiths with 4 other people who I met for the first time that day. As my first in-person jam, it was an utterly delightful experience, and it was also host to the single funniest bug I've ever experienced while making a game, where we forgot to put a limiter on the spawning, so the game eventually scaled to the point where 1000 animals would just rush at your train and start jumping at you endlessly. I don't think I've ever genuinely hard cried from laughter while making a game before or since."
+      },
+      {
+        title: "SLUG HOUSE",
+        cover: "images/image5.png",
+        video: "https://youtu.be/R35iKvDaEt8",
+        link: "https://megamelone.itch.io/slug-house",
+        writeup:
+        "SLUG HOUSE was an aesthetically gorgeous experiment in seeing how far audiovisual feedback could carry a game. Every punch has hitstop, screenshake, flashes, particles, and a suitably horrible crunch; glasses and stools shatter across the room, enemies accidentally clobber one another, and the whole thing is wrapped in this grimy neon collage aesthetic with a custom soundtrack kicking it into motion. In that respect, it is one of the most accomplished jam games I have worked on. Unfortunately, we became so preoccupied with making combat feel satisfying that we neglected to make the combat itself interesting. Beneath all that noise is a single chargeable punch and one functioning enemy type, leaving the player with very little room for expression once the immediate spectacle wears off. It remains a useful study in the limits of “game feel”: polish can make an action more pleasurable, but it cannot give that action depth, rhythm, or a reason to remain compelling."
+      },
+      {
+        title: "Little Vocab Master!",
+        cover: "images/image24.jpg",
+        video: "https://youtu.be/MKNA8PXvqiI",
+        link: "",
+        writeup:
+        "Little Vocab Master! began with a deliberately commercial brief: take the mechanics of the mobile game Pack Master, identify a new audience, and build a convincing product around them. We chose children and their guardians, reframing the drag-and-drop organisation of the original game as a shared exercise in vocabulary, pattern recognition, and language learning. The interesting design challenge was less about inventing a new mechanical system, and more about understanding how presentation, audience, and context can completely alter the perceived value of familiar interactions. My main contribution was shaping that idea into a video pitch, which I scripted, voiced, and edited, presenting the game as something parents could feel comfortable giving to their children and, crucially, something they could participate in alongside them. The project gave me an opportunity to approach game design from the position of communication and market intent, considering not only whether an idea works, but who it is for, why they would care, and how to make that immediately legible."
+      },
+      {
+        title: "GRAVITY: NULL",
+        cover: "images/image10.png",
+        video: "https://youtu.be/tmEAkPlMgwo",
+        link: "https://redsmiley.itch.io/gravity-null",
+        writeup:
+        "GRAVITY: NULL was the game that made me realise how much I love experimenting with physics. Before studying game design, I had originally planned to become an experimental physicist, and this project unexpectedly reconnected me with that part of myself. Its central mechanic allows players to temporarily disable gravity while racing through a series of twenty-second platforming challenges, creating routes that depend on momentum, timing, and an intuitive understanding of motion. Video games have such a profound freedom in how reality can be altered and treated as something malleable. GRAVITY: NULL became an early reminder that game design gives me a canvas for exploring physics in ways that are playful, abstract, and impossible outside a simulated world. This was my first ever 3D game and I really made it count in terms of concept."
+      },
+      {
+        title: "Eternal Game Night",
+        cover: "images/image9.png",
+        video: "https://youtu.be/txqmGvpPTUQ",
+        link:
+          "https://megamelone.itch.io/endless-game-night",
+        writeup:
+        "There is something inherently suspicious about sitting across a candlelit table from the devil and being asked to play a simple card game. Created in only three hours, Eternal Game Night uses that premise for a short cryptic puzzle where players match illustrated cards to a series of riddles, with every mistake extinguishing another candle and bringing the room closer to complete darkness. There is no music, no visible interface, and very little of the devil himself beyond an arm scraping slowly across the table, leaving the player’s imagination to account for everything outside the candlelight. After using our previous three-hour jam to make something loud, physical, and immediately silly, this was an experiment in the opposite direction: seeing how much tension could be drawn from stillness, obscurity, and the uncomfortable feeling that the person across from you already knows how the game will end."
+      },
+      {
+        title: "Return to Your Roots",
+        cover: "images/image8.png",
+        video: "https://youtu.be/SIKIDwaMszU",
+        link:
+          "https://megamelone.itch.io/return-to-your-roots",
+        writeup:
+        "Made in three days for my first Global Game Jam, Return to Your Roots is a boss rush where progression makes the player weaker. You begin as a fully grown tree capable of stopping time and firing lasers, but each victory strips away an ability and regresses your form until you are left as a powerless seed, facing the same enemy that once served as the tutorial. It is a rough, frequently broken game that my teammate and I still make fun of, but I remain fond of its interpretation of the theme and the strange reversal at its centre. More importantly, its missing audio, poor tutorialisation, awkward hitboxes, and deeply inefficient development process gave me a very direct education in how many seemingly small decisions stand between an interesting idea and a functional game."
+      },
+      {
+        title: "Renaissance Accademia",
+        cover: "images/image12.jpg",
+        video: "https://youtu.be/VZ0daeik9QM",
+        link:
+          "https://megamelone.itch.io/renaissacnceaccademia",
+        writeup:
+        "Renaissance Accademia follows a student exploring an abandoned mage academy, recovering lost tomes that gradually expand how they can move through its ruins. The premise held far more promise than the game itself, with poor feedback, inconsistent artwork, and my own inexperience directing a visual team leaving the project feeling disjointed and unfinished. Its final ability, which gives the player a bird’s-eye view of the level, briefly suggests the more exploratory and mysterious game hiding inside the prototype. It remains an early lesson in how easily a strong concept can be obscured when its presentation, controls, and production lack the same clarity, and I often point to the mistakes I made in this games development, as the reason why I am capable of working as well as I currently am in teams."
+      },
+      {
+        title: "Castle Protector",
+        cover: "images/image21.png",
+        video: "https://youtu.be/KPYKzzLkPpE",
+        link:
+          "https://megamelone.itch.io/castle-protector",
+        writeup:
+        "Castle Protector was the first game I ever made completely on my own, during my first year at UAL. It’s an endless runner where you defend a castle by shooting enemies with bullets that match their shape, and using the wrong one only makes them stronger. I wanted the game to feel much more mentally demanding than the usual endless runner, and while that idea mostly came through, the game was still very rough. Hits were hard to read, damage felt unclear, and a lot of the feedback I now take for granted simply wasn’t there yet. It’s a messy first project, but it’s also a pretty honest snapshot of where I was when I started."
+      }
+    ];
 
     let currentIndex = 0;
 
-    const titleEl = document.getElementById('gameTitle');
-    const counterEl = document.getElementById('gameCounter');
-    const coverEl = document.getElementById('gameCover');
-    const videoEl = document.getElementById('gameVideo');
-    const writeupEl = document.getElementById('gameWriteup');
+    const titleEl =
+      document.getElementById("gameTitle");
+
+    const counterEl =
+      document.getElementById("gameCounter");
+
+    const coverEl =
+      document.getElementById("gameCover");
+
+    const videoEl =
+      document.getElementById("gameVideo");
+
+    const writeupEl =
+      document.getElementById("gameWriteup");
+
+    const progressEl =
+      document.getElementById("gameProgress");
+
+    const showcaseEl =
+      document.getElementById("gameShowcase");
 
     function youtubeEmbedUrl(url) {
-      if (!url) return '';
+      if (!url) {
+        return "";
+      }
 
       try {
         const parsed = new URL(url);
 
-        if (parsed.hostname.includes('youtu.be')) {
-          return `https://www.youtube.com/embed/${parsed.pathname.replace('/', '')}`;
+        if (parsed.hostname.includes("youtu.be")) {
+          const videoId =
+            parsed.pathname.replace("/", "");
+
+          return `https://www.youtube.com/embed/${videoId}`;
         }
 
-        if (parsed.hostname.includes('youtube.com')) {
-          const videoId = parsed.searchParams.get('v');
-          if (videoId) return `https://www.youtube.com/embed/${videoId}`;
+        if (parsed.hostname.includes("youtube.com")) {
+          const videoId =
+            parsed.searchParams.get("v");
 
-          if (parsed.pathname.includes('/embed/')) return url;
-          if (parsed.pathname.includes('/shorts/')) return `https://www.youtube.com/embed/${parsed.pathname.split('/shorts/')[1]}`;
+          if (videoId) {
+            return `https://www.youtube.com/embed/${videoId}`;
+          }
+
+          if (parsed.pathname.includes("/embed/")) {
+            return url;
+          }
+
+          if (parsed.pathname.includes("/shorts/")) {
+            const shortId =
+              parsed.pathname
+                .split("/shorts/")[1]
+                .split("/")[0];
+
+            return `https://www.youtube.com/embed/${shortId}`;
+          }
         }
       } catch (error) {
-        console.warn('Invalid video URL:', url);
+        console.warn("Invalid video URL:", url);
       }
 
       return url;
@@ -562,34 +853,171 @@
     function renderGame(index) {
       const game = games[index];
 
-      titleEl.textContent = game.title;
-      counterEl.textContent = `${index + 1} / ${games.length}`;
-      coverEl.src = game.cover;
-      coverEl.alt = `${game.title} cover image`;
-      videoEl.src = youtubeEmbedUrl(game.video);
-      videoEl.title = `${game.title} video`;
-      writeupEl.textContent = game.writeup;
+      titleEl.textContent =
+        game.title;
+
+      counterEl.textContent =
+        `${index + 1} / ${games.length}`;
+
+      progressEl.style.width =
+        `${((index + 1) / games.length) * 100}%`;
+
+      coverEl.src =
+        game.cover;
+
+      coverEl.alt =
+        `${game.title} cover image`;
+
+      videoEl.src =
+        youtubeEmbedUrl(game.video);
+
+      videoEl.title =
+        `${game.title} video`;
+
+      writeupEl.textContent =
+        game.writeup;
+
+      showcaseEl.classList.toggle(
+        "has-link",
+        Boolean(game.link)
+      );
+
+      showcaseEl.setAttribute(
+        "aria-label",
+        game.link
+          ? `Open ${game.title}`
+          : `${game.title} has no external game page`
+      );
+
+      showcaseEl.setAttribute(
+        "aria-disabled",
+        game.link ? "false" : "true"
+      );
     }
 
     function goToGame(direction) {
-      currentIndex = (currentIndex + direction + games.length) % games.length;
+      currentIndex =
+        (
+          currentIndex +
+          direction +
+          games.length
+        ) % games.length;
+
       renderGame(currentIndex);
     }
 
-    document.getElementById('previousGame').addEventListener('click', () => goToGame(-1));
-    document.getElementById('nextGame').addEventListener('click', () => goToGame(1));
-    document.getElementById('previousGameMobile').addEventListener('click', () => goToGame(-1));
-    document.getElementById('nextGameMobile').addEventListener('click', () => goToGame(1));
+    function openCurrentGame() {
+      const game = games[currentIndex];
 
-    document.addEventListener('keydown', (event) => {
-      const key = event.key.toLowerCase();
-      const activeTag = document.activeElement?.tagName?.toLowerCase();
+      if (!game.link) {
+        return;
+      }
 
-      if (activeTag === 'input' || activeTag === 'textarea' || activeTag === 'select') return;
+      window.open(
+        game.link,
+        "_blank",
+        "noopener,noreferrer"
+      );
+    }
 
-      if (key === 'arrowleft' || key === 'a') goToGame(-1);
-      if (key === 'arrowright' || key === 'd') goToGame(1);
-    });
+    document
+      .getElementById("previousGame")
+      .addEventListener(
+        "click",
+        () => goToGame(-1)
+      );
+
+    document
+      .getElementById("nextGame")
+      .addEventListener(
+        "click",
+        () => goToGame(1)
+      );
+
+    document
+      .getElementById("previousGameMobile")
+      .addEventListener(
+        "click",
+        () => goToGame(-1)
+      );
+
+    document
+      .getElementById("nextGameMobile")
+      .addEventListener(
+        "click",
+        () => goToGame(1)
+      );
+
+    showcaseEl.addEventListener(
+      "click",
+      (event) => {
+        const interactiveElement =
+          event.target.closest(
+            "button, a, iframe"
+          );
+
+        if (interactiveElement) {
+          return;
+        }
+
+        openCurrentGame();
+      }
+    );
+
+    showcaseEl.addEventListener(
+      "keydown",
+      (event) => {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          openCurrentGame();
+        }
+      }
+    );
+
+    document.addEventListener(
+      "keydown",
+      (event) => {
+        const key =
+          event.key.toLowerCase();
+
+        const activeTag =
+          document.activeElement
+            ?.tagName
+            ?.toLowerCase();
+
+        if (
+          activeTag === "input" ||
+          activeTag === "textarea" ||
+          activeTag === "select"
+        ) {
+          return;
+        }
+
+        if (
+          key === "arrowleft" ||
+          key === "a"
+        ) {
+          event.preventDefault();
+          goToGame(-1);
+        }
+
+        if (
+          key === "arrowright" ||
+          key === "d"
+        ) {
+          event.preventDefault();
+          goToGame(1);
+        }
+
+        if (
+          key === "enter" &&
+          document.activeElement !== showcaseEl
+        ) {
+          event.preventDefault();
+          openCurrentGame();
+        }
+      }
+    );
 
     renderGame(currentIndex);
   </script>

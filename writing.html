@@ -3,16 +3,24 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>David Gadelkarim's Writing and Research</title>
-  <meta name="description" content="A focused one-document-at-a-time carousel of writing, research, narrative, and design documents by David Gadelkarim." />
+
+  <meta
+    name="description"
+    content="A focused one-document-at-a-time carousel of writing, research, narrative, and design documents by David Gadelkarim."
+  />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
     :root {
-      /* Shared palette aligned with the selected games page. */
       --bg: #120f17;
       --bg-glow: #3a1f3f;
       --bg-glow-soft: #28172c;
@@ -42,11 +50,14 @@
       --shadow-glow-strong: rgba(255, 196, 107, 0.32);
 
       --transparent: transparent;
+
       --radius: 18px;
       --maxw: 1200px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     html,
     body {
@@ -55,9 +66,26 @@
 
     body {
       margin: 0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        Segoe UI,
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        "Noto Sans",
+        sans-serif;
+
       background:
-        radial-gradient(1200px 600px at 50% -20%, var(--bg-glow) 0%, var(--bg-glow-soft) 38%, var(--bg) 70%);
+        radial-gradient(
+          1200px 600px at 50% -20%,
+          var(--bg-glow) 0%,
+          var(--bg-glow-soft) 38%,
+          var(--bg) 70%
+        );
+
       color: var(--text);
       line-height: 1.5;
     }
@@ -96,16 +124,27 @@
     header {
       position: sticky;
       top: 0;
+
       backdrop-filter: blur(8px);
-      background: color-mix(in srgb, var(--bg) 84%, var(--transparent));
+
+      background:
+        color-mix(
+          in srgb,
+          var(--bg) 84%,
+          var(--transparent)
+        );
+
       z-index: 40;
-      border-bottom: 1px solid var(--border-soft);
+
+      border-bottom:
+        1px solid var(--border-soft);
     }
 
     .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       gap: 1rem;
       padding: .9rem 0;
     }
@@ -126,7 +165,10 @@
     .links a {
       text-decoration: none;
       opacity: .86;
-      transition: color .2s ease, opacity .2s ease;
+
+      transition:
+        color .2s ease,
+        opacity .2s ease;
     }
 
     .links a:hover,
@@ -137,59 +179,102 @@
 
     main {
       min-height: calc(100vh - 64px);
+
       display: grid;
       align-items: center;
+
       padding: 1.5rem 0 2rem;
     }
 
     .carousel-shell {
       display: grid;
-      grid-template-columns: auto minmax(0, 1fr) auto;
+
+      grid-template-columns:
+        auto
+        minmax(0, 1fr)
+        auto;
+
       align-items: center;
+
       gap: 1rem;
     }
 
     .arrow {
       width: 3rem;
       height: 3rem;
+
       border-radius: 999px;
       border: 1px solid var(--border);
+
       background: var(--surface);
       color: var(--text);
+
       font-size: 1.65rem;
       line-height: 1;
+
       cursor: pointer;
-      box-shadow: 0 0 14px var(--shadow-glow);
-      transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+
+      box-shadow:
+        0 0 14px var(--shadow-glow);
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease,
+        border-color .2s ease;
     }
 
     .arrow:hover,
     .arrow:focus-visible {
       background: var(--surface-hover);
       border-color: var(--border-strong);
-      box-shadow: 0 0 24px var(--shadow-glow-strong);
+
+      box-shadow:
+        0 0 24px var(--shadow-glow-strong);
+
       transform: translateY(-1px);
+
       outline: none;
     }
 
     .showcase {
       min-height: min(78vh, 760px);
-      background: linear-gradient(180deg, var(--surface-strong), var(--surface));
+
+      background:
+        linear-gradient(
+          180deg,
+          var(--surface-strong),
+          var(--surface)
+        );
+
       border: 1px solid var(--border);
       border-radius: calc(var(--radius) + 8px);
-      padding: clamp(1rem, 2vw, 1.6rem);
+
+      padding:
+        clamp(1rem, 2vw, 1.6rem);
+
       box-shadow:
         0 22px 60px var(--shadow-deep),
         0 0 34px var(--shadow-glow);
+
       display: grid;
-      grid-template-rows: auto 1fr auto;
+
+      grid-template-rows:
+        auto
+        1fr
+        auto;
+
       gap: 1rem;
+
       overflow: hidden;
     }
 
     .showcase-header {
       display: block;
-      border-bottom: 1px solid var(--border-soft);
+
+      border-bottom:
+        1px solid var(--border-soft);
+
       padding-bottom: .8rem;
     }
 
@@ -197,72 +282,124 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+
       gap: 1rem;
       margin-bottom: .45rem;
     }
 
     .category {
       color: var(--accent-strong);
+
       font-weight: 800;
-      font-size: clamp(1rem, 1.2vw, 1.15rem);
+
+      font-size:
+        clamp(1rem, 1.2vw, 1.15rem);
+
       letter-spacing: .04em;
       text-transform: uppercase;
+
       margin: 0;
     }
 
     h1 {
-      font-size: clamp(1.35rem, 1.85vw, 2.25rem);
+      font-size:
+        clamp(1.35rem, 1.85vw, 2.25rem);
+
       line-height: 1.16;
+
       margin: 0;
+
       width: 100%;
       max-width: none;
+
       text-wrap: balance;
     }
 
     .counter {
       color: var(--accent-strong);
+
       font-weight: 800;
       white-space: nowrap;
+
       padding-top: .2rem;
-      font-size: clamp(1rem, 1.25vw, 1.2rem);
+
+      font-size:
+        clamp(1rem, 1.25vw, 1.2rem);
     }
 
     .writing-panel {
       background: var(--surface-soft);
-      border: 1px solid var(--border-soft);
+
+      border:
+        1px solid var(--border-soft);
+
       border-radius: var(--radius);
-      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--text) 3%, var(--transparent));
-      padding: clamp(1.25rem, 3vw, 3rem);
+
+      box-shadow:
+        inset 0 0 0 1px
+        color-mix(
+          in srgb,
+          var(--text) 3%,
+          var(--transparent)
+        );
+
+      padding:
+        clamp(1.25rem, 3vw, 3rem);
+
       display: grid;
       align-content: start;
-      gap: clamp(1rem, 2vw, 1.8rem);
+
+      gap:
+        clamp(1rem, 2vw, 1.8rem);
+
       cursor: pointer;
-      transition: transform .2s ease, border-color .2s ease, background .2s ease, box-shadow .2s ease;
+
+      transition:
+        transform .2s ease,
+        border-color .2s ease,
+        background .2s ease,
+        box-shadow .2s ease;
     }
 
     .writing-panel:hover,
     .writing-panel:focus-visible {
       background: var(--surface-hover);
       border-color: var(--border-strong);
+
       box-shadow:
-        inset 0 0 0 1px color-mix(in srgb, var(--text) 5%, var(--transparent)),
+        inset 0 0 0 1px
+        color-mix(
+          in srgb,
+          var(--text) 5%,
+          var(--transparent)
+        ),
         0 0 28px var(--shadow-glow);
+
       transform: translateY(-2px);
+
       outline: none;
     }
 
     .descriptor {
       color: var(--text);
-      font-size: clamp(1.2rem, 1.65vw, 1.75rem);
+
+      font-size:
+        clamp(1.2rem, 1.65vw, 1.75rem);
+
       line-height: 1.4;
+
       margin: 0;
       max-width: 56ch;
     }
 
     .meta {
       color: var(--muted);
-      font-size: clamp(1rem, 1.35vw, 1.2rem);
+
+      font-size:
+        clamp(1rem, 1.35vw, 1.2rem);
+
       font-weight: 700;
+
       margin: 0;
     }
 
@@ -271,6 +408,44 @@
       gap: .8rem;
       justify-content: center;
       margin-top: 1rem;
+    }
+
+    .progress-track {
+      grid-column: 1 / -1;
+
+      width: 100%;
+      height: .45rem;
+
+      background: var(--accent-soft);
+
+      border-radius: 999px;
+
+      box-shadow:
+        inset 0 0 0 1px
+        color-mix(
+          in srgb,
+          var(--text) 4%,
+          var(--transparent)
+        );
+
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--accent),
+          var(--accent-strong)
+        );
+
+      border-radius: inherit;
+
+      transition:
+        width .28s ease;
     }
 
     @media (max-width: 900px) {
@@ -324,286 +499,557 @@
       }
 
       .descriptor {
-        font-size: clamp(1.15rem, 5vw, 1.55rem);
+        font-size:
+          clamp(1.15rem, 5vw, 1.55rem);
       }
     }
   </style>
 </head>
 
 <body>
-  <a class="skip" href="#main">Skip to content</a>
+  <a class="skip" href="#main">
+    Skip to content
+  </a>
 
   <header>
-    <div class="wrap nav" role="navigation" aria-label="Primary">
-      <a class="brand" href="index.html">David Gadelkarim: Game Designer</a>
-      <nav class="links" aria-label="Sections">
-        <a href="games.html">Games</a>
-        <a href="writing.html" aria-current="page">Writing</a>
-        <a href="about.html">About Me</a>
+    <div
+      class="wrap nav"
+      role="navigation"
+      aria-label="Primary"
+    >
+      <a
+        class="brand"
+        href="index.html"
+      >
+        David Gadelkarim: Game Designer
+      </a>
+
+      <nav
+        class="links"
+        aria-label="Sections"
+      >
+        <a href="games.html">
+          Games
+        </a>
+
+        <a
+          href="writing.html"
+          aria-current="page"
+        >
+          Writing
+        </a>
+
+        <a href="about.html">
+          About Me
+        </a>
       </nav>
     </div>
   </header>
 
   <main id="main" class="wrap">
-    <section class="carousel-shell" aria-label="Writing and research carousel">
-      <button class="arrow desktop-arrow" type="button" id="previousWriting" aria-label="Previous writing item">‹</button>
+    <section
+      class="carousel-shell"
+      aria-label="Writing and research carousel"
+    >
+      <button
+        class="arrow desktop-arrow"
+        type="button"
+        id="previousWriting"
+        aria-label="Previous writing item"
+      >
+        ‹
+      </button>
 
-      <article class="showcase" aria-live="polite">
+      <article
+        class="showcase"
+        aria-live="polite"
+      >
         <div class="showcase-header">
           <div class="showcase-topline">
-            <p class="category" id="writingCategory"></p>
-            <div class="counter" id="writingCounter"></div>
+            <p
+              class="category"
+              id="writingCategory"
+            ></p>
+
+            <div
+              class="counter"
+              id="writingCounter"
+            ></div>
           </div>
+
           <h1 id="writingTitle"></h1>
         </div>
 
-        <div class="writing-panel" id="writingPanel" role="link" tabindex="0" aria-label="Open selected writing item">
-          <p class="descriptor" id="writingDescriptor"></p>
-          <p class="meta" id="writingMeta"></p>
+        <div
+          class="writing-panel"
+          id="writingPanel"
+          role="link"
+          tabindex="0"
+          aria-label="Open selected writing item"
+        >
+          <p
+            class="descriptor"
+            id="writingDescriptor"
+          ></p>
+
+          <p
+            class="meta"
+            id="writingMeta"
+          ></p>
         </div>
 
-        <div class="mobile-controls" aria-label="Mobile carousel controls">
-          <button class="arrow" type="button" id="previousWritingMobile" aria-label="Previous writing item">‹</button>
-          <button class="arrow" type="button" id="nextWritingMobile" aria-label="Next writing item">›</button>
+        <div
+          class="mobile-controls"
+          aria-label="Mobile carousel controls"
+        >
+          <button
+            class="arrow"
+            type="button"
+            id="previousWritingMobile"
+            aria-label="Previous writing item"
+          >
+            ‹
+          </button>
+
+          <button
+            class="arrow"
+            type="button"
+            id="nextWritingMobile"
+            aria-label="Next writing item"
+          >
+            ›
+          </button>
         </div>
       </article>
 
-      <button class="arrow desktop-arrow" type="button" id="nextWriting" aria-label="Next writing item">›</button>
+      <button
+        class="arrow desktop-arrow"
+        type="button"
+        id="nextWriting"
+        aria-label="Next writing item"
+      >
+        ›
+      </button>
+
+      <div
+        class="progress-track"
+        aria-hidden="true"
+      >
+        <div
+          class="progress-fill"
+          id="writingProgress"
+        ></div>
+      </div>
     </section>
   </main>
 
   <script>
     const writingItems = [
-  {
-    "section": "Design & Research",
-    "title": "Thesis - How do variations in the flow of clues, the reasoning required to connect them, and the means by which conclusions are tested shape the balance between accessibility, fairness, and player ownership in detective games?",
-    "type": "MA Thesis",
-    "year": 2025,
-    "summary": "A thorough examination of the means in which players experience and interact with clues and evidence in Detective Games, while paying respect to the fair-play tenets of Detective Fiction.",
-    "link": "documents/MA Games Design Thesis - David Gadelkarim.pdf"
-  },
-  {
-    "section": "Design & Research",
-    "title": "Thesis - How do games foster creative thinking within its players, and how important is it that a game does so?",
-    "type": "BA Thesis",
-    "year": 2023,
-    "summary": "A discussion about the role of creative thinking in games design, and the importance of games fostering the level of creative thinking that they expect the player to conduct.",
-    "link": "documents/David Gadelkarim - BA Thesis.pdf"
-  },
-  {
-    "section": "Design & Research",
-    "title": "The Red Rain Case - Game Design Document",
-    "type": "GDD",
-    "year": 2025,
-    "summary": "Multi-page Game Design Document for The Red Rain Case, featuring a game overview, core concept, design pillars, aesthetic style, HUD & UI, player experience, and potential expansions.",
-    "link": "documents/The Red Rain Case - GDD.pdf"
-  },
-  {
-    "section": "Design & Research",
-    "title": "Myth and Folklore Game Design Document",
-    "type": "GDD",
-    "year": 2022,
-    "summary": "I was tasked with creating a proof of concept Game Design Document covering a game based on my culture's folklore. The result is this GDD, showcasing a simple game based on the tale of 1001 Nights.",
-    "link": "documents/Myth and Folklore GDD.pdf"
-  },
-  {
-    "section": "Design & Research",
-    "title": "1 Page GDD - Multiplayer Minesweeper Roguelike Concept",
-    "type": "GDD",
-    "year": 2025,
-    "summary": "Unlike the other 2 GDDs in this portfolio, this is a brief and efficient 1 page GDD, rather than a meticulous several page one. Its role is to establish an idea for a new project I will be working on.",
-    "link": "documents/Minesweeper Multiplayer - GDD.pdf"
-  },
-  {
-    "section": "Design & Research",
-    "title": "Mini-Thesis - How do the aesthetic abstractions that occurred due to the technological limitations of early pixel-art RPGs parallel and contrast the artistic intentionality found within the pursuit of Representational Abstract Art?",
-    "type": "Miniature Thesis",
-    "year": 2024,
-    "summary": "I am utterly fascinated by the way restraint results in creativity and ingenuity. The final fantasy games are an exceptional example of this, and this analysis of Final Fantasy 6 examines that idea through the lens of Abstract Art.",
-    "link": "documents/David Gadelkarim Mini-Thesis.pdf"
-  },
-  {
-    "section": "Design & Research",
-    "title": "Design Research Report - The Subjectivity of Perception in Interactive Art (You Are Here)",
-    "type": "Design Research Report",
-    "year": 2024,
-    "summary": "As a part of the creation of You Are Here, I conducted research on the philosophy of perception and its application to games. It ended up being very dense and esoteric research, but also highly rewarding to comprehend and apply to my work.",
-    "link": "documents/Development Report - David Gadelkarim.pdf"
-  },
-  {
-    "section": "Design & Research",
-    "title": "Design Research Report - Semiotics in Games (Soup for The Consumer)",
-    "type": "Design Research Report",
-    "year": 2025,
-    "summary": "As a part of the creation of Soup for The Consumer, I conducted research on semiotics and its application to games. The research was a fascinating exploration of the way players interact with objects, and heavily informed the final version of the game.",
-    "link": "documents/Design Research Report - David Gadelkarim.pdf"
-  },
-  {
-    "section": "Design & Research",
-    "title": "Marble Labyrinth - Floor Plans",
-    "type": "Floor Plans",
-    "year": 2024,
-    "summary": "In order to lasercut the perspex glass and wooden boards needed to create our tabletop escape room game, we had to make floor plans in Adobe Illustrator, these are the results.",
-    "link": "documents/Marble Labyrinth - Floor Plans.pdf"
-  },
-  {
-    "section": "Design & Research",
-    "title": "Don't Touch THE THING - Manual",
-    "type": "Rules Manual",
-    "year": 2024,
-    "summary": "This is a manual for my first ever board game, Don't Touch THE THING, explaining all the rules and additional clarrifications to players with visual aid.",
-    "link": "documents/BoardGameManual.pdf"
-  },
-  {
-    "section": "Design & Research",
-    "title": "Zine Pong",
-    "type": "Zine",
-    "year": 2025,
-    "summary": "As part of the Back and Forth project, Zine Pong is an experimental games zine of hypoethetical Ping Pong games that get more and more abstract as the zine progresses. This was displayed and passed out at Now Play This 2025.",
-    "link": "documents/Zine Pong.pdf"
-  },
-  {
-    "section": "Design & Research",
-    "title": "Cube Pong Rules",
-    "type": "Ruleset",
-    "year": 2025,
-    "summary": "This document contains the rules of Cube Pong, we had to make a rules page that was easy to look at and comprehend, as the game itself is quite complex.",
-    "link": "documents/Back and Forth - Physical Rules.pdf"
-  },
-  {
-    "section": "Design & Research",
-    "title": "Trello Board - Letter Wars",
-    "type": "Production Board",
-    "year": 2023,
-    "summary": "Letter Wars was created over a hectic 29 weeks, and this Trello Board covers the experience of creating that game in real time.",
-    "link": "documents/TrelloBoard - Letter Wars.pdf"
-  },
-  {
-    "section": "Design & Research",
-    "title": "Exercise Trello Board",
-    "type": "Research Board",
-    "year": 2021,
-    "summary": "This Trello Board is entirely for ideation, with me being tasked with conducting games design research, and using that to design a simple mental and physical 12 second game.",
-    "link": "documents/TrelloBoard - Exercise.pdf"
-  },
-  {
-    "section": "Narrative",
-    "title": "The Red Rain Case - Concept and Character Pitch",
-    "type": "Narrative Pitch",
-    "year": 2025,
-    "summary": "An initial pitch for The Red Rain Case, my single most ambitious game and high quality game, showcasing the core concept of the plot, a 4 act structure of the narrative's flow, and a character pitch for the player character.",
-    "link": "documents/The Red Rain Case - Concept and Character Pitch.pdf"
-  },
-  {
-    "section": "Narrative",
-    "title": "The Red Rain Case - Worldbuilding Pitch",
-    "type": "Narrative Pitch",
-    "year": 2025,
-    "summary": "As a continuation of my pitch for The Red Rain Case, this document covers the game's 'world-building and a showcase of one of the locations.",
-    "link": "documents/The Red Rain Case - Worldbuilding Pitch.pdf"
-  },
-  {
-    "section": "Narrative",
-    "title": "The Red Rain Case - Cinematic Script",
-    "type": "Games Script",
-    "year": 2025,
-    "summary": "A fully written and strucured script containing one of The Red Rain Case's cutscenes, in particular, Cutscene 3.",
-    "link": "documents/The Red Rain Case - Cinematic Script.pdf"
-  },
-  {
-    "section": "Narrative",
-    "title": "The Red Rain Case - Gameplay Script",
-    "type": "Games Script",
-    "year": 2025,
-    "summary": "Another script for The Red Rain Case, this time, it's a gameplay script, follownig a theoretical Golden Path mission. While the game's design does not support a mission with dialogue, I altered it to fit this excercise, as writing a Gameplay Script in this manner was very good practice.",
-    "link": "documents/The Red Rain Case - Gameplay Script.pdf"
-  },
-  {
-    "section": "Narrative",
-    "title": "Soup for The Consumer - Branching Dialogue",
-    "type": "Twine Script",
-    "year": 2025,
-    "summary": "Soup for The Consumer is one of my most involved projects, and as part of the game, there is an in depth conversation tree a the end that features several branching paths. In order to create and test the branching dialogue, I created it in Twine first.",
-    "link": "documents/Soup for The Consumer - Branching Narrative.html"
-  },
-  {
-    "section": "Narrative",
-    "title": "Soup for The Consumer - All Dialogue",
-    "type": "Dialogue Script",
-    "year": 2025,
-    "summary": "Soup for The Consumer has 100 unique prompts, 100 unique responses from The Consumer, and a branching dialogue tree with 64 potential outcomes. This one document features all of that text.",
-    "link": "documents/Soup Dialogue.pdf"
-  },
-  {
-    "section": "Narrative",
-    "title": "Dinner Party? - Surrealist Short Story",
-    "type": "Short Story",
-    "year": 2020,
-    "summary": "In this surrealist short story, a seemingly happy party slowly descends into existential madness.",
-    "link": "documents/Dinner Party - Surrealist Short Story.pdf"
-  },
-  {
-    "section": "Narrative",
-    "title": "Endings - Somber Short Story",
-    "type": "Short Story",
-    "year": 2020,
-    "summary": "This story was a self-reflective piece I wrote on my biggest fear as I ascended the doors adulthood at the age of 18, it discusses the potential crushing reality of living a routine I don't enjoy. This piece is a crucial reason why I decided to follow my passion and pursue games as my field of choice.",
-    "link": "documents/Endings - Somber Short Story.pdf"
-  }
-];
+      {
+        section: "Design & Research",
+        title:
+          "Thesis - How do variations in the flow of clues, the reasoning required to connect them, and the means by which conclusions are tested shape the balance between accessibility, fairness, and player ownership in detective games?",
+        type: "MA Thesis",
+        year: 2025,
+        summary:
+          "A thorough examination of the means in which players experience and interact with clues and evidence in Detective Games, while paying respect to the fair-play tenets of Detective Fiction.",
+        link:
+          "documents/MA Games Design Thesis - David Gadelkarim.pdf"
+      },
+      {
+        section: "Design & Research",
+        title:
+          "Thesis - How do games foster creative thinking within its players, and how important is it that a game does so?",
+        type: "BA Thesis",
+        year: 2023,
+        summary:
+          "A discussion about the role of creative thinking in games design, and the importance of games fostering the level of creative thinking that they expect the player to conduct.",
+        link:
+          "documents/David Gadelkarim - BA Thesis.pdf"
+      },
+      {
+        section: "Design & Research",
+        title:
+          "The Red Rain Case - Game Design Document",
+        type: "GDD",
+        year: 2025,
+        summary:
+          "Multi-page Game Design Document for The Red Rain Case, featuring a game overview, core concept, design pillars, aesthetic style, HUD & UI, player experience, and potential expansions.",
+        link:
+          "documents/The Red Rain Case - GDD.pdf"
+      },
+      {
+        section: "Design & Research",
+        title:
+          "Myth and Folklore Game Design Document",
+        type: "GDD",
+        year: 2022,
+        summary:
+          "I was tasked with creating a proof of concept Game Design Document covering a game based on my culture's folklore. The result is this GDD, showcasing a simple game based on the tale of 1001 Nights.",
+        link:
+          "documents/Myth and Folklore GDD.pdf"
+      },
+      {
+        section: "Design & Research",
+        title:
+          "1 Page GDD - Multiplayer Minesweeper Roguelike Concept",
+        type: "GDD",
+        year: 2025,
+        summary:
+          "Unlike the other 2 GDDs in this portfolio, this is a brief and efficient 1 page GDD, rather than a meticulous several page one. Its role is to establish an idea for a new project I will be working on.",
+        link:
+          "documents/Minesweeper Multiplayer - GDD.pdf"
+      },
+      {
+        section: "Design & Research",
+        title:
+          "Mini-Thesis - How do the aesthetic abstractions that occurred due to the technological limitations of early pixel-art RPGs parallel and contrast the artistic intentionality found within the pursuit of Representational Abstract Art?",
+        type: "Miniature Thesis",
+        year: 2024,
+        summary:
+          "I am utterly fascinated by the way restraint results in creativity and ingenuity. The final fantasy games are an exceptional example of this, and this analysis of Final Fantasy 6 examines that idea through the lens of Abstract Art.",
+        link:
+          "documents/David Gadelkarim Mini-Thesis.pdf"
+      },
+      {
+        section: "Design & Research",
+        title:
+          "Design Research Report - The Subjectivity of Perception in Interactive Art (You Are Here)",
+        type: "Design Research Report",
+        year: 2024,
+        summary:
+          "As a part of the creation of You Are Here, I conducted research on the philosophy of perception and its application to games. It ended up being very dense and esoteric research, but also highly rewarding to comprehend and apply to my work.",
+        link:
+          "documents/Development Report - David Gadelkarim.pdf"
+      },
+      {
+        section: "Design & Research",
+        title:
+          "Design Research Report - Semiotics in Games (Soup for The Consumer)",
+        type: "Design Research Report",
+        year: 2025,
+        summary:
+          "As a part of the creation of Soup for The Consumer, I conducted research on semiotics and its application to games. The research was a fascinating exploration of the way players interact with objects, and heavily informed the final version of the game.",
+        link:
+          "documents/Design Research Report - David Gadelkarim.pdf"
+      },
+      {
+        section: "Design & Research",
+        title:
+          "Marble Labyrinth - Floor Plans",
+        type: "Floor Plans",
+        year: 2024,
+        summary:
+          "In order to lasercut the perspex glass and wooden boards needed to create our tabletop escape room game, we had to make floor plans in Adobe Illustrator, these are the results.",
+        link:
+          "documents/Marble Labyrinth - Floor Plans.pdf"
+      },
+      {
+        section: "Design & Research",
+        title:
+          "Don't Touch THE THING - Manual",
+        type: "Rules Manual",
+        year: 2024,
+        summary:
+          "This is a manual for my first ever board game, Don't Touch THE THING, explaining all the rules and additional clarrifications to players with visual aid.",
+        link:
+          "documents/BoardGameManual.pdf"
+      },
+      {
+        section: "Design & Research",
+        title:
+          "Zine Pong",
+        type: "Zine",
+        year: 2025,
+        summary:
+          "As part of the Back and Forth project, Zine Pong is an experimental games zine of hypoethetical Ping Pong games that get more and more abstract as the zine progresses. This was displayed and passed out at Now Play This 2025.",
+        link:
+          "documents/Zine Pong.pdf"
+      },
+      {
+        section: "Design & Research",
+        title:
+          "Cube Pong Rules",
+        type: "Ruleset",
+        year: 2025,
+        summary:
+          "This document contains the rules of Cube Pong, we had to make a rules page that was easy to look at and comprehend, as the game itself is quite complex.",
+        link:
+          "documents/Back and Forth - Physical Rules.pdf"
+      },
+      {
+        section: "Design & Research",
+        title:
+          "Trello Board - Letter Wars",
+        type: "Production Board",
+        year: 2023,
+        summary:
+          "Letter Wars was created over a hectic 29 weeks, and this Trello Board covers the experience of creating that game in real time.",
+        link:
+          "documents/TrelloBoard - Letter Wars.pdf"
+      },
+      {
+        section: "Design & Research",
+        title:
+          "Exercise Trello Board",
+        type: "Research Board",
+        year: 2021,
+        summary:
+          "This Trello Board is entirely for ideation, with me being tasked with conducting games design research, and using that to design a simple mental and physical 12 second game.",
+        link:
+          "documents/TrelloBoard - Exercise.pdf"
+      },
+      {
+        section: "Narrative",
+        title:
+          "The Red Rain Case - Concept and Character Pitch",
+        type: "Narrative Pitch",
+        year: 2025,
+        summary:
+          "An initial pitch for The Red Rain Case, my single most ambitious game and high quality game, showcasing the core concept of the plot, a 4 act structure of the narrative's flow, and a character pitch for the player character.",
+        link:
+          "documents/The Red Rain Case - Concept and Character Pitch.pdf"
+      },
+      {
+        section: "Narrative",
+        title:
+          "The Red Rain Case - Worldbuilding Pitch",
+        type: "Narrative Pitch",
+        year: 2025,
+        summary:
+          "As a continuation of my pitch for The Red Rain Case, this document covers the game's world-building and a showcase of one of the locations.",
+        link:
+          "documents/The Red Rain Case - Worldbuilding Pitch.pdf"
+      },
+      {
+        section: "Narrative",
+        title:
+          "The Red Rain Case - Cinematic Script",
+        type: "Games Script",
+        year: 2025,
+        summary:
+          "A fully written and structured script containing one of The Red Rain Case's cutscenes, in particular, Cutscene 3.",
+        link:
+          "documents/The Red Rain Case - Cinematic Script.pdf"
+      },
+      {
+        section: "Narrative",
+        title:
+          "The Red Rain Case - Gameplay Script",
+        type: "Games Script",
+        year: 2025,
+        summary:
+          "Another script for The Red Rain Case, this time, it's a gameplay script, following a theoretical Golden Path mission. While the game's design does not support a mission with dialogue, I altered it to fit this exercise, as writing a Gameplay Script in this manner was very good practice.",
+        link:
+          "documents/The Red Rain Case - Gameplay Script.pdf"
+      },
+      {
+        section: "Narrative",
+        title:
+          "Soup for The Consumer - Branching Dialogue",
+        type: "Twine Script",
+        year: 2025,
+        summary:
+          "Soup for The Consumer is one of my most involved projects, and as part of the game, there is an in-depth conversation tree at the end that features several branching paths. In order to create and test the branching dialogue, I created it in Twine first.",
+        link:
+          "documents/Soup for The Consumer - Branching Narrative.html"
+      },
+      {
+        section: "Narrative",
+        title:
+          "Soup for The Consumer - All Dialogue",
+        type: "Dialogue Script",
+        year: 2025,
+        summary:
+          "Soup for The Consumer has 100 unique prompts, 100 unique responses from The Consumer, and a branching dialogue tree with 64 potential outcomes. This one document features all of that text.",
+        link:
+          "documents/Soup Dialogue.pdf"
+      },
+      {
+        section: "Narrative",
+        title:
+          "Dinner Party? - Surrealist Short Story",
+        type: "Short Story",
+        year: 2020,
+        summary:
+          "In this surrealist short story, a seemingly happy party slowly descends into existential madness.",
+        link:
+          "documents/Dinner Party - Surrealist Short Story.pdf"
+      },
+      {
+        section: "Narrative",
+        title:
+          "Endings - Somber Short Story",
+        type: "Short Story",
+        year: 2020,
+        summary:
+          "This story was a self-reflective piece I wrote on my biggest fear as I ascended the doors of adulthood at the age of 18. It discusses the potential crushing reality of living a routine I don't enjoy. This piece is a crucial reason why I decided to follow my passion and pursue games as my field of choice.",
+        link:
+          "documents/Endings - Somber Short Story.pdf"
+      }
+    ];
 
     let currentIndex = 0;
 
-    const categoryEl = document.getElementById('writingCategory');
-    const titleEl = document.getElementById('writingTitle');
-    const counterEl = document.getElementById('writingCounter');
-    const descriptorEl = document.getElementById('writingDescriptor');
-    const metaEl = document.getElementById('writingMeta');
-    const panelEl = document.getElementById('writingPanel');
+    const categoryEl =
+      document.getElementById("writingCategory");
+
+    const titleEl =
+      document.getElementById("writingTitle");
+
+    const counterEl =
+      document.getElementById("writingCounter");
+
+    const descriptorEl =
+      document.getElementById("writingDescriptor");
+
+    const metaEl =
+      document.getElementById("writingMeta");
+
+    const panelEl =
+      document.getElementById("writingPanel");
+
+    const progressEl =
+      document.getElementById("writingProgress");
 
     function renderWriting(index) {
       const item = writingItems[index];
-      const metaParts = [item.type, item.year].filter(Boolean);
 
-      categoryEl.textContent = item.section;
-      titleEl.textContent = item.title;
-      counterEl.textContent = `${index + 1} / ${writingItems.length}`;
-      descriptorEl.textContent = item.summary;
-      metaEl.textContent = metaParts.join(' · ');
-      panelEl.setAttribute('aria-label', `Open ${item.title}`);
+      const metaParts =
+        [item.type, item.year].filter(Boolean);
+
+      categoryEl.textContent =
+        item.section;
+
+      titleEl.textContent =
+        item.title;
+
+      counterEl.textContent =
+        `${index + 1} / ${writingItems.length}`;
+
+      progressEl.style.width =
+        `${((index + 1) / writingItems.length) * 100}%`;
+
+      descriptorEl.textContent =
+        item.summary;
+
+      metaEl.textContent =
+        metaParts.join(" · ");
+
+      panelEl.setAttribute(
+        "aria-label",
+        `Open ${item.title}`
+      );
     }
 
     function goToWriting(direction) {
-      currentIndex = (currentIndex + direction + writingItems.length) % writingItems.length;
+      currentIndex =
+        (
+          currentIndex +
+          direction +
+          writingItems.length
+        ) % writingItems.length;
+
       renderWriting(currentIndex);
     }
 
     function openCurrentWriting() {
-      const link = writingItems[currentIndex].link;
-      if (!link) return;
+      const link =
+        writingItems[currentIndex].link;
+
+      if (!link) {
+        return;
+      }
+
       window.location.href = link;
     }
 
-    document.getElementById('previousWriting').addEventListener('click', () => goToWriting(-1));
-    document.getElementById('nextWriting').addEventListener('click', () => goToWriting(1));
-    document.getElementById('previousWritingMobile').addEventListener('click', () => goToWriting(-1));
-    document.getElementById('nextWritingMobile').addEventListener('click', () => goToWriting(1));
-    panelEl.addEventListener('click', openCurrentWriting);
+    document
+      .getElementById("previousWriting")
+      .addEventListener(
+        "click",
+        () => goToWriting(-1)
+      );
 
-    document.addEventListener('keydown', (event) => {
-      const key = event.key.toLowerCase();
-      const activeTag = document.activeElement?.tagName?.toLowerCase();
+    document
+      .getElementById("nextWriting")
+      .addEventListener(
+        "click",
+        () => goToWriting(1)
+      );
 
-      if (activeTag === 'input' || activeTag === 'textarea' || activeTag === 'select') return;
+    document
+      .getElementById("previousWritingMobile")
+      .addEventListener(
+        "click",
+        () => goToWriting(-1)
+      );
 
-      if (key === 'arrowleft' || key === 'a') goToWriting(-1);
-      if (key === 'arrowright' || key === 'd') goToWriting(1);
-      if (key === 'enter') openCurrentWriting();
-    });
+    document
+      .getElementById("nextWritingMobile")
+      .addEventListener(
+        "click",
+        () => goToWriting(1)
+      );
 
-    panelEl.addEventListener('keydown', (event) => {
-      if (event.key.toLowerCase() === 'enter') openCurrentWriting();
-    });
+    panelEl.addEventListener(
+      "click",
+      openCurrentWriting
+    );
+
+    document.addEventListener(
+      "keydown",
+      (event) => {
+        const key =
+          event.key.toLowerCase();
+
+        const activeTag =
+          document.activeElement
+            ?.tagName
+            ?.toLowerCase();
+
+        if (
+          activeTag === "input" ||
+          activeTag === "textarea" ||
+          activeTag === "select"
+        ) {
+          return;
+        }
+
+        if (
+          key === "arrowleft" ||
+          key === "a"
+        ) {
+          event.preventDefault();
+          goToWriting(-1);
+        }
+
+        if (
+          key === "arrowright" ||
+          key === "d"
+        ) {
+          event.preventDefault();
+          goToWriting(1);
+        }
+
+        if (key === "enter") {
+          event.preventDefault();
+          openCurrentWriting();
+        }
+      }
+    );
+
+    panelEl.addEventListener(
+      "keydown",
+      (event) => {
+        if (
+          event.key.toLowerCase() === "enter"
+        ) {
+          event.preventDefault();
+          openCurrentWriting();
+        }
+      }
+    );
 
     renderWriting(currentIndex);
   </script>

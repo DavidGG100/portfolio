@@ -3,12 +3,21 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>David Gadelkarim: About Me</title>
-  <meta name="description" content="A panel-based About Me presentation for game designer David Gadelkarim." />
+
+  <meta
+    name="description"
+    content="A panel-based About Me presentation for game designer David Gadelkarim."
+  />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
     :root {
@@ -41,11 +50,14 @@
       --shadow-glow-strong: rgba(255, 196, 107, 0.32);
 
       --transparent: transparent;
+
       --radius: 18px;
       --maxw: 1200px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     html,
     body {
@@ -54,9 +66,26 @@
 
     body {
       margin: 0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+
+      font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        Segoe UI,
+        Roboto,
+        "Helvetica Neue",
+        Arial,
+        "Noto Sans",
+        sans-serif;
+
       background:
-        radial-gradient(1200px 600px at 50% -20%, var(--bg-glow) 0%, var(--bg-glow-soft) 38%, var(--bg) 70%);
+        radial-gradient(
+          1200px 600px at 50% -20%,
+          var(--bg-glow) 0%,
+          var(--bg-glow-soft) 38%,
+          var(--bg) 70%
+        );
+
       color: var(--text);
       line-height: 1.5;
     }
@@ -101,7 +130,14 @@
       position: sticky;
       top: 0;
       backdrop-filter: blur(8px);
-      background: color-mix(in srgb, var(--bg) 84%, var(--transparent));
+
+      background:
+        color-mix(
+          in srgb,
+          var(--bg) 84%,
+          var(--transparent)
+        );
+
       z-index: 40;
       border-bottom: 1px solid var(--border-soft);
     }
@@ -130,7 +166,9 @@
     .links a {
       text-decoration: none;
       opacity: .86;
-      transition: color .2s ease, opacity .2s ease;
+      transition:
+        color .2s ease,
+        opacity .2s ease;
     }
 
     .links a:hover,
@@ -164,7 +202,12 @@
       line-height: 1;
       cursor: pointer;
       box-shadow: 0 0 14px var(--shadow-glow);
-      transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease,
+        border-color .2s ease;
     }
 
     .arrow:hover,
@@ -178,15 +221,30 @@
 
     .slide {
       min-height: min(78vh, 760px);
-      background: linear-gradient(180deg, var(--surface-strong), var(--surface));
+
+      background:
+        linear-gradient(
+          180deg,
+          var(--surface-strong),
+          var(--surface)
+        );
+
       border: 1px solid var(--border);
       border-radius: calc(var(--radius) + 8px);
-      padding: clamp(1.15rem, 2.4vw, 2rem);
+
+      padding:
+        clamp(
+          1.15rem,
+          2.4vw,
+          2rem
+        );
+
       box-shadow:
         0 22px 60px var(--shadow-deep),
         0 0 34px var(--shadow-glow);
+
       display: grid;
-      grid-template-rows: auto 1fr auto;
+      grid-template-rows: auto 1fr;
       gap: 1rem;
       overflow: hidden;
     }
@@ -211,7 +269,14 @@
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: .05em;
-      font-size: clamp(.85rem, 1.1vw, 1rem);
+
+      font-size:
+        clamp(
+          .85rem,
+          1.1vw,
+          1rem
+        );
+
       line-height: 1.2;
     }
 
@@ -220,7 +285,13 @@
     }
 
     h1 {
-      font-size: clamp(2rem, 4.2vw, 4.9rem);
+      font-size:
+        clamp(
+          2rem,
+          4.2vw,
+          4.9rem
+        );
+
       line-height: .98;
       margin: 0;
       text-wrap: balance;
@@ -228,7 +299,10 @@
 
     .slide-body {
       display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(260px, .92fr);
+      grid-template-columns:
+        minmax(0, 1.08fr)
+        minmax(260px, .92fr);
+
       gap: 1rem;
       min-height: 0;
       align-items: stretch;
@@ -244,13 +318,27 @@
       background: var(--surface-soft);
       border: 1px solid var(--border-soft);
       border-radius: var(--radius);
-      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--text) 3%, var(--transparent));
+
+      box-shadow:
+        inset 0 0 0 1px
+        color-mix(
+          in srgb,
+          var(--text) 3%,
+          var(--transparent)
+        );
+
       min-height: 0;
     }
 
     .text-panel,
     .contact-panel {
-      padding: clamp(1rem, 2.2vw, 2rem);
+      padding:
+        clamp(
+          1rem,
+          2.2vw,
+          2rem
+        );
+
       display: grid;
       align-content: center;
       gap: 1rem;
@@ -275,13 +363,26 @@
     .body-text {
       margin: 0;
       color: var(--text);
-      font-size: clamp(1.05rem, 1.65vw, 1.55rem);
+
+      font-size:
+        clamp(
+          1.05rem,
+          1.65vw,
+          1.55rem
+        );
+
       line-height: 1.42;
       max-width: 72ch;
     }
 
     .body-text.small {
-      font-size: clamp(.98rem, 1.25vw, 1.18rem);
+      font-size:
+        clamp(
+          .98rem,
+          1.25vw,
+          1.18rem
+        );
+
       line-height: 1.55;
     }
 
@@ -289,7 +390,14 @@
       margin: 0;
       padding-left: 1.2rem;
       color: var(--text);
-      font-size: clamp(1rem, 1.45vw, 1.32rem);
+
+      font-size:
+        clamp(
+          1rem,
+          1.45vw,
+          1.32rem
+        );
+
       line-height: 1.5;
       display: grid;
       gap: .85rem;
@@ -300,37 +408,44 @@
       font-weight: 800;
     }
 
-    .slide-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      color: var(--muted);
-      font-size: .95rem;
-    }
-
-    .progress {
-      height: .45rem;
-      flex: 1;
-      background: var(--accent-soft);
-      border-radius: 999px;
-      overflow: hidden;
-      border: 1px solid var(--border-soft);
-    }
-
-    .progress-bar {
-      height: 100%;
-      width: 0;
-      background: linear-gradient(90deg, var(--accent), var(--accent-strong));
-      border-radius: inherit;
-      transition: width .25s ease;
-    }
-
     .mobile-controls {
       display: none;
       gap: .8rem;
       justify-content: center;
       margin-top: 1rem;
+    }
+
+    .progress-track {
+      grid-column: 1 / -1;
+      width: 100%;
+      height: .45rem;
+      background: var(--accent-soft);
+      border-radius: 999px;
+
+      box-shadow:
+        inset 0 0 0 1px
+        color-mix(
+          in srgb,
+          var(--text) 4%,
+          var(--transparent)
+        );
+
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      width: 0%;
+      height: 100%;
+
+      background:
+        linear-gradient(
+          90deg,
+          var(--accent),
+          var(--accent-strong)
+        );
+
+      border-radius: inherit;
+      transition: width .28s ease;
     }
 
     @media (max-width: 900px) {
@@ -379,7 +494,12 @@
       }
 
       h1 {
-        font-size: clamp(1.75rem, 12vw, 3.25rem);
+        font-size:
+          clamp(
+            1.75rem,
+            12vw,
+            3.25rem
+          );
       }
 
       .arrow {
@@ -391,46 +511,123 @@
 </head>
 
 <body>
-  <a class="skip" href="#main">Skip to content</a>
+  <a class="skip" href="#main">
+    Skip to content
+  </a>
 
   <header>
-    <div class="wrap nav" role="navigation" aria-label="Primary">
-      <a class="brand" href="index.html">David Gadelkarim: Game Designer</a>
-      <nav class="links" aria-label="Sections">
-        <a href="games.html">Games</a>
-        <a href="writing.html">Writing</a>
-        <a href="about.html" aria-current="page">About Me</a>
+    <div
+      class="wrap nav"
+      role="navigation"
+      aria-label="Primary"
+    >
+      <a class="brand" href="index.html">
+        David Gadelkarim: Game Designer
+      </a>
+
+      <nav
+        class="links"
+        aria-label="Sections"
+      >
+        <a href="games.html">
+          Games
+        </a>
+
+        <a href="writing.html">
+          Writing
+        </a>
+
+        <a
+          href="about.html"
+          aria-current="page"
+        >
+          About Me
+        </a>
       </nav>
     </div>
   </header>
 
   <main id="main" class="wrap">
-    <section class="presentation-shell" aria-label="About Me presentation carousel">
-      <button class="arrow desktop-arrow" type="button" id="previousSlide" aria-label="Previous slide">‹</button>
+    <section
+      class="presentation-shell"
+      aria-label="About Me presentation carousel"
+    >
+      <button
+        class="arrow desktop-arrow"
+        type="button"
+        id="previousSlide"
+        aria-label="Previous slide"
+      >
+        ‹
+      </button>
 
-      <article class="slide" aria-live="polite">
+      <article
+        class="slide"
+        aria-live="polite"
+      >
         <div class="slide-header">
           <div class="slide-topline">
-            <p class="section-label" id="slideLabel"></p>
-            <div class="counter" id="slideCounter"></div>
+            <p
+              class="section-label"
+              id="slideLabel"
+            ></p>
+
+            <div
+              class="counter"
+              id="slideCounter"
+            ></div>
           </div>
+
           <h1 id="slideTitle"></h1>
         </div>
 
-        <div class="slide-body" id="slideBody"></div>
+        <div
+          class="slide-body"
+          id="slideBody"
+        ></div>
 
-        <div class="slide-footer">
-          <div class="progress" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
-          <span id="footerHint">Use ← / → or A / D</span>
-        </div>
+        <div
+          class="mobile-controls"
+          aria-label="Mobile presentation controls"
+        >
+          <button
+            class="arrow"
+            type="button"
+            id="previousSlideMobile"
+            aria-label="Previous slide"
+          >
+            ‹
+          </button>
 
-        <div class="mobile-controls" aria-label="Mobile presentation controls">
-          <button class="arrow" type="button" id="previousSlideMobile" aria-label="Previous slide">‹</button>
-          <button class="arrow" type="button" id="nextSlideMobile" aria-label="Next slide">›</button>
+          <button
+            class="arrow"
+            type="button"
+            id="nextSlideMobile"
+            aria-label="Next slide"
+          >
+            ›
+          </button>
         </div>
       </article>
 
-      <button class="arrow desktop-arrow" type="button" id="nextSlide" aria-label="Next slide">›</button>
+      <button
+        class="arrow desktop-arrow"
+        type="button"
+        id="nextSlide"
+        aria-label="Next slide"
+      >
+        ›
+      </button>
+
+      <div
+        class="progress-track"
+        aria-hidden="true"
+      >
+        <div
+          class="progress-bar"
+          id="progressBar"
+        ></div>
+      </div>
     </section>
   </main>
 
@@ -535,75 +732,217 @@
         label: "Contact",
         title: "Reach Out Anytime",
         contact: [
-          "davidazmy02@gmail.com",
+          "davidazmy02@gmail.com"
         ]
       }
     ];
 
     let currentIndex = 0;
 
-    const labelEl = document.getElementById('slideLabel');
-    const titleEl = document.getElementById('slideTitle');
-    const counterEl = document.getElementById('slideCounter');
-    const bodyEl = document.getElementById('slideBody');
-    const progressEl = document.getElementById('progressBar');
+    const labelEl =
+      document.getElementById("slideLabel");
+
+    const titleEl =
+      document.getElementById("slideTitle");
+
+    const counterEl =
+      document.getElementById("slideCounter");
+
+    const bodyEl =
+      document.getElementById("slideBody");
+
+    const progressEl =
+      document.getElementById("progressBar");
 
     function renderSlide(index) {
       const slide = slides[index];
-      labelEl.textContent = slide.label;
-      titleEl.textContent = slide.title;
-      counterEl.textContent = `${index + 1} / ${slides.length}`;
-      progressEl.style.width = `${((index + 1) / slides.length) * 100}%`;
+
+      labelEl.textContent =
+        slide.label;
+
+      titleEl.textContent =
+        slide.title;
+
+      counterEl.textContent =
+        `${index + 1} / ${slides.length}`;
+
+      progressEl.style.width =
+        `${((index + 1) / slides.length) * 100}%`;
 
       const textMarkup = slide.list
-        ? `<div class="text-panel"><ul class="body-list">${slide.list.map(item => `<li>${item}</li>`).join('')}</ul></div>`
+        ? `
+          <div class="text-panel">
+            <ul class="body-list">
+              ${slide.list
+                .map(
+                  item => `<li>${item}</li>`
+                )
+                .join("")}
+            </ul>
+          </div>
+        `
         : slide.contact
-          ? `<div class="contact-panel">${slide.contact.map(item => `<p class="body-text">${item}</p>`).join('')}</div>`
-          : `<div class="text-panel">${slide.body.map((item, bodyIndex) => `<p class="body-text ${bodyIndex > 0 ? 'small' : ''}">${item}</p>`).join('')}</div>`;
+          ? `
+            <div class="contact-panel">
+              ${slide.contact
+                .map(
+                  item =>
+                    `<p class="body-text">${item}</p>`
+                )
+                .join("")}
+            </div>
+          `
+          : `
+            <div class="text-panel">
+              ${slide.body
+                .map(
+                  (item, bodyIndex) =>
+                    `
+                      <p class="body-text ${
+                        bodyIndex > 0
+                          ? "small"
+                          : ""
+                      }">
+                        ${item}
+                      </p>
+                    `
+                )
+                .join("")}
+            </div>
+          `;
 
       const imageMarkup = slide.image
-        ? `<div class="image-panel"><img src="${slide.image}" alt="${slide.imageAlt}" loading="eager"></div>`
-        : '';
+        ? `
+          <div class="image-panel">
+            <img
+              src="${slide.image}"
+              alt="${slide.imageAlt}"
+              loading="eager"
+            >
+          </div>
+        `
+        : "";
 
-      bodyEl.className = slide.image ? 'slide-body' : 'slide-body text-only';
-      bodyEl.innerHTML = `${textMarkup}${imageMarkup}`;
+      bodyEl.className =
+        slide.image
+          ? "slide-body"
+          : "slide-body text-only";
+
+      bodyEl.innerHTML =
+        `${textMarkup}${imageMarkup}`;
     }
 
     function goToSlide(direction) {
-      currentIndex = (currentIndex + direction + slides.length) % slides.length;
+      currentIndex =
+        (
+          currentIndex +
+          direction +
+          slides.length
+        ) % slides.length;
+
       renderSlide(currentIndex);
     }
 
-    document.getElementById('previousSlide').addEventListener('click', () => goToSlide(-1));
-    document.getElementById('nextSlide').addEventListener('click', () => goToSlide(1));
-    document.getElementById('previousSlideMobile').addEventListener('click', () => goToSlide(-1));
-    document.getElementById('nextSlideMobile').addEventListener('click', () => goToSlide(1));
+    document
+      .getElementById("previousSlide")
+      .addEventListener(
+        "click",
+        () => goToSlide(-1)
+      );
 
-    document.addEventListener('keydown', (event) => {
-      const key = event.key.toLowerCase();
-      const activeTag = document.activeElement?.tagName?.toLowerCase();
+    document
+      .getElementById("nextSlide")
+      .addEventListener(
+        "click",
+        () => goToSlide(1)
+      );
 
-      if (activeTag === 'input' || activeTag === 'textarea' || activeTag === 'select') return;
+    document
+      .getElementById("previousSlideMobile")
+      .addEventListener(
+        "click",
+        () => goToSlide(-1)
+      );
 
-      if (key === 'arrowleft' || key === 'a') goToSlide(-1);
-      if (key === 'arrowright' || key === 'd') goToSlide(1);
-    });
+    document
+      .getElementById("nextSlideMobile")
+      .addEventListener(
+        "click",
+        () => goToSlide(1)
+      );
+
+    document.addEventListener(
+      "keydown",
+      event => {
+        const key =
+          event.key.toLowerCase();
+
+        const activeTag =
+          document.activeElement
+            ?.tagName
+            ?.toLowerCase();
+
+        if (
+          activeTag === "input" ||
+          activeTag === "textarea" ||
+          activeTag === "select"
+        ) {
+          return;
+        }
+
+        if (
+          key === "arrowleft" ||
+          key === "a"
+        ) {
+          event.preventDefault();
+          goToSlide(-1);
+        }
+
+        if (
+          key === "arrowright" ||
+          key === "d"
+        ) {
+          event.preventDefault();
+          goToSlide(1);
+        }
+      }
+    );
 
     let touchStartX = 0;
     let touchEndX = 0;
 
-    document.addEventListener('touchstart', (event) => {
-      touchStartX = event.changedTouches[0].screenX;
-    });
+    document.addEventListener(
+      "touchstart",
+      event => {
+        touchStartX =
+          event.changedTouches[0].screenX;
+      }
+    );
 
-    document.addEventListener('touchend', (event) => {
-      touchEndX = event.changedTouches[0].screenX;
-      const swipeDistance = touchEndX - touchStartX;
+    document.addEventListener(
+      "touchend",
+      event => {
+        touchEndX =
+          event.changedTouches[0].screenX;
 
-      if (Math.abs(swipeDistance) < 50) return;
-      if (swipeDistance > 0) goToSlide(-1);
-      if (swipeDistance < 0) goToSlide(1);
-    });
+        const swipeDistance =
+          touchEndX - touchStartX;
+
+        if (
+          Math.abs(swipeDistance) < 50
+        ) {
+          return;
+        }
+
+        if (swipeDistance > 0) {
+          goToSlide(-1);
+        }
+
+        if (swipeDistance < 0) {
+          goToSlide(1);
+        }
+      }
+    );
 
     renderSlide(currentIndex);
   </script>
