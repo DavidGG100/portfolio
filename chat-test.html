@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chat Widget Test | David Gadelkarim</title>
+  <meta name="description" content="A private test page for David Gadelkarim's Voiceflow chat widget." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #120f17;
+      --bg-glow: #3a1f3f;
+      --bg-glow-soft: #28172c;
+      --surface: #1d1723;
+      --surface-strong: #2b2032;
+      --text: #ffffff;
+      --muted: #f1dce5;
+      --accent: #ff8a70;
+      --accent-strong: #ffc46b;
+      --border: #5a3a5f;
+      --shadow-deep: rgba(0, 0, 0, 0.48);
+      --shadow-glow: rgba(255, 138, 112, 0.22);
+      --radius: 18px;
+      --maxw: 900px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { min-height: 100%; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(1200px 600px at 50% -20%, var(--bg-glow) 0%, var(--bg-glow-soft) 38%, var(--bg) 70%);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    .wrap {
+      width: min(92vw, var(--maxw));
+      margin: 0 auto;
+    }
+
+    header {
+      border-bottom: 1px solid rgba(90, 58, 95, .65);
+      background: rgba(18, 15, 23, .86);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav {
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      color: var(--text);
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .back-link {
+      color: var(--accent-strong);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    main {
+      min-height: calc(100vh - 65px);
+      display: grid;
+      place-items: center;
+      padding: 2rem 0 7rem;
+    }
+
+    .test-card {
+      width: 100%;
+      padding: clamp(1.5rem, 4vw, 3rem);
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 8px);
+      background: linear-gradient(180deg, var(--surface-strong), var(--surface));
+      box-shadow: 0 22px 60px var(--shadow-deep), 0 0 34px var(--shadow-glow);
+    }
+
+    .eyebrow {
+      margin: 0 0 .5rem;
+      color: var(--accent-strong);
+      font-size: .9rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 6vw, 4rem);
+      line-height: 1.05;
+    }
+
+    .description {
+      max-width: 62ch;
+      margin: 1.25rem 0 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.2rem);
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: .65rem;
+      margin-top: 1.5rem;
+      padding: .7rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(18, 15, 23, .55);
+      font-weight: 700;
+    }
+
+    .status-dot {
+      width: .7rem;
+      height: .7rem;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 14px var(--accent);
+    }
+
+    code {
+      color: var(--accent-strong);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="index.html">David Gadelkarim: Game Designer</a>
+      <a class="back-link" href="index.html">Back to website</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="test-card" aria-labelledby="pageTitle">
+      <p class="eyebrow">Voiceflow Test Environment</p>
+      <h1 id="pageTitle">Chat Widget Test</h1>
+      <p class="description">
+        This page loads the production version of your Voiceflow assistant. Open the chat button in the lower-right corner to test it without changing the rest of your portfolio.
+      </p>
+      <div class="status" id="widgetStatus" role="status" aria-live="polite">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span>Loading chat widget…</span>
+      </div>
+      <p class="description">
+        Suggested page address: <code>chat-test.html</code>
+      </p>
+    </section>
+  </main>
+
+  <script type="text/javascript">
+    (function (d, t) {
+      var v = d.createElement(t);
+      var s = d.getElementsByTagName(t)[0];
+      var status = d.getElementById('widgetStatus');
+
+      v.onload = function () {
+        window.voiceflow.chat.load({
+          verify: { projectID: '67bde4a15386814589166457' },
+          url: 'https://general-runtime.voiceflow.com',
+          versionID: 'production',
+          voice: {
+            url: 'https://runtime-api.voiceflow.com'
+          }
+        });
+
+        if (status) {
+          status.querySelector('span:last-child').textContent = 'Chat widget loaded';
+        }
+      };
+
+      v.onerror = function () {
+        if (status) {
+          status.querySelector('span:last-child').textContent = 'Chat widget failed to load';
+        }
+      };
+
+      v.src = 'https://cdn.voiceflow.com/widget-next/bundle.mjs';
+      v.type = 'text/javascript';
+      s.parentNode.insertBefore(v, s);
+    })(document, 'script');
+  </script>
+</body>
+</html>
